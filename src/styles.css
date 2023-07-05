@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --md-background: #F4EFF4; 
+  --md-foreground: #FFFFFF;
+  --primary-purple: #6750A4;
+  --dark-red: #940303;
+  --dark-green: #1C6C20;
+  --color-1: #FFD8D8;
+  --color-2: #FFE9C9;
+  --color-3: #FDFBCB;
+  --color-4: #E1F5C7;
+  --color-5: #C2EED4;
+
+  
+  --large-toggle-selected: #EADDFF;
+
+  --mdc-typography-body2-font-size : 18px;
+
+  --basicProgress: 0%;
+  --stylesProgress1: 0%;
+  --stylesProgress2: 0%;
+  --storiesProgress1: 0%;
+  --storiesProgress2: 0%;
+  --storiesProgress3: 0%;
+  --storiesProgress4: 0%;
+}
+
+@import url('https://fonts.cdnfonts.com/css/poppins');
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+html, body { 
+  padding: 0;
+  margin: 0;
+  background-color: var(--md-background);
+  height: 100%;
+  font-family: "Poppins", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji" !important;
+}

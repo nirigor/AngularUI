@@ -1,0 +1,621 @@
+<!-- Basic Info -->
+<div class="main-component">
+    <div class="main-container">
+        <div class="container">
+            <div class="info">
+                <span *ngIf="this.step != 10"><button color="primary" class="bold" mat-button (click)="backClick();">< Back</button></span>
+                <span *ngIf="this.step == 10"><button color="primary" class="bold" mat-button (click)="backLClick();">< Back</button></span>
+                <span style="font-weight: bold;"><div class="circle">{{this.step - this.phaseSteps.min}}</div> / {{this.phaseSteps.steps}}</span>
+                <span *ngIf="this.step != 10"><button *ngIf="this.surveyStatus[this.step]" class="bold" color="primary" mat-button (click)="nextClick();">Next ></button></span>    
+                <span *ngIf="this.step == 10"><button *ngIf="this.surveyLStatus[getcode()]" class="bold" color="primary" mat-button (click)="nextLClick();">Next ></button></span>    
+            </div>
+    
+    
+            <div *ngIf="step == 1" class="item">
+                <h2>Your <b>Marital Status</b></h2>
+                <mat-radio-group class="radio-group-normal" [(ngModel)]="this.p.MaritalStatus" (ngModelChange)="nextClick();">
+                    <mat-radio-button value="SI">Single</mat-radio-button>
+                    <mat-radio-button value="MA">Married</mat-radio-button>
+                    <mat-radio-button value="SE">Separated</mat-radio-button>
+                    <mat-radio-button value="DI">Divorced</mat-radio-button>
+                    <mat-radio-button value="WI">Widowed</mat-radio-button>
+                </mat-radio-group>
+            </div>   
+        
+            <div *ngIf="step == 2" class="item">
+                <h2>Number of <b>Children</b></h2>
+                <mat-radio-group class="radio-group-normal" [(ngModel)]="this.p.NumberOfChildren" (ngModelChange)="nextClick();">
+                    <mat-radio-button value=0>0</mat-radio-button>
+                    <mat-radio-button value=1>1-2</mat-radio-button>
+                    <mat-radio-button value=2>3-4</mat-radio-button>
+                    <mat-radio-button value=3>6-6</mat-radio-button>
+                    <mat-radio-button value=4>7+</mat-radio-button>
+                </mat-radio-group>
+            </div>
+    
+            <div *ngIf="step == 3" class="item">
+                <h2>Number of <b>Children Ages (0-12)</b></h2>
+                <mat-radio-group class="radio-group-normal" [(ngModel)]="this.p.NumberOfYoungChildren" (ngModelChange)="nextClick();">
+                    <mat-radio-button value=0>0</mat-radio-button>
+                    <mat-radio-button value=1>1-2</mat-radio-button>
+                    <mat-radio-button value=2>3-4</mat-radio-button>
+                    <mat-radio-button value=3>6-6</mat-radio-button>
+                    <mat-radio-button value=4>7+</mat-radio-button>
+                </mat-radio-group>
+            </div>
+    
+            <div *ngIf="step == 4" class="item">
+                <h2>Number of <b>Grand Children</b></h2>
+                <mat-radio-group class="radio-group-normal" [(ngModel)]="this.p.NumberOfGrandChildren" (ngModelChange)="nextClick();">
+                    <mat-radio-button value=0>0</mat-radio-button>
+                    <mat-radio-button value=1>1-2</mat-radio-button>
+                    <mat-radio-button value=2>3-4</mat-radio-button>
+                    <mat-radio-button value=3>6-6</mat-radio-button>
+                    <mat-radio-button value=4>7+</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            
+            <div *ngIf="step == 5" class="item">
+                <h2>Are you part of a <b>minority</b> within your country?</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Minority" (ngModelChange)="nextClick();">
+                    <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
+                    <mat-button-toggle value=true><div class="icon"><mat-icon svgIcon="yes"></mat-icon></div>Yes</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+    
+            <div *ngIf="step == 6" class="item">
+                <h2>Do you have <b>financial debts</b>?</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Debts" (ngModelChange)="nextClick();">
+                    <mat-button-toggle value="0"><div class="icon"><mat-icon svgIcon="money-bag"></mat-icon></div>No Debts</mat-button-toggle>
+                    <mat-button-toggle value="1"><div class="icon"><mat-icon svgIcon="credit-card"></mat-icon></div>Some</mat-button-toggle>
+                    <mat-button-toggle value="2"><div class="icon"><mat-icon svgIcon="fly-money"></mat-icon></div>A lot</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+    
+            <div *ngIf="step == 7" class="item">
+                <h2>How would you classify your <b>income level</b>?</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Income" (ngModelChange)="nextClick();">
+                    <mat-button-toggle value="0"><div class="icon"><mat-icon svgIcon="below"></mat-icon></div>Below Average</mat-button-toggle>
+                    <mat-button-toggle value="1"><div class="icon"><mat-icon svgIcon="average"></mat-icon></div>Average</mat-button-toggle>
+                    <mat-button-toggle value="2"><div class="icon"><mat-icon svgIcon="above"></mat-icon></div>Above Average</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+    
+            <div *ngIf="step == 8" class="item">
+                <h2>Your level of <b>education</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Education" (ngModelChange)="nextClick();">
+                    <mat-button-toggle value="ES"><div class="icon-sm">
+                        <mat-icon svgIcon="cap"></mat-icon>
+                    </div>Elementary School</mat-button-toggle>
+                    <mat-button-toggle value="HS"><div class="icon-sm">
+                        <mat-icon svgIcon="cap"></mat-icon>
+                        <mat-icon svgIcon="cap"></mat-icon>
+                    </div>High School</mat-button-toggle>
+                    <mat-button-toggle value="BA"><div class="icon-sm">
+                        <mat-icon svgIcon="cap"></mat-icon>
+                        <mat-icon svgIcon="cap"></mat-icon>
+                        <mat-icon svgIcon="cap"></mat-icon>
+                    </div>Bachelor's Degree</mat-button-toggle>
+                    <mat-button-toggle value="MA"><div class="icon-sm">
+                        <mat-icon svgIcon="cap"></mat-icon>
+                        <mat-icon svgIcon="cap"></mat-icon>
+                        <mat-icon svgIcon="cap"></mat-icon>
+                        <mat-icon svgIcon="cap"></mat-icon>
+                    </div>Master's Degree</mat-button-toggle>
+                    <mat-button-toggle value="DR"><div class="icon-sm">
+                        <mat-icon svgIcon="cap"></mat-icon>
+                        <mat-icon svgIcon="cap"></mat-icon>
+                        <mat-icon svgIcon="cap"></mat-icon>
+                        <mat-icon svgIcon="cap"></mat-icon>
+                        <mat-icon svgIcon="cap"></mat-icon>
+                    </div>Doctorate</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+    
+            <div *ngIf="step == 9" class="item">
+                <h2>Your level of <b>Legal Knowledge</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.LegalKnowledge" (ngModelChange)="nextClick();">
+                    <mat-button-toggle value="0"><div class="icon"><mat-icon svgIcon="no-knowledge"></mat-icon></div>No Knowledge</mat-button-toggle>
+                    <mat-button-toggle value="1"><div class="icon"><mat-icon svgIcon="some-knowledge"></mat-icon></div>Some Knowledge</mat-button-toggle>
+                    <mat-button-toggle value="2"><div class="icon"><mat-icon svgIcon="cap"></mat-icon></div>Degree in law</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+    
+            <div *ngIf="step == 10 && lstep == 0" class="item">
+                <h2>Were you previously <b>involved in a legal dispute</b>?</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.InvolvedInLegalDispute" (ngModelChange)="nextLClick();">
+                    <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
+                    <mat-button-toggle value=true><div class="icon"><mat-icon svgIcon="yes"></mat-icon></div>Yes</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+    
+            <div *ngIf="lstep == 1 && cstep == 1" class="item">
+                <h2>Do you have experience with <b>Court Proceedings</b>?</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithCourtProceedings" (ngModelChange)="nextLClick();">
+                    <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
+                    <mat-button-toggle value=true><div class="icon"><mat-icon svgIcon="yes"></mat-icon></div>Yes</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+    
+            <div *ngIf="lstep == 1 && cstep == 2" class="item">
+                <h2>How was your experience with <b>court proceedings</b>?</h2>
+                <mat-button-toggle-group class="toggle-group-large scale" [(ngModel)]="this.p.CourtProceedingsSatisfaction" (ngModelChange)="nextLClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Very Bad</div>
+                    <div class="green bold s-right">Excellent</div>    
+                </div>
+            </div>
+    
+            <div *ngIf="lstep == 1 && cstep == 3" class="item">
+                <h2>Please tell us about your experience with <b>court proceedings</b></h2>
+                <mat-form-field floatLabel="always">
+                    <mat-label>your experience</mat-label>
+                    <textarea [(ngModel)]="this.p.ExperienceWithCourtProceedingsText" matInput></textarea>
+                </mat-form-field>
+                <button mat-raised-button color="primary" class="next-button"><mat-icon svgIcon="right-arrow"></mat-icon>Next</button>
+            </div>
+    
+            <div *ngIf="lstep == 2 && mstep == 1" class="item">
+                <h2>Do you have experience with <b>Mediation</b>?</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithMediation" (ngModelChange)="nextLClick();">
+                    <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
+                    <mat-button-toggle value=true><div class="icon"><mat-icon svgIcon="yes"></mat-icon></div>Yes</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            
+            <div *ngIf="lstep == 2 && mstep == 2" class="item">
+                <h2>How was your experience with <b>mediation</b>?</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.MediationSatisfaction" (ngModelChange)="nextLClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Very Bad</div>
+                    <div class="green bold s-right">Excellent</div>    
+                </div>
+            </div>
+            
+            <div *ngIf="lstep == 2 && mstep == 3" class="item">
+                <h2>Please tell us about your experience with <b>mediation</b></h2>
+                <mat-form-field floatLabel="always">
+                    <mat-label>your experience</mat-label>
+                    <textarea [(ngModel)]="this.p.ExperienceWithMediationText" matInput></textarea>
+                </mat-form-field>
+            </div>
+            
+            <div *ngIf="lstep == 3 && astep == 1" class="item">
+                <h2>Do you have experience with <b>Arbitration</b>?</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithArbitration" (ngModelChange)="nextLClick();">
+                    <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
+                    <mat-button-toggle value=true><div class="icon"><mat-icon svgIcon="yes"></mat-icon></div>Yes</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            
+            <div *ngIf="lstep == 3 && astep == 2" class="item">
+                <h2>How was your experience with <b>arbitration</b>?</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ArbitrationSatisfaction" (ngModelChange)="nextLClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Very Bad</div>
+                    <div class="green bold s-right">Excellent</div>    
+                </div>
+            </div>
+            
+            <div *ngIf="lstep == 3 && astep == 3" class="item">
+                <h2>Please tell us about your experience with <b>arbitration</b></h2>
+                <mat-form-field floatLabel="always">
+                    <mat-label>your experience</mat-label>
+                    <textarea [(ngModel)]="this.p.ExperienceWithArbitrationText" matInput></textarea>
+                </mat-form-field>
+            </div>
+    
+            <!-- Big Five -->
+
+            <div *ngIf="step == 11" class="item">
+                <h2>Worries a lot</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF1" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == 12" class="item">
+                <h2>Gets nervous easily</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF2" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == 13" class="item">
+                <h2>Is relaxed, handles stress well</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF3" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == 14" class="item">
+                <h2>Is talkative</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF4" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == 15" class="item">
+                <h2>Is outgoing, sociable</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF5" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == 16" class="item">
+                <h2>Is reserved</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF6" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == 17" class="item">
+                <h2>Is original, comes up with new ideas</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF7" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == 18" class="item">
+                <h2>Values artistic, aesthetic experiences</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF8" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == 19" class="item">
+                <h2>Has an active imagination</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF9" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == 20" class="item">
+                <h2>Is sometimes rude to others</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF10" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == 21" class="item">
+                <h2>Has a forgiving nature</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF11" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == 22" class="item">
+                <h2>Is considerate and kind to almost everyone</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF12" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == 23" class="item">
+                <h2>Does a thorough job</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF13" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == 24" class="item">
+                <h2>Tends to be lazy</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF14" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == 25" class="item">
+                <h2>Does things efficiently</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF15" (ngModelChange)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not me at all</div>
+                    <div class="green bold s-right">This is exactly me</div>    
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+    <!-- Step: {{this.step}} 
+    <br>
+    lstep: {{this.lstep}} 
+    <br>  
+    cstep: {{this.cstep}} 
+    <br>  
+    mstep: {{this.mstep}} 
+    <br>  
+    astep: {{this.astep}} 
+    <br>   -->
+
+<!-- 
+
+<br> -->
+
+<!-- Big Five -->
+
+<!-- 
+
+<br> -->
+<!-- 
+
+<br>
+<br>
+
+<input type="text" [(ngModel)]="this.p.SurveyEndTs">
+<input type="text" [(ngModel)]="this.p.SurveyStartTs">
+<input type="text" [(ngModel)]="this.p.TQ1">
+<input type="text" [(ngModel)]="this.p.TQ2">
+<input type="text" [(ngModel)]="this.p.ProlificId">
+<input type="text" [(ngModel)]="this.p.Token">
+<input type="text" [(ngModel)]="this.p.MaritalStatus">
+<input type="text" [(ngModel)]="this.p.NumberOfChildren">
+<input type="text" [(ngModel)]="this.p.NumberOfYoungChildren">
+<input type="text" [(ngModel)]="this.p.NumberOfGrandChildren">
+
+<input type="text" [(ngModel)]="this.p.Minority">
+<input type="text" [(ngModel)]="this.p.Debts">
+<input type="text" [(ngModel)]="this.p.Income">
+<input type="text" [(ngModel)]="this.p.Education">
+<input type="text" [(ngModel)]="this.p.LegalKnowledge">
+<input type="text" [(ngModel)]="this.p.InvolvedInLegalDispute">
+
+<input type="text" [(ngModel)]="this.p.ExperienceWithCourtProceedings">
+<input type="text" [(ngModel)]="this.p.CourtProceedingsSatisfaction">
+<input type="text" [(ngModel)]="this.p.ExperienceWithCourtProceedingsText">
+<input type="text" [(ngModel)]="this.p.ExperienceWithMediation">
+<input type="text" [(ngModel)]="this.p.MediationSatisfaction">
+<input type="text" [(ngModel)]="this.p.ExperienceWithMediationText">
+<input type="text" [(ngModel)]="this.p.ExperienceWithArbitration">
+<input type="text" [(ngModel)]="this.p.ArbitrationSatisfaction">
+<input type="text" [(ngModel)]="this.p.ExperienceWithArbitrationText">
+<input type="text" [(ngModel)]="this.p.BF1">
+<input type="text" [(ngModel)]="this.p.BF2">
+<input type="text" [(ngModel)]="this.p.BF3">
+<input type="text" [(ngModel)]="this.p.BF4">
+<input type="text" [(ngModel)]="this.p.BF5">
+<input type="text" [(ngModel)]="this.p.BF6">
+<input type="text" [(ngModel)]="this.p.BF7">
+<input type="text" [(ngModel)]="this.p.BF8">
+<input type="text" [(ngModel)]="this.p.BF9">
+<input type="text" [(ngModel)]="this.p.BF10">
+<input type="text" [(ngModel)]="this.p.BF11">
+<input type="text" [(ngModel)]="this.p.BF12">
+<input type="text" [(ngModel)]="this.p.BF13">
+<input type="text" [(ngModel)]="this.p.BF14">
+<input type="text" [(ngModel)]="this.p.BF15">
+<input type="text" [(ngModel)]="this.p.TK1">
+<input type="text" [(ngModel)]="this.p.TK2">
+<input type="text" [(ngModel)]="this.p.TK3">
+<input type="text" [(ngModel)]="this.p.TK4">
+<input type="text" [(ngModel)]="this.p.TK5">
+<input type="text" [(ngModel)]="this.p.TK6">
+<input type="text" [(ngModel)]="this.p.TK7">
+<input type="text" [(ngModel)]="this.p.TK8">
+<input type="text" [(ngModel)]="this.p.TK9">
+<input type="text" [(ngModel)]="this.p.TK10">
+<input type="text" [(ngModel)]="this.p.TK11">
+<input type="text" [(ngModel)]="this.p.TK12">
+<input type="text" [(ngModel)]="this.p.TK13">
+<input type="text" [(ngModel)]="this.p.TK14">
+<input type="text" [(ngModel)]="this.p.TK15">
+<input type="text" [(ngModel)]="this.p.TK16">
+<input type="text" [(ngModel)]="this.p.TK17">
+<input type="text" [(ngModel)]="this.p.TK18">
+<input type="text" [(ngModel)]="this.p.TK19">
+<input type="text" [(ngModel)]="this.p.TK20">
+<input type="text" [(ngModel)]="this.p.TK21">
+<input type="text" [(ngModel)]="this.p.TK22">
+<input type="text" [(ngModel)]="this.p.TK23">
+<input type="text" [(ngModel)]="this.p.TK24">
+<input type="text" [(ngModel)]="this.p.TK25">
+<input type="text" [(ngModel)]="this.p.TK26">
+<input type="text" [(ngModel)]="this.p.TK27">
+<input type="text" [(ngModel)]="this.p.TK28">
+<input type="text" [(ngModel)]="this.p.TK29">
+<input type="text" [(ngModel)]="this.p.TK30">
+<input type="text" [(ngModel)]="this.p.ST1Number">
+<input type="text" [(ngModel)]="this.p.ST1Feelings">
+<input type="text" [(ngModel)]="this.p.ST1Speed">
+<input type="text" [(ngModel)]="this.p.ST1Privacy">
+<input type="text" [(ngModel)]="this.p.ST1PublicVindication">
+<input type="text" [(ngModel)]="this.p.ST1NeutralOpinion">
+<input type="text" [(ngModel)]="this.p.ST1MinimizeCosts">
+<input type="text" [(ngModel)]="this.p.ST1MaintainImproveRelationship">
+<input type="text" [(ngModel)]="this.p.ST1CreatePrecedent">
+<input type="text" [(ngModel)]="this.p.ST1MinMaxCompensation">
+<input type="text" [(ngModel)]="this.p.ST1CreativeSolution">
+<input type="text" [(ngModel)]="this.p.ST1ControlOfProcess">
+<input type="text" [(ngModel)]="this.p.ST1ControlOfOutcome">
+<input type="text" [(ngModel)]="this.p.ST1ShiftResponsibility">
+<input type="text" [(ngModel)]="this.p.ST1EnsuringCompliance">
+<input type="text" [(ngModel)]="this.p.ST1TransformationOfTheParties">
+<input type="text" [(ngModel)]="this.p.ST1ImproveUnderstanding">
+<input type="text" [(ngModel)]="this.p.ST1RecognitionApology">
+<input type="text" [(ngModel)]="this.p.ST1Classification">
+<input type="text" [(ngModel)]="this.p.ST1StrengthPosition">
+<input type="text" [(ngModel)]="this.p.ST1Selection">
+<input type="text" [(ngModel)]="this.p.ST1SelectionText">
+<input type="text" [(ngModel)]="this.p.ST2Number">
+<input type="text" [(ngModel)]="this.p.ST2Feelings">
+<input type="text" [(ngModel)]="this.p.ST2Speed">
+<input type="text" [(ngModel)]="this.p.ST2Privacy">
+<input type="text" [(ngModel)]="this.p.ST2PublicVindication">
+<input type="text" [(ngModel)]="this.p.ST2NeutralOpinion">
+<input type="text" [(ngModel)]="this.p.ST2MinimizeCosts">
+<input type="text" [(ngModel)]="this.p.ST2MaintainImproveRelationship">
+<input type="text" [(ngModel)]="this.p.ST2CreatePrecedent">
+<input type="text" [(ngModel)]="this.p.ST2MinMaxCompensation">
+<input type="text" [(ngModel)]="this.p.ST2CreativeSolution">
+<input type="text" [(ngModel)]="this.p.ST2ControlOfProcess">
+<input type="text" [(ngModel)]="this.p.ST2ControlOfOutcome">
+<input type="text" [(ngModel)]="this.p.ST2ShiftResponsibility">
+<input type="text" [(ngModel)]="this.p.ST2EnsuringCompliance">
+<input type="text" [(ngModel)]="this.p.ST2TransformationOfTheParties">
+<input type="text" [(ngModel)]="this.p.ST2ImproveUnderstanding">
+<input type="text" [(ngModel)]="this.p.ST2RecognitionApology">
+<input type="text" [(ngModel)]="this.p.ST2Classification">
+<input type="text" [(ngModel)]="this.p.ST2StrengthPosition">
+<input type="text" [(ngModel)]="this.p.ST2Selection">
+<input type="text" [(ngModel)]="this.p.ST2SelectionText">
+<input type="text" [(ngModel)]="this.p.ST3Number">
+<input type="text" [(ngModel)]="this.p.ST3Feelings">
+<input type="text" [(ngModel)]="this.p.ST3Speed">
+<input type="text" [(ngModel)]="this.p.ST3Privacy">
+<input type="text" [(ngModel)]="this.p.ST3PublicVindication">
+<input type="text" [(ngModel)]="this.p.ST3NeutralOpinion">
+<input type="text" [(ngModel)]="this.p.ST3MinimizeCosts">
+<input type="text" [(ngModel)]="this.p.ST3MaintainImproveRelationship">
+<input type="text" [(ngModel)]="this.p.ST3CreatePrecedent">
+<input type="text" [(ngModel)]="this.p.ST3MinMaxCompensation">
+<input type="text" [(ngModel)]="this.p.ST3CreativeSolution">
+<input type="text" [(ngModel)]="this.p.ST3ControlOfProcess">
+<input type="text" [(ngModel)]="this.p.ST3ControlOfOutcome">
+<input type="text" [(ngModel)]="this.p.ST3ShiftResponsibility">
+<input type="text" [(ngModel)]="this.p.ST3EnsuringCompliance">
+<input type="text" [(ngModel)]="this.p.ST3TransformationOfTheParties">
+<input type="text" [(ngModel)]="this.p.ST3ImproveUnderstanding">
+<input type="text" [(ngModel)]="this.p.ST3RecognitionApology">
+<input type="text" [(ngModel)]="this.p.ST3Classification">
+<input type="text" [(ngModel)]="this.p.ST3StrengthPosition">
+<input type="text" [(ngModel)]="this.p.ST3Selection">
+<input type="text" [(ngModel)]="this.p.ST3SelectionText"> -->

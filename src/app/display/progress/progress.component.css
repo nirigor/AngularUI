@@ -1,0 +1,112 @@
+.container {    
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 40px 700px auto;
+    grid-template-areas:
+        "logo"
+        "prog-cont"
+        "filler";
+    height: 100%;
+    grid-gap: 50px;
+}
+
+.logo {
+    grid-area: logo;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.prog-cont {
+    grid-area: prog-cont;
+}
+
+.filler {
+    grid-area: filler;
+}
+
+.prog-cont {
+    display: grid;
+    grid-template-columns: 1fr 70px 1fr;
+    grid-template-rows: 40px 70px 40px 70px 70px 40px 70px 70px 70px 70px;
+    grid-template-areas: 
+        "basicTitlePre basicTitle ."
+        "basicArrow basicProg basicStep"
+        "stylesTitlePre stylesTitle ."
+        "stylesArrow1 stylesProg1 stylesStep1"
+        "stylesArrow2 stylesProg2 stylesStep2"
+        "storiesTitlePre storiesTitle ."
+        "storiesArrow1 storiesProg1 storiesStep1"
+        "storiesArrow2 storiesProg2 storiesStep2"
+        "storiesArrow3 storiesProg3 storiesStep3"
+        "storiesArrow4 storiesProg4 storiesStep4";
+    height: 100%;
+    grid-gap: 10px;
+}
+
+hr {
+    border: 1px dashed;
+    margin-top: 12px;
+}
+
+.progress-title {
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+}
+
+.progress-bar {
+    transform:  translateX(-50%) rotate(90deg);
+}
+
+.mat-mdc-progress-bar {
+    --mdc-linear-progress-active-indicator-height: 10px;
+    --mdc-linear-progress-track-height: 10px;
+    border-radius: 10px;
+}
+
+.bi::before {
+    color: var(--primary-purple);
+    font-weight: bold !important;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.arrow { 
+    margin-right: -25px;
+}
+
+.step {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--primary-purple);
+    margin: 0px 0px 0px -35px;
+    
+}
+
+.basic {
+    transform: translateY(var(--basicProgress));
+}
+
+.style1 {
+    transform: translateY(var(--stylesProgress1));
+}
+
+.style2 {
+    transform: translateY(var(--stylesProgress2));
+}
+
+.stories1 {
+    transform: translateY(var(--storiesProgress1));
+}
+
+.stories2 {
+    transform: translateY(var(--storiesProgress2));
+}
+
+.stories3 {
+    transform: translateY(var(--storiesProgress3));
+}
+
+.stories4 {
+    transform: translateY(var(--storiesProgress4));
+}

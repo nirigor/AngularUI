@@ -1,0 +1,4 @@
+<div class="container">
+    <app-progress [step]="step"></app-progress>
+    <app-main [step]="step" (stepUpdateEvent)="updateStep($event)"></app-main>    
+</div>

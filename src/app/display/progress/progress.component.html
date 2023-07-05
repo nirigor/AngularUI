@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="logo">
+        <img class="logo" src="assets/logo.png"> 
+    </div>
+
+    <div class="prog-cont">
+        <!-- Basic -->
+        <span style="grid-area: basicTitlePre;"><hr></span>
+        <div class="progress-title" style="grid-area: basicTitle;">Basic</div>
+
+        <div *ngIf="this.dict['basicVisible']" class="arrow basic" [style.--basicProgress]="this.dict['basicPercentArrow']" style="grid-area: basicArrow;"><i class="bi bi-arrow-right arrow"></i></div>
+        <div style="grid-area: basicProg;" class="progress-bar">
+            <mat-progress-bar color="primary" [value]="this.dict['basicProgress']" class="md-propress"></mat-progress-bar>
+        </div>
+        <span *ngIf="this.dict['basicVisible']" class="step basic" [style.--basicProgress]="this.dict['basicPercentStep']" style="grid-area: basicStep;">Basic Info</span>
+        
+        <!-- Styles -->
+        <span style="grid-area: stylesTitlePre;"><hr></span>
+        <div class="progress-title" style="grid-area: stylesTitle;">Styles</div>
+
+        <div *ngIf="this.dict['stylesVisible1']" class="arrow style1" [style.--stylesProgress1]="this.dict['stylesPercentArrow1']" style="grid-area: stylesArrow1;"><i class="bi bi-arrow-right arrow"></i></div>
+        <div style="grid-area: stylesProg1;" class="progress-bar">
+            <mat-progress-bar color="primary" [value]="this.dict['stylesProgress1']" class="md-propress"></mat-progress-bar>
+        </div>
+        <span *ngIf="this.dict['stylesVisible1']" class="step style1" [style.--stylesProgress1]="this.dict['stylesPercentStep1']" style="grid-area: stylesStep1;">Personality</span>
+
+        <div *ngIf="this.dict['stylesVisible2']" class="arrow style2" [style.--stylesProgress2]="this.dict['stylesPercentArrow2']" style="grid-area: stylesArrow2;"><i class="bi bi-arrow-right arrow"></i></div>
+        <div style="grid-area: stylesProg2;" class="progress-bar">
+            <mat-progress-bar color="primary" [value]="this.dict['stylesProgress2']" class="md-propress"></mat-progress-bar>
+        </div>
+        <span *ngIf="this.dict['stylesVisible2']" class="step style2" [style.--stylesProgress2]="this.dict['stylesPercentStep2']" style="grid-area: stylesStep2;">Negotiation</span>
+
+        <!-- Stories -->
+        <span style="grid-area: storiesTitlePre;"><hr></span>
+        <div class="progress-title" style="grid-area: storiesTitle;">Stories</div>
+
+        <div *ngIf="this.dict['storiesVisible1']" class="arrow stories1" [style.--storiesProgress1]="this.dict['storiesPercentArrow1']" style="grid-area: storiesArrow1;"><i class="bi bi-arrow-right arrow"></i></div>
+        <div style="grid-area: storiesProg1;" class="progress-bar">
+            <mat-progress-bar color="primary" [value]="this.dict['storiesProgress1']" class="md-propress"></mat-progress-bar>
+        </div>
+        <span *ngIf="this.dict['storiesVisible1']" class="step stories1" [style.--storiesProgress1]="this.dict['storiesPercentStep1']" style="grid-area: storiesStep1;">Intro</span>
+
+        <div *ngIf="this.dict['storiesVisible2']" class="arrow stories2" [style.--storiesProgress2]="this.dict['storiesPercentArrow2']" style="grid-area: storiesArrow2;"><i class="bi bi-arrow-right arrow"></i></div>
+        <div style="grid-area: storiesProg2;" class="progress-bar">
+            <mat-progress-bar color="primary" [value]="this.dict['storiesProgress2']" class="md-propress"></mat-progress-bar>
+        </div>
+        <span *ngIf="this.dict['storiesVisible2']" class="step stories2" [style.--storiesProgress2]="this.dict['storiesPercentStep2']" style="grid-area: storiesStep2;">Story 1</span>
+
+        <div *ngIf="this.dict['storiesVisible3']" class="arrow stories3" [style.--storiesProgress3]="this.dict['storiesPercentArrow3']" style="grid-area: storiesArrow3;"><i class="bi bi-arrow-right arrow"></i></div>
+        <div style="grid-area: storiesProg3;" class="progress-bar">
+            <mat-progress-bar color="primary" [value]="this.dict['storiesProgress3']" class="md-propress"></mat-progress-bar>
+        </div>
+        <span *ngIf="this.dict['storiesVisible3']" class="step stories3" [style.--storiesProgress3]="this.dict['storiesPercentStep3']" style="grid-area: storiesStep3;">Story 2</span>
+
+        <div *ngIf="this.dict['storiesVisible4']" class="arrow stories4" [style.--storiesProgress4]="this.dict['storiesPercentArrow4']" style="grid-area: storiesArrow4;"><i class="bi bi-arrow-right arrow"></i></div>
+        <div style="grid-area: storiesProg4;" class="progress-bar">
+            <mat-progress-bar color="primary" [value]="this.dict['storiesProgress4']" class="md-propress"></mat-progress-bar>
+        </div>
+        <span *ngIf="this.dict['storiesVisible4']" class="step stories4" [style.--storiesProgress4]="this.dict['storiesPercentStep4']" style="grid-area: storiesStep4;">Story 3</span>
+    </div>
+
+    <div class="filler">
+    </div>
+</div>
+
