@@ -5,13 +5,14 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    background-color: var(--md-background-intro);
 }
 
 .logo {
     margin-bottom: 50px;
 }
 
-.title {
+.main-title {
     width: 519px;
 }
 
@@ -36,3 +37,57 @@ p {
 .green {
     color: var(--dark-green);
 }
+
+.avatar-container {
+    display: grid;
+    grid-template-columns: 75px 200px;
+    grid-template-areas: 
+        "avatar title"
+        "avatar progress";
+    column-gap: 10px;
+    margin-bottom: 10px;
+}
+
+mat-icon {
+    height: 75px;
+    width: 75px;
+}
+
+
+.title {
+    color: var(--secondary-light);
+    font-weight: 600;
+}
+
+.progress {
+    width: 100%;
+}
+
+.styles {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 75px 0px;
+}
+
+.avatar-flex {
+    display: flex;
+} 
+
+.flx-center {
+    justify-content: center;
+}
+
+.flx-end {
+    justify-content: flex-end;
+}
+
+.flx-start {
+    justify-content: flex-start;
+}
+
+.next-button {
+    --mdc-protected-button-container-color: var(--primary-purple);
+    border-radius: 100px;
+    height: 40px;
+  }

@@ -24,7 +24,7 @@ mat-form-field {
     --mdc-protected-button-container-color: var(--primary-purple);
     border-radius: 100px;
     height: 40px;
-}
+  }
 
 .bold {
     font-weight: bold;

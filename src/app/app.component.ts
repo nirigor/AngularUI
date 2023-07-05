@@ -32,5 +32,8 @@ export class AppComponent {
     this.matIconRegistry.addSvgIcon('smiley4', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/smiley4.svg'))
     this.matIconRegistry.addSvgIcon('smiley5', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/smiley5.svg'))
     this.matIconRegistry.addSvgIcon('right-arrow', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/right-arrow.svg'))
+    this.matIconRegistry.addSvgIcon('competitor', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/competitor.svg'))
+    this.matIconRegistry.addSvgIcon('avoider', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/avoider.svg'))
+    this.matIconRegistry.addSvgIcon('problem-solver', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/problem-solver.svg'))
   }
 }

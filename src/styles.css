@@ -1,7 +1,11 @@
 :root {
   --md-background: #F4EFF4; 
+  --md-background-intro: #F3E9F3;
   --md-foreground: #FFFFFF;
+
   --primary-purple: #6750A4;
+  --secondary-light: #625B71;
+
   --dark-red: #940303;
   --dark-green: #1C6C20;
   --color-1: #FFD8D8;

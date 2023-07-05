@@ -1,15 +1,50 @@
 <div class="container">
     <div class="logo">
-        <img class="logo" src="assets/logo.png"> 
+        <img src="assets/logo.png"> 
     </div>
-    <div class="title">
+    <div class="main-title">
         <h1>How do you deal with conflicts?</h1>
     </div>
     <div class="description">
         <p>What is the best way to deal with your conflicts?</p>
         <p>Learn about your conflict resolution style and preferences</p>
         <br>
+        <br>
         <p><b>20 min | <span class="green">4$</span></b> (16$ per hour)</p>
     </div>
-    
+    <div class="styles">
+        <div class="avatar-flex flx-center">
+            <div class="avatar-container">
+                <div class="avatar" style="grid-area: avatar;"><mat-icon svgIcon="competitor"></mat-icon></div>
+                <div class="title" style="grid-area: title;">Competitor</div>
+                <div class="progress" style="grid-area: progress;">
+                    75%
+                    <mat-progress-bar color="primary" value="75" style="width: 200px;"></mat-progress-bar>
+                </div>
+            </div>
+        </div>
+
+        <div class="avatar-flex flx-start">
+            <div class="avatar-container">
+                <div class="avatar" style="grid-area: avatar;"><mat-icon svgIcon="avoider"></mat-icon></div>
+                <div class="title" style="grid-area: title;">Avoider</div>
+                <div class="progress" style="grid-area: progress;">
+                    50%
+                    <mat-progress-bar color="primary" value="50" style="width: 200px;"></mat-progress-bar>
+                </div>
+            </div>
+        </div>
+
+        <div class="avatar-flex flx-end">
+            <div class="avatar-container">
+                <div class="avatar" style="grid-area: avatar;"><mat-icon svgIcon="problem-solver"></mat-icon></div>
+                <div class="title" style="grid-area: title;">Problem solver</div>
+                <div class="progress" style="grid-area: progress;">
+                    25%
+                    <mat-progress-bar color="primary" value="25" style="width: 200px;"></mat-progress-bar>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button mat-raised-button color="primary" class="next-button">> Start</button>
 </div>
