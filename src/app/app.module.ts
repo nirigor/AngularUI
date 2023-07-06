@@ -23,6 +23,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { IntroComponent } from './intro/intro.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
@@ -49,7 +50,8 @@ import { IntroComponent } from './intro/intro.component';
     MatSelectModule,
     MatButtonToggleModule,
     MatGridListModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule,
   ],
   providers: [
     SharedService

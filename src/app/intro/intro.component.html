@@ -1,50 +1,109 @@
 <div class="container">
-    <div class="logo">
-        <img src="assets/logo.png"> 
-    </div>
-    <div class="main-title">
-        <h1>How do you deal with conflicts?</h1>
-    </div>
-    <div class="description">
-        <p>What is the best way to deal with your conflicts?</p>
-        <p>Learn about your conflict resolution style and preferences</p>
-        <br>
-        <br>
-        <p><b>20 min | <span class="green">4$</span></b> (16$ per hour)</p>
-    </div>
-    <div class="styles">
-        <div class="avatar-flex flx-center">
-            <div class="avatar-container">
-                <div class="avatar" style="grid-area: avatar;"><mat-icon svgIcon="competitor"></mat-icon></div>
-                <div class="title" style="grid-area: title;">Competitor</div>
-                <div class="progress" style="grid-area: progress;">
-                    75%
-                    <mat-progress-bar color="primary" value="75" style="width: 200px;"></mat-progress-bar>
+    <img src="assets/logo.png"> 
+    <div class="intro" *ngIf="step==1">
+        <div class="main-title">
+            <h1>How do you deal with conflicts?</h1>
+        </div>
+        <div class="description">
+            <p>What is the best way to deal with your conflicts?</p>
+            <p>Learn about your conflict resolution style and preferences</p>
+            <br>
+            <br>
+            <p><b>20 min | <span class="green">4$</span></b> (16$ per hour)</p>
+        </div>
+        <div class="styles">
+            <div class="avatar-flex flx-center">
+                <div class="avatar-container">
+                    <div class="avatar" style="grid-area: avatar;"><mat-icon svgIcon="competitor"></mat-icon></div>
+                    <div class="title" style="grid-area: title;">Competitor</div>
+                    <div class="progress" style="grid-area: progress;">
+                        75%
+                        <mat-progress-bar color="primary" value="75" style="width: 200px;"></mat-progress-bar>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="avatar-flex flx-start">
+                <div class="avatar-container">
+                    <div class="avatar" style="grid-area: avatar;"><mat-icon svgIcon="avoider"></mat-icon></div>
+                    <div class="title" style="grid-area: title;">Avoider</div>
+                    <div class="progress" style="grid-area: progress;">
+                        50%
+                        <mat-progress-bar color="primary" value="50" style="width: 200px;"></mat-progress-bar>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="avatar-flex flx-end">
+                <div class="avatar-container">
+                    <div class="avatar" style="grid-area: avatar;"><mat-icon svgIcon="problem-solver"></mat-icon></div>
+                    <div class="title" style="grid-area: title;">Problem solver</div>
+                    <div class="progress" style="grid-area: progress;">
+                        25%
+                        <mat-progress-bar color="primary" value="25" style="width: 200px;"></mat-progress-bar>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="avatar-flex flx-start">
-            <div class="avatar-container">
-                <div class="avatar" style="grid-area: avatar;"><mat-icon svgIcon="avoider"></mat-icon></div>
-                <div class="title" style="grid-area: title;">Avoider</div>
-                <div class="progress" style="grid-area: progress;">
-                    50%
-                    <mat-progress-bar color="primary" value="50" style="width: 200px;"></mat-progress-bar>
-                </div>
+        <button mat-raised-button color="primary" class="next-button" (click)="nextClick();">> Start</button>
+    </div>
+    <div class="terms" *ngIf="step==2">
+        <div class="term-heading">
+            <span><button color="primary" class="bold" mat-button (click)="backClick();">< Back</button></span>
+            <span style="font-size: 22px; font-weight: 600;">Terms of use</span>
+            <span style="width: 70px;"></span>
+        </div>
+        <div class="term">
+            <div class="icon" style="grid-area: icon;"><mat-icon svgIcon="aim"></mat-icon></div>
+            <div style="grid-area: term;">
+                <h2>What is the purpose of this research?</h2>
+                <p>The purpose of this research is to study litigants' needs, interests and emotions when facing a legal conflict.
+                    Participation is voluntary. It is your choice whether or not to participate in this research. 
+                    If you choose to participate, you may change your mind and leave the study at any time.
+                    Refusal to participate or stopping your participation will involve no penalty or loss of benefits to which you are otherwise entitled. 
+                    Reward will be given only for significant contribution to the experiment.</p>
             </div>
         </div>
-
-        <div class="avatar-flex flx-end">
-            <div class="avatar-container">
-                <div class="avatar" style="grid-area: avatar;"><mat-icon svgIcon="problem-solver"></mat-icon></div>
-                <div class="title" style="grid-area: title;">Problem solver</div>
-                <div class="progress" style="grid-area: progress;">
-                    25%
-                    <mat-progress-bar color="primary" value="25" style="width: 200px;"></mat-progress-bar>
-                </div>
+        <div class="term">
+            <div class="icon" style="grid-area: icon;"><mat-icon svgIcon="fire"></mat-icon></div>
+            <div style="grid-area: term;">
+                <h2>What are the risks and possible discomforts?</h2>
+                <p>If you choose to participate, there are no known risks associated with your participation in this research beyond those of everyday life.</p>
             </div>
+        </div>
+        <div class="term">
+            <div class="icon" style="grid-area: icon;"><mat-icon svgIcon="lock"></mat-icon></div>
+            <div style="grid-area: term;">
+                <h2>If I take part in this research, how will my privacy be protected?</h2>
+                <p>The data we collect will be saved on a secured server. Diligent care will be taken to protect sensitive information. 
+                    Your identification information (e.g., your worker id) will not be saved.</p>
+            </div>
+        </div>
+        <div class="term">
+            <div class="icon" style="grid-area: icon;"><mat-icon svgIcon="letter"></mat-icon></div>
+            <div style="grid-area: term;">
+                <h2>If I have any questions, concerns or complaints about this research study, who can I talk to?</h2>
+                <p>The leading researcher for this study is Dr. Avshalom Elmalech who can be reached at yigal.nirenberg@live.biu.ac.il If you have questions, 
+                    concerns, or complaints, If you would like to talk to the research team, If you think the research has harmed you, 
+                    or If you wish to withdraw from the study.</p>
+            </div>
+        </div>
+        <div class="term">
+            <div class="icon" style="grid-area: icon;"><mat-icon svgIcon="info"></mat-icon></div>
+            <div style="grid-area: term;">
+                <h2>Statement</h2>
+                <p>I have read and understood the information in this terms of use. I am at least eighteen (18) years old. 
+                    All my questions about the research have been answered to my satisfaction. 
+                    This research has been reviewed by the Committee on the Use of Human Subjects in Research at Bar-Ilan University, Israel.
+                    You may print this copy of the Consent Document for your records.</p>
+            </div>
+        </div>
+        <div class="mtop">
+            <mat-checkbox [(ngModel)]="this.termsAgreed">I've read and accept the terms of use of this survey.</mat-checkbox>
+        </div>
+        <div class="center mtop">
+            <button mat-raised-button color="primary" class="next-button" [disabled]="!this.termsAgreed" (click)="startSurvey();">> Start</button>
         </div>
     </div>
-    <button mat-raised-button color="primary" class="next-button">> Start</button>
+    
 </div>

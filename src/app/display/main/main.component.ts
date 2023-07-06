@@ -21,7 +21,7 @@ export class MainComponent implements OnInit{
   phaseSteps: any = this.svc.getCurrentPhaseSteps(1);
   surveyStatus: {[step: number]: boolean} = {};
   surveyLStatus: {[step: number]: boolean} = {};
-
+  congrats = false;
   lstep = 0;
   cstep = 0;
   mstep = 0; 
@@ -42,7 +42,9 @@ export class MainComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.step = 11;
+    this.step = 26;
+    // this.congrats = true;
+
     this.lstep = 0;
     this.cstep = 0;
     this.mstep = 0;
@@ -72,48 +74,31 @@ export class MainComponent implements OnInit{
     return false;
   }
 
-  legalDispute(): void {
-    if (this.stringToBool(this.p.InvolvedInLegalDispute)) {
-      this.lstep = 1;
-      this.cstep = 1;
-      this.mstep = 1;
-      this.astep = 1;
+  nextClick(show_congrats = false): void {
+    if (show_congrats) {
+      this.congrats = true;
+    } else {
+      this.surveyStatus[this.step] = true;
+      this.step += 1;
+      this.stepUpdateEvent.emit(this.step);
+      this.phaseSteps = this.svc.getCurrentPhaseSteps(this.step);
     }
-    else {
-      this.p.ExperienceWithCourtProceedings = false;
-      this.p.CourtProceedingsSatisfaction = 0;
-      this.p.ExperienceWithCourtProceedingsText = '';      
-      
-      this.p.ExperienceWithMediation = false;
-      this.p.MediationSatisfaction = 0;
-      this.p.ExperienceWithMediationText = '';
-
-      this.p.ExperienceWithArbitration = false;
-      this.p.ArbitrationSatisfaction = 0;
-      this.p.ExperienceWithArbitrationText = '';
-      this.nextClick();
-    }
-    this.surveyLStatus[0] = true;
-  }
-
-  nextClick(): void {
-    this.surveyStatus[this.step] = true;
-    this.step += 1;
-    this.stepUpdateEvent.emit(this.step);
-    this.phaseSteps = this.svc.getCurrentPhaseSteps(this.step);
   }
 
   backClick(): void {
+    if (this.step == 1) {
+      this.router.navigateByUrl('');
+    }
+    
     this.step -= 1;
     if (this.step == 10) {
-      this.lstep -= 1;
-      if (this.lstep < 0) this.lstep = 0; 
+      this.congrats = true;
     }
     this.stepUpdateEvent.emit(this.step);
-    this.phaseSteps = this.svc.getCurrentPhaseSteps(this.step);
+    this.phaseSteps = this.svc.getCurrentPhaseSteps(this.step);    
   }
 
-  nextLClick(): void {
+  nextClick10(): void {
     let code = this.getcode();
     switch (code) {
       case 0:
@@ -135,7 +120,7 @@ export class MainComponent implements OnInit{
           this.p.ExperienceWithArbitration = false;
           this.p.ArbitrationSatisfaction = 0;
           this.p.ExperienceWithArbitrationText = '';
-          this.nextClick();
+          this.nextClick(true);
         }
         this.surveyLStatus[0] = true;
         break;
@@ -186,7 +171,7 @@ export class MainComponent implements OnInit{
           this.p.ArbitrationSatisfaction = 0;
           this.p.ExperienceWithArbitrationText = '';
           this.lstep += 1;
-          this.nextClick();
+          this.nextClick(true);
         }
         break;
       case 32:
@@ -196,47 +181,53 @@ export class MainComponent implements OnInit{
         break;
       case 33:
         this.lstep += 1;
-        this.nextClick();
+        this.nextClick(true);
         break;
       }
   }
 
-  backLClick() {
-    let code = this.getcode();
-    switch (code) {
-      // Adjudication
-      case 11:
-        this.lstep = 0;
-        break;
-      case 12:
-        this.cstep = 1;
-        break;
-      case 13:
-        this.cstep = 2;
-        break;
-      // Mediation  
-      case 21:
-        this.lstep = 1;
-        break;
-      case 22:
-        this.mstep = 1;
-        break;
-      case 23:
-        this.mstep = 2;
-        break;
-      // Arbitration
-      case 31:
-        this.lstep = 2;
-        break;
-      case 32:
-        this.astep = 1;
-        break;
-      case 33:
-        this.astep = 2;
-        break;
-      default:
-        this.backClick();
-      }
+  backClick10() {
+    if (this.congrats)  {
+      this.congrats = false;
+      this.lstep -= 1;
+      if (this.lstep < 0) this.lstep = 0; 
+    } else {
+      let code = this.getcode();
+      switch (code) {
+        // Adjudication
+        case 11:
+          this.lstep = 0;
+          break;
+        case 12:
+          this.cstep = 1;
+          break;
+        case 13:
+          this.cstep = 2;
+          break;
+        // Mediation  
+        case 21:
+          this.lstep = 1;
+          break;
+        case 22:
+          this.mstep = 1;
+          break;
+        case 23:
+          this.mstep = 2;
+          break;
+        // Arbitration
+        case 31:
+          this.lstep = 2;
+          break;
+        case 32:
+          this.astep = 1;
+          break;
+        case 33:
+          this.astep = 2;
+          break;
+        default:
+          this.backClick();
+        }
+    }
   }
 }
 

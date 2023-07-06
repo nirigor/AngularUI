@@ -35,5 +35,13 @@ export class AppComponent {
     this.matIconRegistry.addSvgIcon('competitor', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/competitor.svg'))
     this.matIconRegistry.addSvgIcon('avoider', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/avoider.svg'))
     this.matIconRegistry.addSvgIcon('problem-solver', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/problem-solver.svg'))
+    this.matIconRegistry.addSvgIcon('aim', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/aim.svg'))
+    this.matIconRegistry.addSvgIcon('fire', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/fire.svg'))
+    this.matIconRegistry.addSvgIcon('info', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/info.svg'))
+    this.matIconRegistry.addSvgIcon('letter', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/letter.svg'))
+    this.matIconRegistry.addSvgIcon('lock', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/lock.svg'))
+    this.matIconRegistry.addSvgIcon('congrats', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/congrats.svg'))
+    this.matIconRegistry.addSvgIcon('handshake', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/handshake.svg'))
+    this.matIconRegistry.addSvgIcon('twins', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/twins.svg'))
   }
 }

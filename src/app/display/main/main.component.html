@@ -4,10 +4,10 @@
         <div class="container">
             <div class="info">
                 <span *ngIf="this.step != 10"><button color="primary" class="bold" mat-button (click)="backClick();">< Back</button></span>
-                <span *ngIf="this.step == 10"><button color="primary" class="bold" mat-button (click)="backLClick();">< Back</button></span>
+                <span *ngIf="this.step == 10"><button color="primary" class="bold" mat-button (click)="backClick10();">< Back</button></span>
                 <span style="font-weight: bold;"><div class="circle">{{this.step - this.phaseSteps.min}}</div> / {{this.phaseSteps.steps}}</span>
                 <span *ngIf="this.step != 10"><button *ngIf="this.surveyStatus[this.step]" class="bold" color="primary" mat-button (click)="nextClick();">Next ></button></span>    
-                <span *ngIf="this.step == 10"><button *ngIf="this.surveyLStatus[getcode()]" class="bold" color="primary" mat-button (click)="nextLClick();">Next ></button></span>    
+                <span *ngIf="this.step == 10"><button *ngIf="this.surveyLStatus[getcode()]" class="bold" color="primary" mat-button (click)="nextClick10();">Next ></button></span>    
             </div>
     
     
@@ -57,7 +57,7 @@
             
             <div *ngIf="step == 5" class="item">
                 <h2>Are you part of a <b>minority</b> within your country?</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Minority" (ngModelChange)="nextClick();">
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Minority" (click)="nextClick();">
                     <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
                     <mat-button-toggle value=true><div class="icon"><mat-icon svgIcon="yes"></mat-icon></div>Yes</mat-button-toggle>
                 </mat-button-toggle-group>
@@ -65,7 +65,7 @@
     
             <div *ngIf="step == 6" class="item">
                 <h2>Do you have <b>financial debts</b>?</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Debts" (ngModelChange)="nextClick();">
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Debts" (click)="nextClick();">
                     <mat-button-toggle value="0"><div class="icon"><mat-icon svgIcon="money-bag"></mat-icon></div>No Debts</mat-button-toggle>
                     <mat-button-toggle value="1"><div class="icon"><mat-icon svgIcon="credit-card"></mat-icon></div>Some</mat-button-toggle>
                     <mat-button-toggle value="2"><div class="icon"><mat-icon svgIcon="fly-money"></mat-icon></div>A lot</mat-button-toggle>
@@ -74,7 +74,7 @@
     
             <div *ngIf="step == 7" class="item">
                 <h2>How would you classify your <b>income level</b>?</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Income" (ngModelChange)="nextClick();">
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Income" (click)="nextClick();">
                     <mat-button-toggle value="0"><div class="icon"><mat-icon svgIcon="below"></mat-icon></div>Below Average</mat-button-toggle>
                     <mat-button-toggle value="1"><div class="icon"><mat-icon svgIcon="average"></mat-icon></div>Average</mat-button-toggle>
                     <mat-button-toggle value="2"><div class="icon"><mat-icon svgIcon="above"></mat-icon></div>Above Average</mat-button-toggle>
@@ -83,7 +83,7 @@
     
             <div *ngIf="step == 8" class="item">
                 <h2>Your level of <b>education</b></h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Education" (ngModelChange)="nextClick();">
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Education" (click)="nextClick();">
                     <mat-button-toggle value="ES"><div class="icon-sm">
                         <mat-icon svgIcon="cap"></mat-icon>
                     </div>Elementary School</mat-button-toggle>
@@ -120,114 +120,128 @@
                     <mat-button-toggle value="2"><div class="icon"><mat-icon svgIcon="cap"></mat-icon></div>Degree in law</mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
-    
-            <div *ngIf="step == 10 && lstep == 0" class="item">
-                <h2>Were you previously <b>involved in a legal dispute</b>?</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.InvolvedInLegalDispute" (ngModelChange)="nextLClick();">
-                    <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
-                    <mat-button-toggle value=true><div class="icon"><mat-icon svgIcon="yes"></mat-icon></div>Yes</mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-    
-            <div *ngIf="lstep == 1 && cstep == 1" class="item">
-                <h2>Do you have experience with <b>Court Proceedings</b>?</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithCourtProceedings" (ngModelChange)="nextLClick();">
-                    <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
-                    <mat-button-toggle value=true><div class="icon"><mat-icon svgIcon="yes"></mat-icon></div>Yes</mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-    
-            <div *ngIf="lstep == 1 && cstep == 2" class="item">
-                <h2>How was your experience with <b>court proceedings</b>?</h2>
-                <mat-button-toggle-group class="toggle-group-large scale" [(ngModel)]="this.p.CourtProceedingsSatisfaction" (ngModelChange)="nextLClick();">
-                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
-                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
-                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
-                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
-                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
-                </mat-button-toggle-group>
-                <div class="sub">
-                    <div class="red bold s-left">Very Bad</div>
-                    <div class="green bold s-right">Excellent</div>    
+            
+            <span *ngIf="step == 10 && !congrats">
+                <div *ngIf="step == 10 && lstep == 0" class="item">
+                    <h2>Were you previously <b>involved in a legal dispute</b>?</h2>
+                    <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.InvolvedInLegalDispute" (click)="nextClick10();">
+                        <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
+                        <mat-button-toggle value=true><div class="icon"><mat-icon svgIcon="yes"></mat-icon></div>Yes</mat-button-toggle>
+                    </mat-button-toggle-group>
                 </div>
-            </div>
-    
-            <div *ngIf="lstep == 1 && cstep == 3" class="item">
-                <h2>Please tell us about your experience with <b>court proceedings</b></h2>
-                <mat-form-field floatLabel="always">
-                    <mat-label>your experience</mat-label>
-                    <textarea [(ngModel)]="this.p.ExperienceWithCourtProceedingsText" matInput></textarea>
-                </mat-form-field>
-                <button mat-raised-button color="primary" class="next-button"><mat-icon svgIcon="right-arrow"></mat-icon>Next</button>
-            </div>
-    
-            <div *ngIf="lstep == 2 && mstep == 1" class="item">
-                <h2>Do you have experience with <b>Mediation</b>?</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithMediation" (ngModelChange)="nextLClick();">
-                    <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
-                    <mat-button-toggle value=true><div class="icon"><mat-icon svgIcon="yes"></mat-icon></div>Yes</mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-            
-            <div *ngIf="lstep == 2 && mstep == 2" class="item">
-                <h2>How was your experience with <b>mediation</b>?</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.MediationSatisfaction" (ngModelChange)="nextLClick();">
-                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
-                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
-                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
-                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
-                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
-                </mat-button-toggle-group>
-                <div class="sub">
-                    <div class="red bold s-left">Very Bad</div>
-                    <div class="green bold s-right">Excellent</div>    
+        
+                <div *ngIf="lstep == 1 && cstep == 1" class="item">
+                    <h2>Do you have experience with <b>Court Proceedings</b>?</h2>
+                    <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithCourtProceedings" (click)="nextClick10();">
+                        <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
+                        <mat-button-toggle value=true><div class="icon"><mat-icon svgIcon="yes"></mat-icon></div>Yes</mat-button-toggle>
+                    </mat-button-toggle-group>
                 </div>
-            </div>
-            
-            <div *ngIf="lstep == 2 && mstep == 3" class="item">
-                <h2>Please tell us about your experience with <b>mediation</b></h2>
-                <mat-form-field floatLabel="always">
-                    <mat-label>your experience</mat-label>
-                    <textarea [(ngModel)]="this.p.ExperienceWithMediationText" matInput></textarea>
-                </mat-form-field>
-            </div>
-            
-            <div *ngIf="lstep == 3 && astep == 1" class="item">
-                <h2>Do you have experience with <b>Arbitration</b>?</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithArbitration" (ngModelChange)="nextLClick();">
-                    <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
-                    <mat-button-toggle value=true><div class="icon"><mat-icon svgIcon="yes"></mat-icon></div>Yes</mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-            
-            <div *ngIf="lstep == 3 && astep == 2" class="item">
-                <h2>How was your experience with <b>arbitration</b>?</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ArbitrationSatisfaction" (ngModelChange)="nextLClick();">
-                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
-                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
-                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
-                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
-                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
-                </mat-button-toggle-group>
-                <div class="sub">
-                    <div class="red bold s-left">Very Bad</div>
-                    <div class="green bold s-right">Excellent</div>    
+        
+                <div *ngIf="lstep == 1 && cstep == 2" class="item">
+                    <h2>How was your experience with <b>court proceedings</b>?</h2>
+                    <mat-button-toggle-group class="toggle-group-large scale" [(ngModel)]="this.p.CourtProceedingsSatisfaction" (click)="nextClick10();">
+                        <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                        <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                        <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                        <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                        <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                    </mat-button-toggle-group>
+                    <div class="sub">
+                        <div class="red bold s-left">Very Bad</div>
+                        <div class="green bold s-right">Excellent</div>    
+                    </div>
                 </div>
+        
+                <div *ngIf="lstep == 1 && cstep == 3" class="item">
+                    <h2>Please tell us about your experience with <b>court proceedings</b></h2>
+                    <mat-form-field floatLabel="always">
+                        <mat-label>your experience</mat-label>
+                        <textarea [(ngModel)]="this.p.ExperienceWithCourtProceedingsText" matInput></textarea>
+                    </mat-form-field>
+                    <button mat-raised-button color="primary" class="next-button"><mat-icon svgIcon="right-arrow"></mat-icon>Next</button>
+                </div>
+        
+                <div *ngIf="lstep == 2 && mstep == 1" class="item">
+                    <h2>Do you have experience with <b>Mediation</b>?</h2>
+                    <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithMediation" (click)="nextClick10();">
+                        <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
+                        <mat-button-toggle value=true><div class="icon"><mat-icon svgIcon="yes"></mat-icon></div>Yes</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+                
+                <div *ngIf="lstep == 2 && mstep == 2" class="item">
+                    <h2>How was your experience with <b>mediation</b>?</h2>
+                    <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.MediationSatisfaction" (click)="nextClick10();">
+                        <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                        <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                        <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                        <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                        <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                    </mat-button-toggle-group>
+                    <div class="sub">
+                        <div class="red bold s-left">Very Bad</div>
+                        <div class="green bold s-right">Excellent</div>    
+                    </div>
+                </div>
+                
+                <div *ngIf="lstep == 2 && mstep == 3" class="item">
+                    <h2>Please tell us about your experience with <b>mediation</b></h2>
+                    <mat-form-field floatLabel="always">
+                        <mat-label>your experience</mat-label>
+                        <textarea [(ngModel)]="this.p.ExperienceWithMediationText" matInput></textarea>
+                    </mat-form-field>
+                </div>
+                
+                <div *ngIf="lstep == 3 && astep == 1" class="item">
+                    <h2>Do you have experience with <b>Arbitration</b>?</h2>
+                    <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithArbitration" (click)="nextClick10();">
+                        <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
+                        <mat-button-toggle value=true><div class="icon"><mat-icon svgIcon="yes"></mat-icon></div>Yes</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+                
+                <div *ngIf="lstep == 3 && astep == 2" class="item">
+                    <h2>How was your experience with <b>arbitration</b>?</h2>
+                    <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ArbitrationSatisfaction" (click)="nextClick10();">
+                        <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                        <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                        <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                        <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                        <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                    </mat-button-toggle-group>
+                    <div class="sub">
+                        <div class="red bold s-left">Very Bad</div>
+                        <div class="green bold s-right">Excellent</div>    
+                    </div>
+                </div>
+                
+                <div *ngIf="lstep == 3 && astep == 3" class="item">
+                    <h2>Please tell us about your experience with <b>arbitration</b></h2>
+                    <mat-form-field floatLabel="always">
+                        <mat-label>your experience</mat-label>
+                        <textarea [(ngModel)]="this.p.ExperienceWithArbitrationText" matInput></textarea>
+                    </mat-form-field>
+                </div>
+            </span>
+
+            <div *ngIf="step == 10 && congrats" class="item center">
+                <div class="icon-lg"><img src="assets/confetti.gif"></div>
+                <h3 style="font-size: 32px; font-weight: 400;">Congratulations</h3>
+                <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 40px;">You succesfully completed section 1/3</h3>
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();">> Next section</button>
             </div>
-            
-            <div *ngIf="lstep == 3 && astep == 3" class="item">
-                <h2>Please tell us about your experience with <b>arbitration</b></h2>
-                <mat-form-field floatLabel="always">
-                    <mat-label>your experience</mat-label>
-                    <textarea [(ngModel)]="this.p.ExperienceWithArbitrationText" matInput></textarea>
-                </mat-form-field>
-            </div>
-    
+
             <!-- Big Five -->
 
             <div *ngIf="step == 11" class="item">
-                <h2>Worries a lot</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF1" (ngModelChange)="nextClick();">
+                <div class="instructions">
+                    <p><b>Instruction: Here are a number of characteristics that may or may not apply to you</b></p>
+                    <p>Please select the statement that best describes the extent to which you agree or disagree with that statement.</p>
+                </div>
+                I see myself as someone who...
+                <h2><b>Worries a lot</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF1" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -241,8 +255,9 @@
             </div>
 
             <div *ngIf="step == 12" class="item">
-                <h2>Gets nervous easily</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF2" (ngModelChange)="nextClick();">
+                I see myself as someone who...
+                <h2><b>Gets nervous easily</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF2" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -256,8 +271,9 @@
             </div>
 
             <div *ngIf="step == 13" class="item">
-                <h2>Is relaxed, handles stress well</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF3" (ngModelChange)="nextClick();">
+                I see myself as someone who...
+                <h2><b>Is relaxed, handles stress well</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF3" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -271,8 +287,9 @@
             </div>
 
             <div *ngIf="step == 14" class="item">
-                <h2>Is talkative</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF4" (ngModelChange)="nextClick();">
+                I see myself as someone who...
+                <h2><b>Is talkative</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF4" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -286,8 +303,9 @@
             </div>
 
             <div *ngIf="step == 15" class="item">
-                <h2>Is outgoing, sociable</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF5" (ngModelChange)="nextClick();">
+                I see myself as someone who...
+                <h2><b>Is outgoing, sociable</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF5" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -301,8 +319,9 @@
             </div>
 
             <div *ngIf="step == 16" class="item">
-                <h2>Is reserved</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF6" (ngModelChange)="nextClick();">
+                I see myself as someone who...
+                <h2><b>Is reserved</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF6" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -316,8 +335,9 @@
             </div>
 
             <div *ngIf="step == 17" class="item">
-                <h2>Is original, comes up with new ideas</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF7" (ngModelChange)="nextClick();">
+                I see myself as someone who...
+                <h2><b>Is original, comes up with new ideas</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF7" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -331,8 +351,9 @@
             </div>
 
             <div *ngIf="step == 18" class="item">
-                <h2>Values artistic, aesthetic experiences</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF8" (ngModelChange)="nextClick();">
+                I see myself as someone who...
+                <h2><b>Values artistic, aesthetic experiences</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF8" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -346,8 +367,9 @@
             </div>
 
             <div *ngIf="step == 19" class="item">
-                <h2>Has an active imagination</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF9" (ngModelChange)="nextClick();">
+                I see myself as someone who...
+                <h2><b>Has an active imagination</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF9" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -361,8 +383,9 @@
             </div>
 
             <div *ngIf="step == 20" class="item">
-                <h2>Is sometimes rude to others</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF10" (ngModelChange)="nextClick();">
+                I see myself as someone who...
+                <h2><b>Is sometimes rude to others</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF10" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -376,8 +399,9 @@
             </div>
 
             <div *ngIf="step == 21" class="item">
-                <h2>Has a forgiving nature</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF11" (ngModelChange)="nextClick();">
+                I see myself as someone who...
+                <h2><b>Has a forgiving nature</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF11" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -391,8 +415,9 @@
             </div>
 
             <div *ngIf="step == 22" class="item">
-                <h2>Is considerate and kind to almost everyone</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF12" (ngModelChange)="nextClick();">
+                I see myself as someone who...
+                <h2><b>Is considerate and kind to almost everyone</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF12" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -406,8 +431,9 @@
             </div>
 
             <div *ngIf="step == 23" class="item">
-                <h2>Does a thorough job</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF13" (ngModelChange)="nextClick();">
+                I see myself as someone who...
+                <h2><b>Does a thorough job</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF13" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -421,8 +447,9 @@
             </div>
 
             <div *ngIf="step == 24" class="item">
-                <h2>Tends to be lazy</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF14" (ngModelChange)="nextClick();">
+                I see myself as someone who...
+                <h2><b>Tends to be lazy</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF14" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -436,8 +463,9 @@
             </div>
 
             <div *ngIf="step == 25" class="item">
-                <h2>Does things efficiently</h2>
-                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF15" (ngModelChange)="nextClick();">
+                I see myself as someone who...
+                <h2><b>Does things efficiently</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.BF15" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
                     <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
@@ -450,11 +478,323 @@
                 </div>
             </div>
 
+            <!-- Thomas Killman -->
+
+            <div *ngIf="step == 26" class="item">
+                <div class="instructions">
+                    <p><b>Instructions: Consider situations in which you find your wishes differing from those of another person. 
+                        How do you usually respond to such situation?</b></p>
+                    <p>In many cases, neither the “left” nor the “right” statement may be very typical of your behavior; 
+                        but please select the response which you would be more likely to use.</p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK1" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>There are times when I let others take responsibility for solving the problem.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>Rather than negotiate the things on which we disagree, I try to stress those things upon which we both agree.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 27" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK2" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to find a compromise solution.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I attempt to deal with all of his/her and my concerns.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 28" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK3" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I am usually firm in pursuing my goals.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I might try to soothe the other's feelings and preserve our relationship.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 29" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK4" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to find a compromise solution.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I Sometimes sacrifice my own wishes for the wishes of the other person.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 30" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK5" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I consistently seek the other's help in working out a solution.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to do what is necessary to avoid useless tensions.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 31" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK6" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to avoid creating unpleasantness for myself.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to win my position.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 32" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK7" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to postpone the issue until I have had some time to think it over.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I give up some points in exchange for others.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 33" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK8" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I am usually firm in pursuing my goals.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I attempt to get all concerns and issues immediately out in the open.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 34" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK9" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I feel that differences are not always worth worrying about.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I make some effort to get my way.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 35" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK10" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I am firm in pursuing my goals.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to find a compromise solution.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 36" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK11" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I attempt to get all concerns and issues immediately out in the open.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I might try to soothe the other's feelings and preserve our relationship.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 37" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK12" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I sometimes avoid taking positions, which would create controversy.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I will let the other person have some of his/her positions if s/he lets me have some of mine.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 38" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK13" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I propose a middle ground.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I press to get my points made.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 39" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK14" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I tell the other person my ideas and ask for his/hers.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to show the other person the logic and benefits of my position.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 40" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK15" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I might try to soothe the other's feelings and preserve our relationship.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to do what is necessary to avoid tensions.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 41" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK16" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try not to hurt the other's feelings.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to convince the other person of the merits of my position.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 42" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK17" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I am usually firm in pursuing my goals.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to do what is necessary to avoid useless tensions.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 43" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK18" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>If it makes other people happy, I might let them maintain their views.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I will let other people have some of their positions if they let me have some of mine.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 44" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK19" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I attempt to get all concerns and issues immediately out in the open.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to postpone the issue until I have had some time to think it over.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 45" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK20" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I attempt to immediately work through our differences.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to find a fair combination of gains and losses for both of us.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 46" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK21" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>In approaching negotiations, I try to be considerate of the other person's wishes.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I always lean toward a direct discussion of the problem.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 47" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK22" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to find a position that is intermediate between his/hers and mine.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I assert my wishes.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 48" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK23" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I am very often concerned with satisfying all our wishes.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>There are times when I let others take responsibility for solving the problem.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 49" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK24" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>If the other's position seems very important to him/her, I would try to meet his/her wishes.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to get the other person to settle for a compromise.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 50" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK25" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to show the other person the logic and benefits of my position.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>In approaching negotiations, I try to be considerate of the other person's wishes.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 51" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK26" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I propose a middle ground.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I am nearly always concerned with satisfying all our wishes.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 52" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK27" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I sometimes avoid taking positions that would create controversy.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>If it makes other people happy, I might let them maintain their views.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 53" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK28" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I am usually firm in pursuing my goals.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I usually seek the other's help in working out a solution.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 54" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK29" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I propose a middle ground.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I feel that differences are not always worth worrying about.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 55 && !congrats" class="item">
+                <div class="instructions">
+                    <p><b>Your negotiation style</b></p>
+                </div>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK30" (click)="nextClick();">
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try not to hurt the other's feelings.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I always share the problem with the other person so that we can work it out.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == 55 && congrats" class="item center">
+                <div class="icon-lg"><img src="assets/confetti.gif"></div>
+                <h3 style="font-size: 32px; font-weight: 400;">Congratulations</h3>
+                <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 40px;">You succesfully completed section 1/3</h3>
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();">> Next section</button>
+            </div>
 
         </div>
     </div>
-
 </div>
+
+{{this.p | json}}
 
     <!-- Step: {{this.step}} 
     <br>
@@ -466,156 +806,3 @@
     <br>  
     astep: {{this.astep}} 
     <br>   -->
-
-<!-- 
-
-<br> -->
-
-<!-- Big Five -->
-
-<!-- 
-
-<br> -->
-<!-- 
-
-<br>
-<br>
-
-<input type="text" [(ngModel)]="this.p.SurveyEndTs">
-<input type="text" [(ngModel)]="this.p.SurveyStartTs">
-<input type="text" [(ngModel)]="this.p.TQ1">
-<input type="text" [(ngModel)]="this.p.TQ2">
-<input type="text" [(ngModel)]="this.p.ProlificId">
-<input type="text" [(ngModel)]="this.p.Token">
-<input type="text" [(ngModel)]="this.p.MaritalStatus">
-<input type="text" [(ngModel)]="this.p.NumberOfChildren">
-<input type="text" [(ngModel)]="this.p.NumberOfYoungChildren">
-<input type="text" [(ngModel)]="this.p.NumberOfGrandChildren">
-
-<input type="text" [(ngModel)]="this.p.Minority">
-<input type="text" [(ngModel)]="this.p.Debts">
-<input type="text" [(ngModel)]="this.p.Income">
-<input type="text" [(ngModel)]="this.p.Education">
-<input type="text" [(ngModel)]="this.p.LegalKnowledge">
-<input type="text" [(ngModel)]="this.p.InvolvedInLegalDispute">
-
-<input type="text" [(ngModel)]="this.p.ExperienceWithCourtProceedings">
-<input type="text" [(ngModel)]="this.p.CourtProceedingsSatisfaction">
-<input type="text" [(ngModel)]="this.p.ExperienceWithCourtProceedingsText">
-<input type="text" [(ngModel)]="this.p.ExperienceWithMediation">
-<input type="text" [(ngModel)]="this.p.MediationSatisfaction">
-<input type="text" [(ngModel)]="this.p.ExperienceWithMediationText">
-<input type="text" [(ngModel)]="this.p.ExperienceWithArbitration">
-<input type="text" [(ngModel)]="this.p.ArbitrationSatisfaction">
-<input type="text" [(ngModel)]="this.p.ExperienceWithArbitrationText">
-<input type="text" [(ngModel)]="this.p.BF1">
-<input type="text" [(ngModel)]="this.p.BF2">
-<input type="text" [(ngModel)]="this.p.BF3">
-<input type="text" [(ngModel)]="this.p.BF4">
-<input type="text" [(ngModel)]="this.p.BF5">
-<input type="text" [(ngModel)]="this.p.BF6">
-<input type="text" [(ngModel)]="this.p.BF7">
-<input type="text" [(ngModel)]="this.p.BF8">
-<input type="text" [(ngModel)]="this.p.BF9">
-<input type="text" [(ngModel)]="this.p.BF10">
-<input type="text" [(ngModel)]="this.p.BF11">
-<input type="text" [(ngModel)]="this.p.BF12">
-<input type="text" [(ngModel)]="this.p.BF13">
-<input type="text" [(ngModel)]="this.p.BF14">
-<input type="text" [(ngModel)]="this.p.BF15">
-<input type="text" [(ngModel)]="this.p.TK1">
-<input type="text" [(ngModel)]="this.p.TK2">
-<input type="text" [(ngModel)]="this.p.TK3">
-<input type="text" [(ngModel)]="this.p.TK4">
-<input type="text" [(ngModel)]="this.p.TK5">
-<input type="text" [(ngModel)]="this.p.TK6">
-<input type="text" [(ngModel)]="this.p.TK7">
-<input type="text" [(ngModel)]="this.p.TK8">
-<input type="text" [(ngModel)]="this.p.TK9">
-<input type="text" [(ngModel)]="this.p.TK10">
-<input type="text" [(ngModel)]="this.p.TK11">
-<input type="text" [(ngModel)]="this.p.TK12">
-<input type="text" [(ngModel)]="this.p.TK13">
-<input type="text" [(ngModel)]="this.p.TK14">
-<input type="text" [(ngModel)]="this.p.TK15">
-<input type="text" [(ngModel)]="this.p.TK16">
-<input type="text" [(ngModel)]="this.p.TK17">
-<input type="text" [(ngModel)]="this.p.TK18">
-<input type="text" [(ngModel)]="this.p.TK19">
-<input type="text" [(ngModel)]="this.p.TK20">
-<input type="text" [(ngModel)]="this.p.TK21">
-<input type="text" [(ngModel)]="this.p.TK22">
-<input type="text" [(ngModel)]="this.p.TK23">
-<input type="text" [(ngModel)]="this.p.TK24">
-<input type="text" [(ngModel)]="this.p.TK25">
-<input type="text" [(ngModel)]="this.p.TK26">
-<input type="text" [(ngModel)]="this.p.TK27">
-<input type="text" [(ngModel)]="this.p.TK28">
-<input type="text" [(ngModel)]="this.p.TK29">
-<input type="text" [(ngModel)]="this.p.TK30">
-<input type="text" [(ngModel)]="this.p.ST1Number">
-<input type="text" [(ngModel)]="this.p.ST1Feelings">
-<input type="text" [(ngModel)]="this.p.ST1Speed">
-<input type="text" [(ngModel)]="this.p.ST1Privacy">
-<input type="text" [(ngModel)]="this.p.ST1PublicVindication">
-<input type="text" [(ngModel)]="this.p.ST1NeutralOpinion">
-<input type="text" [(ngModel)]="this.p.ST1MinimizeCosts">
-<input type="text" [(ngModel)]="this.p.ST1MaintainImproveRelationship">
-<input type="text" [(ngModel)]="this.p.ST1CreatePrecedent">
-<input type="text" [(ngModel)]="this.p.ST1MinMaxCompensation">
-<input type="text" [(ngModel)]="this.p.ST1CreativeSolution">
-<input type="text" [(ngModel)]="this.p.ST1ControlOfProcess">
-<input type="text" [(ngModel)]="this.p.ST1ControlOfOutcome">
-<input type="text" [(ngModel)]="this.p.ST1ShiftResponsibility">
-<input type="text" [(ngModel)]="this.p.ST1EnsuringCompliance">
-<input type="text" [(ngModel)]="this.p.ST1TransformationOfTheParties">
-<input type="text" [(ngModel)]="this.p.ST1ImproveUnderstanding">
-<input type="text" [(ngModel)]="this.p.ST1RecognitionApology">
-<input type="text" [(ngModel)]="this.p.ST1Classification">
-<input type="text" [(ngModel)]="this.p.ST1StrengthPosition">
-<input type="text" [(ngModel)]="this.p.ST1Selection">
-<input type="text" [(ngModel)]="this.p.ST1SelectionText">
-<input type="text" [(ngModel)]="this.p.ST2Number">
-<input type="text" [(ngModel)]="this.p.ST2Feelings">
-<input type="text" [(ngModel)]="this.p.ST2Speed">
-<input type="text" [(ngModel)]="this.p.ST2Privacy">
-<input type="text" [(ngModel)]="this.p.ST2PublicVindication">
-<input type="text" [(ngModel)]="this.p.ST2NeutralOpinion">
-<input type="text" [(ngModel)]="this.p.ST2MinimizeCosts">
-<input type="text" [(ngModel)]="this.p.ST2MaintainImproveRelationship">
-<input type="text" [(ngModel)]="this.p.ST2CreatePrecedent">
-<input type="text" [(ngModel)]="this.p.ST2MinMaxCompensation">
-<input type="text" [(ngModel)]="this.p.ST2CreativeSolution">
-<input type="text" [(ngModel)]="this.p.ST2ControlOfProcess">
-<input type="text" [(ngModel)]="this.p.ST2ControlOfOutcome">
-<input type="text" [(ngModel)]="this.p.ST2ShiftResponsibility">
-<input type="text" [(ngModel)]="this.p.ST2EnsuringCompliance">
-<input type="text" [(ngModel)]="this.p.ST2TransformationOfTheParties">
-<input type="text" [(ngModel)]="this.p.ST2ImproveUnderstanding">
-<input type="text" [(ngModel)]="this.p.ST2RecognitionApology">
-<input type="text" [(ngModel)]="this.p.ST2Classification">
-<input type="text" [(ngModel)]="this.p.ST2StrengthPosition">
-<input type="text" [(ngModel)]="this.p.ST2Selection">
-<input type="text" [(ngModel)]="this.p.ST2SelectionText">
-<input type="text" [(ngModel)]="this.p.ST3Number">
-<input type="text" [(ngModel)]="this.p.ST3Feelings">
-<input type="text" [(ngModel)]="this.p.ST3Speed">
-<input type="text" [(ngModel)]="this.p.ST3Privacy">
-<input type="text" [(ngModel)]="this.p.ST3PublicVindication">
-<input type="text" [(ngModel)]="this.p.ST3NeutralOpinion">
-<input type="text" [(ngModel)]="this.p.ST3MinimizeCosts">
-<input type="text" [(ngModel)]="this.p.ST3MaintainImproveRelationship">
-<input type="text" [(ngModel)]="this.p.ST3CreatePrecedent">
-<input type="text" [(ngModel)]="this.p.ST3MinMaxCompensation">
-<input type="text" [(ngModel)]="this.p.ST3CreativeSolution">
-<input type="text" [(ngModel)]="this.p.ST3ControlOfProcess">
-<input type="text" [(ngModel)]="this.p.ST3ControlOfOutcome">
-<input type="text" [(ngModel)]="this.p.ST3ShiftResponsibility">
-<input type="text" [(ngModel)]="this.p.ST3EnsuringCompliance">
-<input type="text" [(ngModel)]="this.p.ST3TransformationOfTheParties">
-<input type="text" [(ngModel)]="this.p.ST3ImproveUnderstanding">
-<input type="text" [(ngModel)]="this.p.ST3RecognitionApology">
-<input type="text" [(ngModel)]="this.p.ST3Classification">
-<input type="text" [(ngModel)]="this.p.ST3StrengthPosition">
-<input type="text" [(ngModel)]="this.p.ST3Selection">
-<input type="text" [(ngModel)]="this.p.ST3SelectionText"> -->
