@@ -2,7 +2,7 @@ import { identifierName } from '@angular/compiler';
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SharedService } from 'src/app/shared.service';
-
+import { Item } from 'src/app/models/item.model';
 @Component({
   selector: 'app-progress',
   templateUrl: './progress.component.html',
@@ -10,6 +10,7 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class ProgressComponent implements OnInit{
   @Input() step = 0;
+  @Input() steps: Item[] = [];
 
   dict: { [name: string]: any } = {};
   
@@ -46,30 +47,30 @@ export class ProgressComponent implements OnInit{
     let storiesVisible3 = false;
     let storiesVisible4 = false;
 
-    let stepInfo = this.svc.getCurrentPhaseSteps(step);
+    let phase = this.steps[step]['phaseName'];
 
-    switch(stepInfo["phase"]) {
+    switch(phase) {
       case 'BASIC':
-        basicProgress = Math.floor(((step - stepInfo["min"]) / stepInfo["steps"]) * 100);
+        basicProgress = Math.floor(this.steps[step]['stepNumber'] / this.steps[step]['phaseSteps'] * 100);
         basicVisible = true;
         break;
       case 'STYLES1':
         basicProgress = 100;
         stylesVisible1 = true;
-        stylesProgress1 = Math.floor(((step - stepInfo["min"]) / stepInfo["steps"]) * 100);
+        stylesProgress1 = Math.floor(this.steps[step]['stepNumber'] / this.steps[step]['phaseSteps'] * 100);
         break;
       case 'STYLES2':
         basicProgress = 100;
         stylesProgress1 = 100;
         stylesVisible2 = true;
-        stylesProgress2 = Math.floor(((step - stepInfo["min"]) / stepInfo["steps"]) * 100);
+        stylesProgress2 = Math.floor(this.steps[step]['stepNumber'] / this.steps[step]['phaseSteps'] * 100);
         break;
       case 'STORIES1':
         basicProgress = 100;
         stylesProgress1 = 100;
         stylesProgress2 = 100;
         storiesVisible1 = true;
-        storiesProgress1 = Math.floor(((step - stepInfo["min"]) / stepInfo["steps"]) * 100);
+        storiesProgress1 = Math.floor(this.steps[step]['stepNumber'] / this.steps[step]['phaseSteps'] * 100);
         break;
       case 'STORIES2':
         basicProgress = 100;
@@ -77,7 +78,7 @@ export class ProgressComponent implements OnInit{
         stylesProgress2 = 100;
         storiesProgress1 = 100;
         storiesVisible2 = true;
-        storiesProgress2 = Math.floor(((step - stepInfo["min"]) / stepInfo["steps"]) * 100);
+        storiesProgress2 = Math.floor(this.steps[step]['stepNumber'] / this.steps[step]['phaseSteps'] * 100);
         break;
       case 'STORIES3':
         basicProgress = 100;
@@ -86,7 +87,7 @@ export class ProgressComponent implements OnInit{
         storiesProgress1 = 100;
         storiesProgress2 = 100;
         storiesVisible3 = true;
-        storiesProgress3 = Math.floor(((step - stepInfo["min"]) / stepInfo["steps"]) * 100);
+        storiesProgress3 = Math.floor(this.steps[step]['stepNumber'] / this.steps[step]['phaseSteps'] * 100);
         break;
       case 'STORIES4':
         basicProgress = 100;
@@ -96,7 +97,7 @@ export class ProgressComponent implements OnInit{
         storiesProgress2 = 100;
         storiesProgress3 = 100;
         storiesVisible4 = true;
-        storiesProgress4 = Math.floor(((step - stepInfo["min"]) / stepInfo["steps"]) * 100);
+        storiesProgress4 = Math.floor(this.steps[step]['stepNumber'] / this.steps[step]['phaseSteps'] * 100);
         break;      
     }
     
