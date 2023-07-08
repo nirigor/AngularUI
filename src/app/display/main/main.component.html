@@ -4,7 +4,9 @@
         <div class="container">
             <div class="info">
                 <span><button color="primary" class="bold" mat-button (click)="backClick();">< Back</button></span>
-                <span style="font-weight: bold;"><div class="circle">{{steps[step]['stepNumber']}}</div> / {{steps[step]['phaseSteps']}}</span>
+                <span *ngIf="step < stepDict['STORIES1_1']"><div class="circle bold">{{steps[step]['stepNumber']}}</div> / <b>{{steps[step]['phaseSteps']}}</b></span>
+                <span *ngIf="step >= stepDict['STORIES1_1'] && read"><span class="stories-header-pr">Read Story</span> > <span class="stories-header-sec">Answer Questions</span></span>
+                <span *ngIf="step >= stepDict['STORIES1_1'] && !read"><span class="stories-header-sec">Read Story</span> > <span class="stories-header-pr">Answer Questions</span></span>
                 <span *ngIf="steps[step]['showNext']"><button class="bold" color="primary" mat-button (click)="nextClick();">Next ></button></span>
                 <span *ngIf="!steps[step]['showNext']" style="width: 70px;"></span>
             </div>
@@ -790,11 +792,205 @@
 
             <!-- Intro Stories -->
 
-            <div *ngIf="step == stepDict['INTRO_1'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['INTRO_1'] && steps[step]['isVisible']" class="item center">
                 <div class="icon-lg"><img src="assets/question-mark.gif"></div>
-                <h3 style="font-size: 32px; font-weight: 400;">Congratulations</h3>
-                <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 40px;">You succesfully completed section 2/3</h3>
-                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();">> Next section</button>
+                <h3 style="font-size: 32px; font-weight: 400;">What are the ways to deal with conflicts?</h3>
+                <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 40px;">hint: there are <b>6 ways</b></h3>
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();">> Learn more</button>
+            </div>
+
+            <div *ngIf="step == stepDict['INTRO_2'] && steps[step]['isVisible']" class="item">
+                <h2>Ways for Solving a conflict: <b>Mediation</b></h2>
+                <div class="split">
+                    <div><iframe src="https://www.youtube.com/embed/mvDTwoMnqsc?modestbranding=1" width="640" height="360" frameborder="0"></iframe></div>
+                    <div class="videotext">
+                        <p class="mtop0"><b>Video's text</b></p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['INTRO_3'] && steps[step]['isVisible']" class="item">
+                <h2>Ways for Solving a conflict: <b>Arbitration</b></h2>
+                <div class="split">
+                    <div><iframe src="https://www.youtube.com/embed/mvDTwoMnqsc?modestbranding=1" width="640" height="360" frameborder="0"></iframe></div>
+                    <div class="videotext">
+                        <p class="mtop0"><b>Video's text</b></p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['INTRO_4'] && steps[step]['isVisible']" class="item">
+                <h2>Ways for Solving a conflict: <b>Negotiation</b></h2>
+                <div class="split">
+                    <div><iframe src="https://www.youtube.com/embed/mvDTwoMnqsc?modestbranding=1" width="640" height="360" frameborder="0"></iframe></div>
+                    <div class="videotext">
+                        <p class="mtop0"><b>Video's text</b></p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['INTRO_5'] && steps[step]['isVisible']" class="item">
+                <h2>Ways for Solving a conflict: <b>Public complaint</b></h2>
+                <div class="split">
+                    <div><iframe src="https://www.youtube.com/embed/mvDTwoMnqsc?modestbranding=1" width="640" height="360" frameborder="0"></iframe></div>
+                    <div class="videotext">
+                        <p class="mtop0"><b>Video's text</b></p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['INTRO_6'] && steps[step]['isVisible']" class="item">
+                <h2>Ways for Solving a conflict: <b>Let go</b></h2>
+                <div class="split">
+                    <div><iframe src="https://www.youtube.com/embed/mvDTwoMnqsc?modestbranding=1" width="640" height="360" frameborder="0"></iframe></div>
+                    <div class="videotext">
+                        <p class="mtop0"><b>Video's text</b></p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                        <p>
+                            make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                            software like Aldus PageMaker including versions of Lorem Ipsumwas popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                            and more recently with desktop publishing software.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 1 -->
+            <div *ngIf="step == stepDict['STORIES1_1'] && steps[step]['isVisible']" class="item center">
+                <h3 style="font-size: 32px; font-weight: 400;">Story {{this.p.ST1Number}}</h3>
+                <h3 style="font-size: 16px; font-weight: 500; line-height: 0px;">Now when you know more about ways</h3>
+                <h3 style="font-size: 16px; font-weight: 500; line-height: 0px;">to deal with conflicts, try to imagine</h3>
+                <h3 style="font-size: 16px; font-weight: 500; line-height: 0px; margin-bottom: 80px;">yourself in the following dispute</h3>
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();">> start reading</button>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_2'] && steps[step]['isVisible']" class="item center">
+                <div>
+                    <h2>The Story</h2>
+                    <p>For almost three decades you have lived close to John Doe, over the past few years you have developed a friendship and closeness that is characterized by both being part of the same circle of friends, you used to spend time together and even go on joint trips with other families in the community</p>
+                    <p>A few months ago, your son went for a walk with your three Shi-Tzu dogs, with all three dogs tied to a rolling leash that allows movement for dogs with relative ease. When your son passed by John Doe's house one of the dogs walked toward the gate of his house and started sniffing around. At that point, John Doe's dog (a large Weimaraner-style hunting hound) suddenly jumped towards the gate, and from among the gate bars grabbed your dog, bit him hard in the face, and wouldn't let go. At that moment your son ran to free the dog from the hound's teeth, and when he managed to release him from the grip, he saw that the dog was bleeding heavily from his wounds. Upon his return home, you drove to the veterinary hospital to get care of the injured dog. After several hours of treatments and emergency surgery performed on your dog, the doctors managed to save his life, but the dog lost one of his eyes and a major scar remained on his face.</p>
+                    <p>When you returned from the veterinary hospital with the dog you decided to call John Doe and talk to him about the incident. John Doe answered the phone but apparently was afraid of the possibility of recording the call and using it against him in case the incident comes to court, so he spoke coldly and refused to apologize. His answer was "the gate of the garden was locked".</p>
+                </div>
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();">> I read & understood</button>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_3'] && steps[step]['isVisible']" class="item center">
+
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();">> start reading</button>
             </div>
 
         </div>

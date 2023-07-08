@@ -11,37 +11,19 @@ export class SharedService {
   readonly BASIC = 10;
   readonly STYLES1 = 15;
   readonly STYLES2 = 30;
-  readonly STORIES1 = 6;
+  readonly INTRO = 6;
+  readonly STORIES1 = 16;
   readonly STORIES2 = 16;
   readonly STORIES3 = 16;
-  readonly STORIES4 = 16;
 
   steps: Item[] = [];
   stepDict: {[name: string]: number} = {}
 
-  readonly sum = [
-    this.BASIC,
-    this.BASIC + this.STYLES1,
-    this.BASIC + this.STYLES1 + this.STYLES2,
-    this.BASIC + this.STYLES1 + this.STYLES2 + this.STORIES1,
-    this.BASIC + this.STYLES1 + this.STYLES2 + this.STORIES1 + this.STORIES2,
-    this.BASIC + this.STYLES1 + this.STYLES2 + this.STORIES1 + this.STORIES2 + this.STORIES3,
-    this.BASIC + this.STYLES1 + this.STYLES2 + this.STORIES1 + this.STORIES2 + this.STORIES3 + this.STORIES4
-  ]
-
-  readonly phases = {
-    'BASIC'    : { 'steps' : this.BASIC,    'min' : 0,           'max' : this.BASIC },
-    'STYLES1'  : { 'steps' : this.STYLES1,  'min' : this.sum[0], 'max' : this.sum[1] },
-    'STYLES2'  : { 'steps' : this.STYLES2,  'min' : this.sum[1], 'max' : this.sum[2] },
-    'STORIES1' : { 'steps' : this.STORIES1, 'min' : this.sum[2], 'max' : this.sum[3] },
-    'STORIES2' : { 'steps' : this.STORIES2, 'min' : this.sum[3], 'max' : this.sum[4] },
-    'STORIES3' : { 'steps' : this.STORIES3, 'min' : this.sum[4], 'max' : this.sum[5] },
-    'STORIES4' : { 'steps' : this.STORIES4, 'min' : this.sum[5], 'max' : this.sum[6] }
-  }
-
   constructor(private http:HttpClient) { }
 
   initSteps(): [Item[], {[name: string]: number}] {
+    if (this.steps.length != 0 && Object.keys(this.stepDict).length != 0) return [this.steps, this.stepDict]
+    
     let tmp = 0;
     
     // BASIC
@@ -70,24 +52,24 @@ export class SharedService {
     this.stepDict['CONGRATS_2'] = tmp - 1;
 
     // STORIES
+    for (let i = 1;  i <= this.INTRO; i++) {
+      tmp = this.steps.push(new Item(i, this.INTRO, 'INTRO', true, true));
+      this.stepDict[`INTRO_${i}`] = tmp - 1;
+    }
+
     for (let i = 1;  i <= this.STORIES1; i++) {
       tmp = this.steps.push(new Item(i, this.STORIES1, 'STORIES1', false, true));
-      this.stepDict[`INTRO_${i}`] = tmp - 1;
+      this.stepDict[`STORIES1_${i}`] = tmp - 1;
     }
 
     for (let i = 1;  i <= this.STORIES2; i++) {
       tmp = this.steps.push(new Item(i, this.STORIES2, 'STORIES2', false, true));
-      this.stepDict[`STORY_1_${i}`] = tmp - 1;
+      this.stepDict[`STORIES2_${i}`] = tmp - 1;
     }
 
     for (let i = 1;  i <= this.STORIES3; i++) {
       tmp = this.steps.push(new Item(i, this.STORIES3, 'STORIES3', false, true));
-      this.stepDict[`STORY_2_${i}`] = tmp - 1;
-    }
-
-    for (let i = 1;  i <= this.STORIES4; i++) {
-      tmp = this.steps.push(new Item(i, this.STORIES4, 'STORIES4', false, true));
-      this.stepDict[`STORY_3_${i}`] = tmp - 1;
+      this.stepDict[`STORIES3_${i}`] = tmp - 1;
     }
 
     return [this.steps, this.stepDict];

@@ -23,6 +23,8 @@ export class MainComponent implements OnInit{
   
   @Output() stepUpdateEvent = new EventEmitter<number>();
 
+  read: boolean = true;
+
   mStatuses: MaritalStatuses[] = [
     {value: 'SI', viewValue: 'Single'},
     {value: 'MA', viewValue: 'Married'},
@@ -38,6 +40,7 @@ export class MainComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
+    // this.step = 72;
     const pId = this.svc.getItem('participant');
     pId? this.p.ProlificId = pId : 'unpaid';
     this.p.SurveyStartTs = new Date();
@@ -55,6 +58,7 @@ export class MainComponent implements OnInit{
     if (this.step == 10) this.checkStep10();
     if (this.step == 13) this.checkStep13();
     if (this.step == 16) this.checkStep16();
+    if (this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) this.read = false;
     this.steps[this.step]['showNext'] = true;
     this.step += 1;
     while (!this.steps[this.step]['isVisible']) this.step += 1;
@@ -133,8 +137,9 @@ export class MainComponent implements OnInit{
   }
 
   backClick() {
-    if (this.step == 0) this.router.navigateByUrl('');
+    if (this.step == this.stepDict['BASIC_1']) this.router.navigateByUrl('');
     this.step -= 1;
+    if (this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) this.read = true;
     while (!this.steps[this.step]['isVisible']) this.step -= 1;
     this.stepUpdateEvent.emit(this.step);
   }

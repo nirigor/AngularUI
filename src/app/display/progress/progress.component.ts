@@ -65,14 +65,14 @@ export class ProgressComponent implements OnInit{
         stylesVisible2 = true;
         stylesProgress2 = Math.floor(this.steps[step]['stepNumber'] / this.steps[step]['phaseSteps'] * 100);
         break;
-      case 'STORIES1':
+      case 'INTRO':
         basicProgress = 100;
         stylesProgress1 = 100;
         stylesProgress2 = 100;
         storiesVisible1 = true;
         storiesProgress1 = Math.floor(this.steps[step]['stepNumber'] / this.steps[step]['phaseSteps'] * 100);
         break;
-      case 'STORIES2':
+      case 'STORIES1':
         basicProgress = 100;
         stylesProgress1 = 100;
         stylesProgress2 = 100;
@@ -80,7 +80,7 @@ export class ProgressComponent implements OnInit{
         storiesVisible2 = true;
         storiesProgress2 = Math.floor(this.steps[step]['stepNumber'] / this.steps[step]['phaseSteps'] * 100);
         break;
-      case 'STORIES3':
+      case 'STORIES2':
         basicProgress = 100;
         stylesProgress1 = 100;
         stylesProgress2 = 100;
@@ -89,7 +89,7 @@ export class ProgressComponent implements OnInit{
         storiesVisible3 = true;
         storiesProgress3 = Math.floor(this.steps[step]['stepNumber'] / this.steps[step]['phaseSteps'] * 100);
         break;
-      case 'STORIES4':
+      case 'STORIES3':
         basicProgress = 100;
         stylesProgress1 = 100;
         stylesProgress2 = 100;

@@ -75,6 +75,7 @@ mat-form-field {
 
 .item {
     padding: 0px;
+    height: 100%;
 }
 
 .item > h2 {
@@ -199,6 +200,38 @@ mat-form-field {
 .instructions p{
     font-size: 18px;
 }
+
+.split {
+    display: flex;
+    column-gap: 30px;
+}
+
+.videotext {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.mtop0 {
+    margin-top: 0px;
+}
+
+.stories-header-pr {
+    color: var(--primary-purple);
+    background-color: var(--large-toggle-selected);
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    padding: 5px 16px;
+}
+
+.stories-header-sec {
+    color: var(--on-surface-light);
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+}
+
 @media screen and (max-width: 1300px) {
     .item {
         padding: 5px;
