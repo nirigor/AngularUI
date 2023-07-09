@@ -12,12 +12,17 @@ import { Item } from '../models/item.model';
 export class DisplayComponent implements OnInit {
   constructor(private route: ActivatedRoute, private svc: SharedService, private router: Router) { }
   step = 0;
-  termsAgreed = this.svc.getItem('termsAgreed');
+  isPaid = false;
+  termsAgreed = this.svc.getItem('termsAgreed', 'session');
   steps: Item[] = [];
   stepDict: {[name: string]: number} = {};
 
   updateStep (value: number) {
     this.step = value;
+  }
+
+  updateSteps (steps: Item[]) {
+    this.steps = steps;
   }
   
   ngOnInit() {
@@ -25,8 +30,13 @@ export class DisplayComponent implements OnInit {
       this.router.navigate(['', {'back' : true}]);
     }
 
-    const pId = this.svc.getItem('participant');
-    [this.steps, this.stepDict] = this.svc.initSteps();
-
+    const pId = this.svc.getItem('participant', 'session');
+    if (pId == 'unpaid') { 
+      this.isPaid = false;
+      this.step = 2;
+       
+    } else { this.isPaid = true };
+    
+    [this.steps, this.stepDict] = this.svc.initSteps(this.isPaid);
   }
 }

@@ -7,8 +7,9 @@ import { Item } from './models/item.model';
 })
 export class SharedService {
   readonly APIUrl = 'http://127.0.0.1:8000';
-  
-  readonly BASIC = 10;
+  // readonly APIUrl = 'http://16.171.144.39/api';
+
+  readonly BASIC = 12;
   readonly STYLES1 = 15;
   readonly STYLES2 = 30;
   readonly INTRO = 6;
@@ -21,7 +22,7 @@ export class SharedService {
 
   constructor(private http:HttpClient) { }
 
-  initSteps(): [Item[], {[name: string]: number}] {
+  initSteps(isPaid: boolean): [Item[], {[name: string]: number}] {
     if (this.steps.length != 0 && Object.keys(this.stepDict).length != 0) return [this.steps, this.stepDict]
     
     let tmp = 0;
@@ -72,6 +73,16 @@ export class SharedService {
       this.stepDict[`STORIES3_${i}`] = tmp - 1;
     }
 
+
+    if (isPaid) {
+      this.steps[this.stepDict['BASIC_1']]['isVisible'] = false;
+      this.steps[this.stepDict['BASIC_2']]['isVisible'] = false;
+      for (let step = 2; step < this.stepDict['BF_1']; step++) {
+        this.steps[step]['phaseSteps'] = this.BASIC - 2;
+        this.steps[step]['stepNumber'] -= 2;
+      }
+    }
+
     return [this.steps, this.stepDict];
   }
 
@@ -79,12 +90,28 @@ export class SharedService {
     return this.http.post(this.APIUrl, data);
   }
 
-  setItem(key: string, value: string){
-    localStorage.setItem(key, value);
+  setItem(key: string, value: string, type: string){
+    switch(type) {
+      case 'session':
+        sessionStorage.setItem(key, value);
+        break;
+      case 'local':
+        localStorage.setItem(key, value);
+        break;
+      default:
+        localStorage.setItem(key, value);
+    }
   }
 
-  getItem(key: string){
-    return localStorage.getItem(key);
+  getItem(key: string, type: string){
+    switch(type) {
+      case 'session':
+        return sessionStorage.getItem(key);
+      case 'local':
+        return localStorage.getItem(key);
+      default:
+        return localStorage.getItem(key);
+    }
   }
   
   getRandomNumber(min: number, max: number){

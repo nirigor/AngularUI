@@ -6,6 +6,8 @@ export class Participant {
         public TQ2?: boolean,
         public ProlificId?: string,
         public Token?: string,
+        public Gender?: string,
+        public Age?: string,
         public MaritalStatus?: string,
         public NumberOfChildren?: number,
         public NumberOfYoungChildren?: number,

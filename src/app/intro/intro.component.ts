@@ -13,15 +13,15 @@ export class IntroComponent implements OnInit {
   step = 1;
   termsAgreed:any = false;
   ngOnInit(): void {
-    this.termsAgreed = this.svc.getItem('termsAgreed');
+    this.termsAgreed = this.svc.getItem('termsAgreed', 'session');
     if (this.termsAgreed) this.step = 2;
     
     this.route.queryParams
       .subscribe(params => {
         if ('participant' in params) {
-          this.svc.setItem('participant', params['participant']);
+          this.svc.setItem('participant', params['participant'], 'session');
         } else {
-          this.svc.setItem('participant', 'unpaid');
+          this.svc.setItem('participant', 'unpaid', 'session');
         }
       });
   }
@@ -35,7 +35,7 @@ export class IntroComponent implements OnInit {
   }
 
   startSurvey(): void {
-    this.svc.setItem('termsAgreed', 'true');
+    this.svc.setItem('termsAgreed', 'true', 'session');
     this.router.navigateByUrl('survey');
   }
 }

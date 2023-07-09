@@ -1,4 +1,10 @@
 <div class="container">
     <app-progress [step]="step" [steps]="steps"></app-progress>
-    <app-main [step]="step" [steps]="steps" [stepDict]="stepDict" (stepUpdateEvent)="updateStep($event)"></app-main>    
+    <app-main 
+        [step]="step" 
+        [steps]="steps" 
+        [stepDict]="stepDict" 
+        (stepUpdateEvent)="updateStep($event)"
+        (stepsUpdateEvent)="updateSteps($event)">
+    </app-main>    
 </div>

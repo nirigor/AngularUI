@@ -10,8 +10,28 @@
                 <span *ngIf="steps[step]['showNext']"><button class="bold" color="primary" mat-button (click)="nextClick();">Next ></button></span>
                 <span *ngIf="!steps[step]['showNext']" style="width: 70px;"></span>
             </div>
-    
+            {{step}}
             <div *ngIf="step == stepDict['BASIC_1'] && steps[step]['isVisible']" class="item">
+                <h2>Your <b>Gender</b></h2>
+                <mat-radio-group class="radio-group-normal" [(ngModel)]="this.p.Gender" (ngModelChange)="nextClick();">
+                    <mat-radio-button value="M">Male</mat-radio-button>
+                    <mat-radio-button value="F">Female</mat-radio-button>
+                    <mat-radio-button value="O">Other</mat-radio-button>
+                </mat-radio-group>
+            </div>   
+
+            <div *ngIf="step == stepDict['BASIC_2'] && steps[step]['isVisible']" class="item">
+                <h2>Your <b>Age</b></h2>
+                <mat-radio-group class="radio-group-normal" [(ngModel)]="this.p.MaritalStatus" (ngModelChange)="nextClick();">
+                    <mat-radio-button value="1">18 - 29</mat-radio-button>
+                    <mat-radio-button value="2">30 - 39</mat-radio-button>
+                    <mat-radio-button value="3">40 - 49</mat-radio-button>
+                    <mat-radio-button value="4">50 - 59</mat-radio-button>
+                    <mat-radio-button value="5">60 +</mat-radio-button>
+                </mat-radio-group>
+            </div>   
+
+            <div *ngIf="step == stepDict['BASIC_3'] && steps[step]['isVisible']" class="item">
                 <h2>Your <b>Marital Status</b></h2>
                 <mat-radio-group class="radio-group-normal" [(ngModel)]="this.p.MaritalStatus" (ngModelChange)="nextClick();">
                     <mat-radio-button value="SI">Single</mat-radio-button>
@@ -22,7 +42,7 @@
                 </mat-radio-group>
             </div>   
         
-            <div *ngIf="step == stepDict['BASIC_2'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_4'] && steps[step]['isVisible']" class="item">
                 <h2>Number of <b>Children</b></h2>
                 <mat-radio-group class="radio-group-normal" [(ngModel)]="this.p.NumberOfChildren" (ngModelChange)="nextClick();">
                     <mat-radio-button value=0>0</mat-radio-button>
@@ -33,7 +53,7 @@
                 </mat-radio-group>
             </div>
     
-            <div *ngIf="step == stepDict['BASIC_3'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_5'] && steps[step]['isVisible']" class="item">
                 <h2>Number of <b>Children Ages (0-12)</b></h2>
                 <mat-radio-group class="radio-group-normal" [(ngModel)]="this.p.NumberOfYoungChildren" (ngModelChange)="nextClick();">
                     <mat-radio-button value=0>0</mat-radio-button>
@@ -44,7 +64,7 @@
                 </mat-radio-group>
             </div>
     
-            <div *ngIf="step == stepDict['BASIC_4'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_6'] && steps[step]['isVisible']" class="item">
                 <h2>Number of <b>Grand Children</b></h2>
                 <mat-radio-group class="radio-group-normal" [(ngModel)]="this.p.NumberOfGrandChildren" (ngModelChange)="nextClick();">
                     <mat-radio-button value=0>0</mat-radio-button>
@@ -55,7 +75,7 @@
                 </mat-radio-group>
             </div>
             
-            <div *ngIf="step == stepDict['BASIC_5'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_7'] && steps[step]['isVisible']" class="item">
                 <h2>Are you part of a <b>minority</b> within your country?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Minority" (click)="nextClick();">
                     <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
@@ -63,7 +83,7 @@
                 </mat-button-toggle-group>
             </div>
     
-            <div *ngIf="step == stepDict['BASIC_6'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_8'] && steps[step]['isVisible']" class="item">
                 <h2>Do you have <b>financial debts</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Debts" (click)="nextClick();">
                     <mat-button-toggle value="0"><div class="icon"><mat-icon svgIcon="money-bag"></mat-icon></div>No Debts</mat-button-toggle>
@@ -72,7 +92,7 @@
                 </mat-button-toggle-group>
             </div>
     
-            <div *ngIf="step == stepDict['BASIC_7'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_9'] && steps[step]['isVisible']" class="item">
                 <h2>How would you classify your <b>income level</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Income" (click)="nextClick();">
                     <mat-button-toggle value="0"><div class="icon"><mat-icon svgIcon="below"></mat-icon></div>Below Average</mat-button-toggle>
@@ -81,7 +101,7 @@
                 </mat-button-toggle-group>
             </div>
     
-            <div *ngIf="step == stepDict['BASIC_8'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_10'] && steps[step]['isVisible']" class="item">
                 <h2>Your level of <b>education</b></h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Education" (click)="nextClick();">
                     <mat-button-toggle value="ES"><div class="icon-sm">
@@ -112,7 +132,7 @@
                 </mat-button-toggle-group>
             </div>
     
-            <div *ngIf="step == stepDict['BASIC_9'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_11'] && steps[step]['isVisible']" class="item">
                 <h2>Your level of <b>Legal Knowledge</b></h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.LegalKnowledge" (ngModelChange)="nextClick();">
                     <mat-button-toggle value="0"><div class="icon"><mat-icon svgIcon="no-knowledge"></mat-icon></div>No Knowledge</mat-button-toggle>
@@ -121,7 +141,7 @@
                 </mat-button-toggle-group>
             </div>
 
-            <div *ngIf="step == stepDict['BASIC_10'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_12'] && steps[step]['isVisible']" class="item">
                 <h2>Were you previously <b>involved in a legal dispute</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.InvolvedInLegalDispute" (click)="nextClick();">
                     <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
@@ -129,7 +149,7 @@
                 </mat-button-toggle-group>
             </div>
 
-            <div *ngIf="step == stepDict['BASIC_11'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_13'] && steps[step]['isVisible']" class="item">
                 <h2>Do you have experience with <b>Court Proceedings</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithCourtProceedings" (click)="nextClick();">
                     <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
@@ -137,7 +157,7 @@
                 </mat-button-toggle-group>
             </div>
 
-            <div *ngIf="step == stepDict['BASIC_12'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_14'] && steps[step]['isVisible']" class="item">
                 <h2>How was your experience with <b>court proceedings</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large scale" [(ngModel)]="this.p.CourtProceedingsSatisfaction" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
@@ -152,7 +172,7 @@
                 </div>
             </div>
 
-            <div *ngIf="step == stepDict['BASIC_13'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_15'] && steps[step]['isVisible']" class="item">
                 <h2>Please tell us about your experience with <b>court proceedings</b></h2>
                 <mat-form-field floatLabel="always">
                     <mat-label>your experience</mat-label>
@@ -161,7 +181,7 @@
                 <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><mat-icon svgIcon="right-arrow"></mat-icon>Next</button>
             </div>
     
-            <div *ngIf="step == stepDict['BASIC_14'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_16'] && steps[step]['isVisible']" class="item">
                 <h2>Do you have experience with <b>Mediation</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithMediation" (click)="nextClick();">
                     <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
@@ -169,7 +189,7 @@
                 </mat-button-toggle-group>
             </div>
             
-            <div *ngIf="step == stepDict['BASIC_15'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_17'] && steps[step]['isVisible']" class="item">
                 <h2>How was your experience with <b>mediation</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.MediationSatisfaction" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
@@ -184,7 +204,7 @@
                 </div>
             </div>
             
-            <div *ngIf="step == stepDict['BASIC_16'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_18'] && steps[step]['isVisible']" class="item">
                 <h2>Please tell us about your experience with <b>mediation</b></h2>
                 <mat-form-field floatLabel="always">
                     <mat-label>your experience</mat-label>
@@ -193,7 +213,7 @@
                 <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><mat-icon svgIcon="right-arrow"></mat-icon>Next</button>
             </div>
             
-            <div *ngIf="step == stepDict['BASIC_17'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_19'] && steps[step]['isVisible']" class="item">
                 <h2>Do you have experience with <b>Arbitration</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithArbitration" (click)="nextClick();">
                     <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
@@ -201,7 +221,7 @@
                 </mat-button-toggle-group>
             </div>
             
-            <div *ngIf="step == stepDict['BASIC_18'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_20'] && steps[step]['isVisible']" class="item">
                 <h2>How was your experience with <b>arbitration</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ArbitrationSatisfaction" (click)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
@@ -216,7 +236,7 @@
                 </div>
             </div>
 
-            <div *ngIf="step == stepDict['BASIC_19'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_21'] && steps[step]['isVisible']" class="item">
                 <h2>Please tell us about your experience with <b>arbitration</b></h2>
                 <mat-form-field floatLabel="always">
                     <mat-label>your experience</mat-label>
