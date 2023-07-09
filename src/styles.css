@@ -40,3 +40,7 @@ html, body {
   height: 100%;
   font-family: "Poppins", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji" !important;
 }
+
+mat-dialog-container {
+  position: fixed !important;
+}

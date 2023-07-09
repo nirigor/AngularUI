@@ -13,9 +13,9 @@ export class SharedService {
   readonly STYLES1 = 15;
   readonly STYLES2 = 30;
   readonly INTRO = 6;
-  readonly STORIES1 = 24;
-  readonly STORIES2 = 24;
-  readonly STORIES3 = 24;
+  readonly STORIES1 = 23;
+  readonly STORIES2 = 23;
+  readonly STORIES3 = 23;
 
   steps: Item[] = [];
   stepDict: {[name: string]: number} = {}
@@ -44,12 +44,12 @@ export class SharedService {
     }
 
     for (let i = 1;  i <= this.STYLES2; i++) {
-      tmp = this.steps.push(new Item(i, this.STYLES2, 'STYLES2',false, true));
+      tmp = this.steps.push(new Item(i, this.STYLES2, 'STYLES2', false, true));
       this.stepDict[`TK_${i}`] = tmp - 1;
     }
 
     // Congrats 2
-    tmp = this.steps.push(new Item(this.STYLES2, this.STYLES2, 'STYLES2',false, true));
+    tmp = this.steps.push(new Item(this.STYLES2, this.STYLES2, 'STYLES2', false, true));
     this.stepDict['CONGRATS_2'] = tmp - 1;
 
     // STORIES
@@ -72,6 +72,10 @@ export class SharedService {
       tmp = this.steps.push(new Item(i, this.STORIES3, 'STORIES3', false, true));
       this.stepDict[`STORIES3_${i}`] = tmp - 1;
     }
+
+    // Congrats 3
+    tmp = this.steps.push(new Item(this.STORIES3, this.STORIES3, 'STORIES3', false, true));
+    this.stepDict['CONGRATS_3'] = tmp - 1;
 
 
     if (isPaid) {

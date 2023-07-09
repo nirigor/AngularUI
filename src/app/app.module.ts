@@ -25,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { IntroComponent } from './intro/intro.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './display/main/dialog/dialog.component';
 
 
 
@@ -36,6 +37,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     DisplayComponent,
     PageNotFoundComponent,
     IntroComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,

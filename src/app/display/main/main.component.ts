@@ -4,6 +4,7 @@ import { Participant } from 'src/app/models/participant.model';
 import { Router } from '@angular/router';
 import { Item } from 'src/app/models/item.model';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
 
 interface MaritalStatuses {
   value: string;
@@ -165,7 +166,7 @@ export class MainComponent implements OnInit{
     });
   }
 
-  OpenDialog() {
-    console.log('bla');
+  OpenDialog(val: string) {
+    this.dialog.open(DialogComponent, { data : { dialog : val }, 	maxHeight: '350px', maxWidth: '650px', position: { left:'50%', top: '30%'}  });
   }
 }
