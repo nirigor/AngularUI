@@ -73,7 +73,7 @@ export class Participant {
         public TK29?: string,
         public TK30?: string,
         public ST1Number?: number,
-        public ST1Feelings?: string[],
+        public ST1Feelings: string[] = [],
         public ST1Speed?: number,
         public ST1Privacy?: number,
         public ST1PublicVindication?: number,

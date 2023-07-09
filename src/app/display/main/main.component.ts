@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { Participant } from 'src/app/models/participant.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Item } from 'src/app/models/item.model';
-
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 interface MaritalStatuses {
   value: string;
@@ -15,6 +15,7 @@ interface MaritalStatuses {
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
+
 export class MainComponent implements OnInit{
   p: Participant = new Participant();
   @Input() step = 0;
@@ -36,12 +37,16 @@ export class MainComponent implements OnInit{
 
   constructor(
     private svc: SharedService,
-    private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
   ngOnInit(): void {
-    // this.step = 72;
+    this.step = this.stepDict['STORIES1_22'];
     while(!this.steps[this.step]['isVisible']) this.step++;
     const pId = this.svc.getItem('participant', 'session');
     pId? this.p.ProlificId = pId : 'unpaid';
@@ -145,5 +150,22 @@ export class MainComponent implements OnInit{
     while (!this.steps[this.step]['isVisible']) this.step -= 1;
     this.stepUpdateEvent.emit(this.step);
   }
-}
 
+  readText() {
+    var synth = window.speechSynthesis;
+    var voices = synth.getVoices();
+    if(synth.speaking) { synth.pause } else { synth.resume }
+    const paragraphs = Array.from(document.querySelectorAll('#str1 p, #str1 h2'));
+    paragraphs.forEach((p) => {
+      let uts = new SpeechSynthesisUtterance(p.innerHTML);
+      uts.volume = 1;
+      uts.rate = 1;
+      uts.pitch = 2;
+      synth.speak(uts);
+    });
+  }
+
+  OpenDialog() {
+    console.log('bla');
+  }
+}

@@ -10,7 +10,7 @@
                 <span *ngIf="steps[step]['showNext']"><button class="bold" color="primary" mat-button (click)="nextClick();">Next ></button></span>
                 <span *ngIf="!steps[step]['showNext']" style="width: 70px;"></span>
             </div>
-            {{step}}
+
             <div *ngIf="step == stepDict['BASIC_1'] && steps[step]['isVisible']" class="item">
                 <h2>Your <b>Gender</b></h2>
                 <mat-radio-group class="radio-group-normal" [(ngModel)]="this.p.Gender" (ngModelChange)="nextClick();">
@@ -178,7 +178,7 @@
                     <mat-label>your experience</mat-label>
                     <textarea [(ngModel)]="this.p.ExperienceWithCourtProceedingsText" matInput></textarea>
                 </mat-form-field>
-                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><mat-icon svgIcon="right-arrow"></mat-icon>Next</button>
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> Next</button>
             </div>
     
             <div *ngIf="step == stepDict['BASIC_16'] && steps[step]['isVisible']" class="item">
@@ -210,7 +210,7 @@
                     <mat-label>your experience</mat-label>
                     <textarea [(ngModel)]="this.p.ExperienceWithMediationText" matInput></textarea>
                 </mat-form-field>
-                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><mat-icon svgIcon="right-arrow"></mat-icon>Next</button>
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> Next</button>
             </div>
             
             <div *ngIf="step == stepDict['BASIC_19'] && steps[step]['isVisible']" class="item">
@@ -242,14 +242,14 @@
                     <mat-label>your experience</mat-label>
                     <textarea [(ngModel)]="this.p.ExperienceWithArbitrationText" matInput></textarea>
                 </mat-form-field>
-                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><mat-icon svgIcon="right-arrow"></mat-icon>Next</button>
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> Next</button>
             </div>
 
             <div *ngIf="step == stepDict['CONGRATS_1'] && steps[step]['isVisible']" class="item center">
                 <div class="icon-lg"><img src="assets/confetti.gif"></div>
                 <h3 style="font-size: 32px; font-weight: 400;">Congratulations</h3>
                 <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 40px;">You succesfully completed section 1/3</h3>
-                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();">> Next section</button>
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> Next section</button>
             </div>
 
             <!-- Big Five -->
@@ -807,7 +807,7 @@
                 <div class="icon-lg"><img src="assets/confetti.gif"></div>
                 <h3 style="font-size: 32px; font-weight: 400;">Congratulations</h3>
                 <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 40px;">You succesfully completed section 2/3</h3>
-                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();">> Next section</button>
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> Next section</button>
             </div>
 
             <!-- Intro Stories -->
@@ -816,7 +816,7 @@
                 <div class="icon-lg"><img src="assets/question-mark.gif"></div>
                 <h3 style="font-size: 32px; font-weight: 400;">What are the ways to deal with conflicts?</h3>
                 <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 40px;">hint: there are <b>6 ways</b></h3>
-                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();">> Learn more</button>
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> Learn more</button>
             </div>
 
             <div *ngIf="step == stepDict['INTRO_2'] && steps[step]['isVisible']" class="item">
@@ -995,22 +995,349 @@
                 <h3 style="font-size: 16px; font-weight: 500; line-height: 0px;">Now when you know more about ways</h3>
                 <h3 style="font-size: 16px; font-weight: 500; line-height: 0px;">to deal with conflicts, try to imagine</h3>
                 <h3 style="font-size: 16px; font-weight: 500; line-height: 0px; margin-bottom: 80px;">yourself in the following dispute</h3>
-                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();">> start reading</button>
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> start reading</button>
             </div>
 
-            <div *ngIf="step == stepDict['STORIES1_2'] && steps[step]['isVisible']" class="item center">
-                <div>
-                    <h2>The Story</h2>
+            <div *ngIf="step == stepDict['STORIES1_2'] && steps[step]['isVisible']" class="item">
+                <div id="str1" class="story">
+                    <div class="story-h">
+                        <h2>The Story</h2>
+                        <button mat-stroked-button color="primary" class="next-button" (click)="readText();"><i class="bi bi-mic-fill"></i> read text</button>        
+                    </div>
                     <p>For almost three decades you have lived close to John Doe, over the past few years you have developed a friendship and closeness that is characterized by both being part of the same circle of friends, you used to spend time together and even go on joint trips with other families in the community</p>
                     <p>A few months ago, your son went for a walk with your three Shi-Tzu dogs, with all three dogs tied to a rolling leash that allows movement for dogs with relative ease. When your son passed by John Doe's house one of the dogs walked toward the gate of his house and started sniffing around. At that point, John Doe's dog (a large Weimaraner-style hunting hound) suddenly jumped towards the gate, and from among the gate bars grabbed your dog, bit him hard in the face, and wouldn't let go. At that moment your son ran to free the dog from the hound's teeth, and when he managed to release him from the grip, he saw that the dog was bleeding heavily from his wounds. Upon his return home, you drove to the veterinary hospital to get care of the injured dog. After several hours of treatments and emergency surgery performed on your dog, the doctors managed to save his life, but the dog lost one of his eyes and a major scar remained on his face.</p>
                     <p>When you returned from the veterinary hospital with the dog you decided to call John Doe and talk to him about the incident. John Doe answered the phone but apparently was afraid of the possibility of recording the call and using it against him in case the incident comes to court, so he spoke coldly and refused to apologize. His answer was "the gate of the garden was locked".</p>
                 </div>
-                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();">> I read & understood</button>
+                
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> I read & understood</button>
             </div>
 
-            <div *ngIf="step == stepDict['STORIES1_3'] && steps[step]['isVisible']" class="item center">
+            <div *ngIf="step == stepDict['STORIES1_3'] && steps[step]['isVisible']" class="item">
+                <h2>As a party in this conflict, Which of the following feelings arose in you while reading about the conflict above?</h2>
+                <h2><b>Please select at least 3 feelings:</b></h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1Feelings" multiple maxlength="3">
+                    <mat-button-toggle value="anger"><div class="icon"><mat-icon svgIcon="anger"></mat-icon></div>anger</mat-button-toggle>
+                    <mat-button-toggle value="sadness"><div class="icon"><mat-icon svgIcon="sadness"></mat-icon></div>sadness</mat-button-toggle>
+                    <mat-button-toggle value="frustration"><div class="icon"><mat-icon svgIcon="frustration"></mat-icon></div>frustration</mat-button-toggle>
+                    <mat-button-toggle value="fear"><div class="icon"><mat-icon svgIcon="fear"></mat-icon></div>fear</mat-button-toggle>
+                    <mat-button-toggle value="happiness"><div class="icon"><mat-icon svgIcon="happiness"></mat-icon></div>happiness</mat-button-toggle>
+                    <mat-button-toggle value="confusion"><div class="icon"><mat-icon svgIcon="confusion"></mat-icon></div>confusion</mat-button-toggle>
+                    <mat-button-toggle value="hate"><div class="icon"><mat-icon svgIcon="hate"></mat-icon></div>hate</mat-button-toggle>
+                    <mat-button-toggle value="indifference"><div class="icon"><mat-icon svgIcon="indifference"></mat-icon></div>indifference</mat-button-toggle>
+                    <mat-button-toggle value="curiosity"><div class="icon"><mat-icon svgIcon="curiosity"></mat-icon></div>curiosity</mat-button-toggle>
+                    <mat-button-toggle value="stress"><div class="icon"><mat-icon svgIcon="stress"></mat-icon></div>stress</mat-button-toggle>
+                  </mat-button-toggle-group>
+                <h3 style="font-weight: normal;">* You have selected {{this.p.ST1Feelings.length}} / 3</h3>
+                <button mat-raised-button color="primary" class="next-button" [disabled]="this.p.ST1Feelings.length < 3" (click)="nextClick();"><i class="bi bi-arrow-right"></i> continue</button>
+            </div>
 
-                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();">> start reading</button>
+            <div *ngIf="step == stepDict['STORIES1_4'] && steps[step]['isVisible']" class="item">
+                <div class="instructions">
+                    <p>Instruction:</p> 
+                    <p><b>Assuming you are the person who's going through the conflict incident above.</b> Following is a list of priorities, how would you rank them in the context of this conflict.</p>
+                </div>
+                <div class="icon"><mat-icon svgIcon="speed"></mat-icon></div>
+                <h2>Proceeding Speed</h2>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1Speed" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_5'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="privacy"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Privacy</h2>
+                <p style="margin-bottom: 60px;">you would like to keep the conflict processing or outcome confidential</p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1Privacy" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_6'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="publicvindication"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Public Vindication</h2>
+                <p style="margin-bottom: 60px;">you need an official declaration that you are right</p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1PublicVindication" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_7'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="neutralopinion"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Neutral Opinion of a third party</h2>
+                <p style="margin-bottom: 60px;"></p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1NeutralOpinion" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_8'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="money-bag"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Minimize Costs</h2>
+                <p style="margin-bottom: 60px;">You need to minimize the costs of the procedure</p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1MinimizeCosts" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_9'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Maintain/Improve Relationship</h2>
+                <p style="margin-bottom: 60px;">The relationship with the other party is important for you</p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1MaintainImproveRelationship" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_10'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="createprecedent"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Create a Precedent</h2>
+                <p style="margin-bottom: 60px;">generate a new norm that will amply on other conflicts</p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1CreatePrecedent" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_11'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="fly-money"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Max/Min Compensation</h2>
+                <p style="margin-bottom: 60px;">Minimize the compensation to or maximize compensation from the other party</p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1MinMaxCompensation" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_12'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="createsolution"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Creative Solution</h2>
+                <p style="margin-bottom: 60px;">Outside of the box solution to your case</p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1CreativeSolution" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_13'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="control"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Control of Process</h2>
+                <p style="margin-bottom: 60px;">You want to have the ability to change and influence each part of the conflict resolution process, e.g., who will present the claims, who will be present during the procedure, etc.,</p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1ControlOfProcess" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_14'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="aim"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Control of Outcome</h2>
+                <p style="margin-bottom: 60px;">it is important for you to have the ability to influence and suggest possible solutions to the conflict</p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1ControlOfOutcome" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_15'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="shift"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Shift Responsibility for Decision to a Third Party</h2>
+                <p style="margin-bottom: 60px;"></p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1ShiftResponsibility" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_16'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="eyes"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Ensuring compliance through ongoing supervision</h2>
+                <p style="margin-bottom: 60px;"></p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1EnsuringCompliance" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_17'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="transformation"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Transformation of the Parties</h2>
+                <p style="margin-bottom: 60px;">Challenging the parties perspective</p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1TransformationOfTheParties" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_18'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="lightbulb"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Improve Understanding of the Dispute</h2>
+                <p style="margin-bottom: 60px;"></p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1ImproveUnderstanding" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_19'] && steps[step]['isVisible']" class="item">
+                <div class="icon"><mat-icon svgIcon="pray"></mat-icon></div>
+                <h2 style="margin-bottom: 0px;">Recognition/Apology</h2>
+                <p style="margin-bottom: 60px;"></p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1RecognitionApology" (click)="nextClick();">
+                    <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale2" value=2><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale3" value=3><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale4" value=4><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+                    <mat-button-toggle class="scale5" value=5><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="sub">
+                    <div class="red bold s-left">Not important</div>
+                    <div class="green bold s-right">Very important</div>    
+                </div>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_20'] && steps[step]['isVisible']" class="item">
+                <h2 style="margin-bottom: 0px;">How would you classify the incident describdescribed in the story above?</h2>
+                <p style="margin-bottom: 60px;"></p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1Classification" (click)="nextClick();">
+                    <mat-button-toggle class="scale5" value="MD"><div class="icon"><mat-icon svgIcon="sm-minor"></mat-icon></div>Minor Disagreement</mat-button-toggle>
+                    <mat-button-toggle class="scale4" value="MU"><div class="icon"><mat-icon svgIcon="sm-misunderstanding"></mat-icon></div>Misunderstanding</mat-button-toggle>
+                    <mat-button-toggle class="scale3" value="CD"><div class="icon"><mat-icon svgIcon="sm-common"></mat-icon></div>Common Dispute</mat-button-toggle>
+                    <mat-button-toggle class="scale2" value="SD"><div class="icon"><mat-icon svgIcon="sm-serious"></mat-icon></div>Serious Dispute</mat-button-toggle>
+                    <mat-button-toggle class="scale1" value="MC"><div class="icon"><mat-icon svgIcon="sm-major"></mat-icon></div>Major Conflict</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_21'] && steps[step]['isVisible']" class="item">
+                <h2 style="margin-bottom: 0px;">How would you rate the strength of your position compared to the other party in the story?</h2>
+                <p style="margin-bottom: 60px;"></p>
+                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.ST1StrengthPosition" (click)="nextClick();">
+                    <mat-button-toggle value="WE"><div class="icon"><mat-icon svgIcon="mouse"></mat-icon></div><p>Weaker than the other party.</p></mat-button-toggle>
+                    <mat-button-toggle value="ST"><div class="icon"><mat-icon svgIcon="lion"></mat-icon></div><p>Stronger than the other party.</p></mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div *ngIf="step == stepDict['STORIES1_22'] && steps[step]['isVisible']" class="item">
+                <h2 style="margin-bottom: 0px;">Taking into account your specified priorities, if you were the person in the story above, with which option would you be most satisfied with?</h2>
+                <p style="margin-bottom: 60px;"></p>
+                <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1Selection" (click)="nextClick();">
+                    <mat-button-toggle value="AD"><div class="icon"><mat-icon svgIcon="adjudication"></mat-icon></div><div>Adjudication</div><i (mouseover)="OpenDialog();" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="AR"><div class="icon"><mat-icon svgIcon="arbitration"></mat-icon></div><div>Arbitration</div><i (mouseover)="OpenDialog();" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="ME"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><div>Mediation</div><i (mouseover)="OpenDialog();" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="NE"><div class="icon"><mat-icon svgIcon="negotiation"></mat-icon></div><div>Negotiation</div><i (mouseover)="OpenDialog();" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="LG"><div class="icon"><mat-icon svgIcon="waives"></mat-icon></div><div>Let go</div><i (mouseover)="OpenDialog();" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="PC"><div class="icon"><mat-icon svgIcon="publiccomplaint"></mat-icon></div><div>Public Complaint</div><i (mouseover)="OpenDialog();" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                </mat-button-toggle-group>
             </div>
 
         </div>

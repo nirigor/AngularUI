@@ -42,6 +42,10 @@ mat-form-field {
     color: var(--dark-red);
 }
 
+.lightblue {
+    color: rgb(58, 134, 180);
+}
+
 .icon > mat-icon {
     height: 50px !important;
     width: 50px !important;
@@ -107,16 +111,22 @@ mat-form-field {
 
 .toggle-group-large {
     border: transparent;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .toggle-group-large > mat-button-toggle {
     border-radius: 20px;
     width: 190px;
     height: 170px;
-    margin-right: 10px;
     background-color: var(--md-background);
     font-size: 18px;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    white-space: wrap;
+    padding: 10px;
 }
 
 .toggle-group-large > .mat-button-toggle-checked {
@@ -230,6 +240,16 @@ mat-form-field {
     font-weight: 400;
     font-size: 16px;
     text-align: center;
+}
+
+.story-h {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.story {
+    margin-bottom: 40px;
 }
 
 @media screen and (max-width: 1300px) {

@@ -24,6 +24,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { IntroComponent } from './intro/intro.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -34,7 +35,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MainComponent,
     DisplayComponent,
     PageNotFoundComponent,
-    IntroComponent
+    IntroComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +53,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatGridListModule,
     MatIconModule,
     MatCheckboxModule,
+    MatDialogModule,
   ],
   providers: [
     SharedService

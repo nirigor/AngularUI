@@ -13,9 +13,9 @@ export class SharedService {
   readonly STYLES1 = 15;
   readonly STYLES2 = 30;
   readonly INTRO = 6;
-  readonly STORIES1 = 16;
-  readonly STORIES2 = 16;
-  readonly STORIES3 = 16;
+  readonly STORIES1 = 24;
+  readonly STORIES2 = 24;
+  readonly STORIES3 = 24;
 
   steps: Item[] = [];
   stepDict: {[name: string]: number} = {}
