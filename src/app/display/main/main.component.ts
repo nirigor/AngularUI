@@ -47,7 +47,7 @@ export class MainComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.step = this.stepDict['STORIES1_22'];
+    // this.step = this.stepDict['STORIES1_22'];
     while(!this.steps[this.step]['isVisible']) this.step++;
     const pId = this.svc.getItem('participant', 'session');
     pId? this.p.ProlificId = pId : 'unpaid';

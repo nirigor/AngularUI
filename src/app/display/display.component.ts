@@ -33,9 +33,7 @@ export class DisplayComponent implements OnInit {
     const pId = this.svc.getItem('participant', 'session');
     if (pId == 'unpaid') { 
       this.isPaid = false;
-      this.step = 2;
-       
-    } else { this.isPaid = true };
+    } else { this.isPaid = true; this.step = 2; };
     
     [this.steps, this.stepDict] = this.svc.initSteps(this.isPaid);
   }

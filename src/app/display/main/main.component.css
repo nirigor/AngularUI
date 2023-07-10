@@ -124,7 +124,7 @@ mat-form-field {
     font-size: 18px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     white-space: wrap;
     padding: 10px;
 }
@@ -191,7 +191,8 @@ mat-form-field {
 .sub {
     margin-top: 10px;
     display: flex;
-    width: 990px;
+    width: 100%;
+    max-width: 1090px;
 }
 
 .s-left {
