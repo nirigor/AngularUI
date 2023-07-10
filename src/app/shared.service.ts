@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Item } from './models/item.model';
+import { Participant } from './models/participant.model';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class SharedService {
-  readonly APIUrl = 'http://127.0.0.1:8000';
+  readonly APIUrl = 'http://127.0.0.1:8000/';
   // readonly APIUrl = 'http://16.171.144.39/api';
 
   readonly BASIC = 12;
@@ -90,8 +93,33 @@ export class SharedService {
     return [this.steps, this.stepDict];
   }
 
-  submitSurvey(data:any){
-    return this.http.post(this.APIUrl, data);
+  postSurvey(p: Participant): Observable<any> {
+    return this.http.post<any>(this.APIUrl, p);
+  }
+
+  submitSurvey(p: Participant) {
+    p.ST1Feelings = JSON.stringify(p.ST1Feelings);
+    p.ST2Feelings = JSON.stringify(p.ST2Feelings);
+    p.ST3Feelings = JSON.stringify(p.ST3Feelings);
+    this.http.post<HttpResponse<any>>(this.APIUrl, p, { observe: 'response' })
+      .subscribe((response: HttpResponse<any>) => {
+        if (response.ok) {
+          console.log(response.body);
+        }
+      },
+      (err: HttpErrorResponse) => {
+        if (err.status === 451) {
+          console.error('Attention Verification failed');
+        }
+        if (err.status === 400) {
+          console.error(err);
+        }
+      },
+    );
+  }
+
+  saveProgress(p: Participant) {
+    this.setItem('p', JSON.stringify(p), 'local');
   }
 
   setItem(key: string, value: string, type: string){

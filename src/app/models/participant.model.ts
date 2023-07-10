@@ -2,8 +2,8 @@ export class Participant {
     constructor(
         public SurveyStartTs: Date = new Date(),
         public SurveyEndTs: Date = new Date(),
-        public TQ1?: boolean,
-        public TQ2?: boolean,
+        public TQ1: boolean = false,
+        public TQ2: boolean = false,
         public ProlificId?: string,
         public Token?: string,
         public Gender?: string,
@@ -73,7 +73,7 @@ export class Participant {
         public TK29?: string,
         public TK30?: string,
         public ST1Number?: number,
-        public ST1Feelings: string[] = [],
+        public ST1Feelings: any = [],
         public ST1Speed?: number,
         public ST1Privacy?: number,
         public ST1PublicVindication?: number,
@@ -93,9 +93,9 @@ export class Participant {
         public ST1Classification?: string,
         public ST1StrengthPosition?: string,
         public ST1Selection?: string,
-        public ST1SelectionText?: string,
+        public ST1SelectionText: string = "",
         public ST2Number?: number,
-        public ST2Feelings: string[] = [],
+        public ST2Feelings: any = [],
         public ST2Speed?: number,
         public ST2Privacy?: number,
         public ST2PublicVindication?: number,
@@ -115,9 +115,9 @@ export class Participant {
         public ST2Classification?: string,
         public ST2StrengthPosition?: string,
         public ST2Selection?: string,
-        public ST2SelectionText?: string,
+        public ST2SelectionText: string = "",
         public ST3Number?: number,
-        public ST3Feelings: string[] = [],
+        public ST3Feelings: any = [],
         public ST3Speed?: number,
         public ST3Privacy?: number,
         public ST3PublicVindication?: number,
@@ -137,7 +137,7 @@ export class Participant {
         public ST3Classification?: string,
         public ST3StrengthPosition?: string,
         public ST3Selection?: string,
-        public ST3SelectionText?: string,
+        public ST3SelectionText: string = ""
     )
     {}
 }

@@ -47,7 +47,10 @@ export class MainComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    // this.step = this.stepDict['STORIES1_22'];
+    this.step = this.stepDict['CONGRATS_3'];
+    let tmp = this.svc.getItem('p', 'local');
+    if(tmp) { this.p = JSON.parse(tmp) } 
+
     while(!this.steps[this.step]['isVisible']) this.step++;
     const pId = this.svc.getItem('participant', 'session');
     pId? this.p.ProlificId = pId : 'unpaid';
@@ -71,6 +74,7 @@ export class MainComponent implements OnInit{
     this.step += 1;
     while (!this.steps[this.step]['isVisible']) this.step += 1;
     this.stepUpdateEvent.emit(this.step);
+    this.svc.saveProgress(this.p);
   }
 
   checkB12() {
@@ -168,5 +172,10 @@ export class MainComponent implements OnInit{
 
   OpenDialog(val: string) {
     this.dialog.open(DialogComponent, { data : { dialog : val }, 	maxHeight: '350px', maxWidth: '650px', position: { left:'50%', top: '30%'}  });
+  }
+
+  submit() {
+    this.p.SurveyEndTs = new Date();
+    this.svc.submitSurvey(this.p);
   }
 }

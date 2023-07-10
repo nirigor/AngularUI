@@ -22,7 +22,7 @@
 
             <div *ngIf="step == stepDict['BASIC_2'] && steps[step]['isVisible']" class="item">
                 <h2>Your <b>Age</b></h2>
-                <mat-radio-group class="radio-group-normal" [(ngModel)]="this.p.MaritalStatus" (ngModelChange)="nextClick();">
+                <mat-radio-group class="radio-group-normal" [(ngModel)]="this.p.Age" (ngModelChange)="nextClick();">
                     <mat-radio-button value="1">18 - 29</mat-radio-button>
                     <mat-radio-button value="2">30 - 39</mat-radio-button>
                     <mat-radio-button value="3">40 - 49</mat-radio-button>
@@ -2134,7 +2134,7 @@
                 <div class="icon-lg"><img src="assets/confetti.gif"></div>
                 <h3 style="font-size: 32px; font-weight: 400;">Congratulations</h3>
                 <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 40px;">You succesfully completed section 3/3</h3>
-                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> Go to results</button>
+                <button mat-raised-button color="primary" class="next-button" (click)="submit();"><i class="bi bi-arrow-right"></i> Submit & Go to results</button>
             </div>
         </div>
     </div>
