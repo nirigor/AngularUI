@@ -9,7 +9,7 @@ import { Participant } from './models/participant.model';
 })
 
 export class SharedService {
-  readonly APIUrl = 'http://127.0.0.1:8000/';
+  readonly APIUrl = 'http://127.0.0.1:8000';
   // readonly APIUrl = 'http://16.171.144.39/api';
 
   readonly BASIC = 12;
