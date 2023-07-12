@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Item } from './models/item.model';
 import { Participant } from './models/participant.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +9,7 @@ import { Participant } from './models/participant.model';
 
 export class SharedService {
   readonly APIUrl = 'http://127.0.0.1:8000';
-  // readonly APIUrl = 'http://16.171.144.39/api';
+  //readonly APIUrl = 'http://16.171.144.39/api';
 
   readonly BASIC = 12;
   readonly STYLES1 = 15;
@@ -22,8 +21,9 @@ export class SharedService {
 
   steps: Item[] = [];
   stepDict: {[name: string]: number} = {}
+  feedback: any;
 
-  constructor(private http:HttpClient) { }
+  constructor() { }
 
   initSteps(isPaid: boolean): [Item[], {[name: string]: number}] {
     if (this.steps.length != 0 && Object.keys(this.stepDict).length != 0) return [this.steps, this.stepDict]
@@ -93,29 +93,25 @@ export class SharedService {
     return [this.steps, this.stepDict];
   }
 
-  postSurvey(p: Participant): Observable<any> {
-    return this.http.post<any>(this.APIUrl, p);
-  }
+  async submitSurvey(p: Participant) {
+    let feedback:{[key: string]: any} = {};
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
 
-  submitSurvey(p: Participant) {
     p.ST1Feelings = JSON.stringify(p.ST1Feelings);
     p.ST2Feelings = JSON.stringify(p.ST2Feelings);
     p.ST3Feelings = JSON.stringify(p.ST3Feelings);
-    this.http.post<HttpResponse<any>>(this.APIUrl, p, { observe: 'response' })
-      .subscribe((response: HttpResponse<any>) => {
-        if (response.ok) {
-          console.log(response.body);
-        }
-      },
-      (err: HttpErrorResponse) => {
-        if (err.status === 451) {
-          console.error('Attention Verification failed');
-        }
-        if (err.status === 400) {
-          console.error(err);
-        }
-      },
-    );
+
+    let response = await fetch(this.APIUrl, {
+      "headers" : headers,
+      "body" : JSON.stringify(p),
+      "method" : "POST"
+    });
+
+    feedback['data'] = await response.json();
+    feedback['status'] = response.status;
+
+    return feedback;
   }
 
   saveProgress(p: Participant) {

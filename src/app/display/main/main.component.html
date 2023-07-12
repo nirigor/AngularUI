@@ -1,7 +1,7 @@
 <!-- Basic Info -->
 <div class="main-component">
     <div class="main-container">
-        <div class="container">
+        <div *ngIf="!isComplete" class="container">
             <div class="info">
                 <span><button color="primary" class="bold" mat-button (click)="backClick();">< Back</button></span>
                 <span *ngIf="step < stepDict['STORIES1_1']"><div class="circle bold">{{steps[step]['stepNumber']}}</div> / <b>{{steps[step]['phaseSteps']}}</b></span>
@@ -2137,7 +2137,14 @@
                 <button mat-raised-button color="primary" class="next-button" (click)="submit();"><i class="bi bi-arrow-right"></i> Submit & Go to results</button>
             </div>
         </div>
+        <div *ngIf="isComplete" class="container">
+            <div class="item">
+                <h2>Your personality and negotiation style results:</h2>
+                <p>{{feedback.getPersonality()}}</p>
+                <p>{{feedback.getNegotiationStyle()}}</p>
+                <mat-progress-bar color="primary" [value]="25"></mat-progress-bar>
+            </div>
+        </div>
     </div>
+    {{this.p | json}}
 </div>
-
-{{this.p | json}}

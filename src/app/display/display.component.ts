@@ -13,6 +13,7 @@ export class DisplayComponent implements OnInit {
   constructor(private route: ActivatedRoute, private svc: SharedService, private router: Router) { }
   step = 0;
   isPaid = false;
+  isComplete = false;
   termsAgreed = this.svc.getItem('termsAgreed', 'session');
   steps: Item[] = [];
   stepDict: {[name: string]: number} = {};

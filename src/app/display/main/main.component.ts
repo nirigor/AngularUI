@@ -3,7 +3,8 @@ import { SharedService } from 'src/app/shared.service';
 import { Participant } from 'src/app/models/participant.model';
 import { Router } from '@angular/router';
 import { Item } from 'src/app/models/item.model';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { Feedback } from 'src/app/models/feedback.model';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 
 interface MaritalStatuses {
@@ -19,12 +20,16 @@ interface MaritalStatuses {
 
 export class MainComponent implements OnInit{
   p: Participant = new Participant();
+  feedback: Feedback = new Feedback();
+
   @Input() step = 0;
   @Input() steps: Item[] = [];
+  @Input() isComplete: boolean = false;
   @Input() stepDict: {[name: string]: number} = {};
   
   @Output() stepUpdateEvent = new EventEmitter<number>();
   @Output() stepsUpdateEvent = new EventEmitter<Item[]>();
+  @Output() isCompleteUpdateEvent = new EventEmitter<boolean>();
 
   read: boolean = true;
 
@@ -47,7 +52,7 @@ export class MainComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.step = this.stepDict['CONGRATS_3'];
+    // this.step = this.stepDict['CONGRATS_3'];
     let tmp = this.svc.getItem('p', 'local');
     if(tmp) { this.p = JSON.parse(tmp) } 
 
@@ -174,8 +179,27 @@ export class MainComponent implements OnInit{
     this.dialog.open(DialogComponent, { data : { dialog : val }, 	maxHeight: '350px', maxWidth: '650px', position: { left:'50%', top: '30%'}  });
   }
 
-  submit() {
+  async submit() {
     this.p.SurveyEndTs = new Date();
-    this.svc.submitSurvey(this.p);
+    let response = await this.svc.submitSurvey(this.p);
+    let data = response['data'];
+    if (response['status'] === 200) {
+      this.feedback.BFAgreeablenessScore = data['BFAgreeablenessScore'];
+      this.feedback.BFConscientiousnessScore = data['BFConscientiousnessScore'];
+      this.feedback.BFExtraversionScore = data['BFExtraversionScore'];
+      this.feedback.BFNeuroticismScore = data['BFNeuroticismScore'];
+      this.feedback.BFOpennessScore = data['BFOpennessScore'];
+      this.feedback.TKAccommodatingScore = data['TKAccommodatingScore'];
+      this.feedback.TKAvoidingScore = data['TKAvoidingScore'];
+      this.feedback.TKCollaboratingScore = data['TKCollaboratingScore'];
+      this.feedback.TKCompetingScore = data['TKCompetingScore'];
+      this.feedback.TKCompromisingScore = data['TKCompromisingScore'];
+    } 
+    this.feedback.Message = data['Message'];
+    this.feedback.Valid = data['Valid'];
+    this.feedback.Token = data['Token'];
+    this.isComplete = true;
+    this.isCompleteUpdateEvent.emit(this.isComplete);
   }
+
 }

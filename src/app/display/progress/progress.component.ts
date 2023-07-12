@@ -11,6 +11,7 @@ import { Item } from 'src/app/models/item.model';
 export class ProgressComponent implements OnInit{
   @Input() step = 0;
   @Input() steps: Item[] = [];
+  @Input() isComplete = false;
 
   dict: { [name: string]: any } = {};
   

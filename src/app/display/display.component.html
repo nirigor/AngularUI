@@ -1,6 +1,11 @@
 <div class="container">
-    <app-progress [step]="step" [steps]="steps"></app-progress>
+    <app-progress
+        [isComplete]="isComplete" 
+        [step]="step" 
+        [steps]="steps">
+    </app-progress>
     <app-main 
+        [isComplete]="isComplete"
         [step]="step" 
         [steps]="steps" 
         [stepDict]="stepDict" 
