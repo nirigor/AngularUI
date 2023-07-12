@@ -31,8 +31,13 @@ export class SharedService {
     let tmp = 0;
     
     // BASIC
-    for (let i = 1;  i <= this.BASIC + 9; i++) {
+    for (let i = 1;  i < this.BASIC; i++) {
       tmp = this.steps.push(new Item(i, this.BASIC, 'BASIC', false, true));
+      this.stepDict[`BASIC_${i}`] = tmp - 1;
+    }
+
+    for (let i = this.BASIC;  i <= this.BASIC + 9; i++) {
+      tmp = this.steps.push(new Item(this.BASIC, this.BASIC, 'BASIC', false, true));
       this.stepDict[`BASIC_${i}`] = tmp - 1;
     }
 
@@ -114,8 +119,10 @@ export class SharedService {
     return feedback;
   }
 
-  saveProgress(p: Participant) {
-    this.setItem('p', JSON.stringify(p), 'local');
+  saveProgress(p: Participant, steps: Item[], step: number) {
+    this.setItem('p', JSON.stringify(p), 'session');
+    this.setItem('steps', JSON.stringify(steps), 'session');
+    this.setItem('step', JSON.stringify(step), 'session');
   }
 
   setItem(key: string, value: string, type: string){

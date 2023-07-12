@@ -52,16 +52,22 @@ export class MainComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    // this.step = this.stepDict['CONGRATS_3'];
-    let tmp = this.svc.getItem('p', 'local');
-    if(tmp) { this.p = JSON.parse(tmp) } 
-
-    while(!this.steps[this.step]['isVisible']) this.step++;
-    const pId = this.svc.getItem('participant', 'session');
-    pId? this.p.ProlificId = pId : 'unpaid';
-    this.p.SurveyStartTs = new Date();
-    [ this.p.ST1Number, this.p.ST2Number, this.p.ST3Number ] = this.svc.getCases();
-        
+    let tmpP = this.svc.getItem('p', 'session');
+    let tmpS = this.svc.getItem('steps', 'session');
+    let tmp = this.svc.getItem('step', 'session');
+  
+    if (tmp) { this.step = JSON.parse(tmp); }
+    if (tmpS) { this.steps = JSON.parse(tmpS); }
+    if (tmpP) { 
+      this.p = JSON.parse(tmpP); 
+    } else {
+      const pId = this.svc.getItem('participant', 'session');
+      pId? this.p.ProlificId = pId : 'unpaid';
+      this.p.SurveyStartTs = new Date();
+      [ this.p.ST1Number, this.p.ST2Number, this.p.ST3Number ] = this.svc.getCases();
+    }
+    while(!this.steps[this.step]['isVisible']) this.step++;   
+    //this.step = this.stepDict['CONGRATS_1'];
   }
 
   stringToBool(str: any): boolean {
@@ -79,7 +85,7 @@ export class MainComponent implements OnInit{
     this.step += 1;
     while (!this.steps[this.step]['isVisible']) this.step += 1;
     this.stepUpdateEvent.emit(this.step);
-    this.svc.saveProgress(this.p);
+    this.svc.saveProgress(this.p, this.steps, this.step);
   }
 
   checkB12() {
@@ -154,7 +160,7 @@ export class MainComponent implements OnInit{
   }
 
   backClick() {
-    if (this.steps[this.step]['stepNumber'] == 1) this.router.navigateByUrl('');
+    if ((this.p.ProlificId == 'unpaid' && this.step == 0) || (this.p.ProlificId != 'unpaid' && this.step == 2)) this.router.navigateByUrl('');
     this.step -= 1;
     if (this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) this.read = true;
     while (!this.steps[this.step]['isVisible']) this.step -= 1;
