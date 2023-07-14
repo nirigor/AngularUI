@@ -15,12 +15,17 @@ interface MaritalStatuses {
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css',
+              './main.component.complete.css']
 })
 
 export class MainComponent implements OnInit{
   p: Participant = new Participant();
   feedback: Feedback = new Feedback();
+
+  S1: string = "";
+  S2: string = "";
+  S3: string = "";
 
   @Input() step = 0;
   @Input() steps: Item[] = [];
@@ -41,6 +46,16 @@ export class MainComponent implements OnInit{
     {value: 'WI', viewValue: 'Widowed'},
   ];
 
+  Opts: {[key: string]: string|null} = {
+    "AD" : "Adjudication",
+    "AR" : "Arbitration",
+    "ME" : "Mediation",
+    "NE" : "Negotiation",
+    "LG" : "Let go",
+    "PC" : "Public Complaint",
+    "" : ""
+  }
+
   constructor(
     private svc: SharedService,
     private router: Router,
@@ -56,18 +71,26 @@ export class MainComponent implements OnInit{
     let tmpS = this.svc.getItem('steps', 'session');
     let tmp = this.svc.getItem('step', 'session');
   
-    if (tmp) { this.step = JSON.parse(tmp); }
+    if (tmp) { 
+      this.step = JSON.parse(tmp); 
+    }
     if (tmpS) { this.steps = JSON.parse(tmpS); }
     if (tmpP) { 
       this.p = JSON.parse(tmpP); 
+      this.S1 = `[S${this.p.ST1Number}]`;
+      this.S2 = `[S${this.p.ST2Number}]`;
+      this.S3 = `[S${this.p.ST3Number}]`;
     } else {
       const pId = this.svc.getItem('participant', 'session');
       pId? this.p.ProlificId = pId : 'unpaid';
       this.p.SurveyStartTs = new Date();
       [ this.p.ST1Number, this.p.ST2Number, this.p.ST3Number ] = this.svc.getCases();
+      this.S1 = `[S${this.p.ST1Number}]`;
+      this.S2 = `[S${this.p.ST2Number}]`;
+      this.S3 = `[S${this.p.ST3Number}]`;
     }
     while(!this.steps[this.step]['isVisible']) this.step++;   
-    //this.step = this.stepDict['CONGRATS_1'];
+    //this.step = this.stepDict['BASIC_21'];
   }
 
   stringToBool(str: any): boolean {
@@ -160,11 +183,15 @@ export class MainComponent implements OnInit{
   }
 
   backClick() {
-    if ((this.p.ProlificId == 'unpaid' && this.step == 0) || (this.p.ProlificId != 'unpaid' && this.step == 2)) this.router.navigateByUrl('');
-    this.step -= 1;
-    if (this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) this.read = true;
-    while (!this.steps[this.step]['isVisible']) this.step -= 1;
-    this.stepUpdateEvent.emit(this.step);
+    if ((this.p.ProlificId == 'unpaid' && this.step == 0) || (this.p.ProlificId != 'unpaid' && this.step == 2)) {
+      this.router.navigateByUrl('');
+    } else {
+      if (this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) this.read = true;
+      this.step -= 1;
+      while (!this.steps[this.step]['isVisible']) this.step -= 1;
+      this.stepUpdateEvent.emit(this.step);
+    }
+    this.svc.saveProgress(this.p, this.steps, this.step);
   }
 
   readText() {

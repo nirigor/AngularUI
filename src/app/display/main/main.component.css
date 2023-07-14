@@ -46,6 +46,10 @@ mat-form-field {
     color: rgb(58, 134, 180);
 }
 
+.mat-mdc-form-field-textarea-control {
+    min-height: 200px !important;
+}
+
 .icon > mat-icon {
     height: 50px !important;
     width: 50px !important;

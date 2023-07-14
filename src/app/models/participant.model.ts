@@ -92,7 +92,7 @@ export class Participant {
         public ST1RecognitionApology?: number,
         public ST1Classification?: string,
         public ST1StrengthPosition?: string,
-        public ST1Selection?: string,
+        public ST1Selection: string = "",
         public ST1SelectionText: string = "",
         public ST2Number?: number,
         public ST2Feelings: any = [],
@@ -114,7 +114,7 @@ export class Participant {
         public ST2RecognitionApology?: number,
         public ST2Classification?: string,
         public ST2StrengthPosition?: string,
-        public ST2Selection?: string,
+        public ST2Selection: string = "",
         public ST2SelectionText: string = "",
         public ST3Number?: number,
         public ST3Feelings: any = [],
@@ -136,7 +136,7 @@ export class Participant {
         public ST3RecognitionApology?: number,
         public ST3Classification?: string,
         public ST3StrengthPosition?: string,
-        public ST3Selection?: string,
+        public ST3Selection: string = "",
         public ST3SelectionText: string = ""
     )
     {}
