@@ -3,7 +3,7 @@
         <img class="logo" src="assets/logo.png"> 
     </div>
 
-    <div class="prog-cont">
+    <div *ngIf="!isComplete" class="prog-cont">
         <!-- Basic -->
         <span style="grid-area: basicTitlePre;"><hr></span>
         <div class="progress-title" style="grid-area: basicTitle;">Basic</div>
@@ -58,8 +58,12 @@
         </div>
         <span *ngIf="this.dict['storiesVisible4']" class="step stories4" [style.--storiesProgress4]="this.dict['storiesPercentStep4']" style="grid-area: storiesStep4;">Story 3</span>
     </div>
-
+    <div *ngIf="isComplete" class="center">
+        <div class="circle"><i class="bi bi-check"></i></div>
+        <div><h3>You are done!</h3></div>
+    </div>
     <div class="filler">
     </div>
+
 </div>
 

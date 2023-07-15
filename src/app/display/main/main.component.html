@@ -1283,12 +1283,12 @@
                 <h2 style="margin-bottom: 0px;">Taking into account your specified priorities, if you were the person in the story above, with which option would you be most satisfied with?</h2>
                 <p style="margin-bottom: 60px;"></p>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1Selection" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="AD"><div class="icon"><mat-icon svgIcon="adjudication"></mat-icon></div><div>Adjudication</div><i (mouseover)="OpenDialog('Adjudication');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="AR"><div class="icon"><mat-icon svgIcon="arbitration"></mat-icon></div><div>Arbitration</div><i (mouseover)="OpenDialog('Arbitration');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="ME"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><div>Mediation</div><i (mouseover)="OpenDialog('Mediation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="NE"><div class="icon"><mat-icon svgIcon="negotiation"></mat-icon></div><div>Negotiation</div><i (mouseover)="OpenDialog('Negotiation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="LG"><div class="icon"><mat-icon svgIcon="waives"></mat-icon></div><div>Let go</div><i (mouseover)="OpenDialog('Let go');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="PC"><div class="icon"><mat-icon svgIcon="publiccomplaint"></mat-icon></div><div>Public Complaint</div><i (mouseover)="OpenDialog('Public Complaint');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="AD"><div class="icon"><mat-icon svgIcon="adjudication"></mat-icon></div><div>Adjudication</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Adjudication');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="AR"><div class="icon"><mat-icon svgIcon="arbitration"></mat-icon></div><div>Arbitration</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Arbitration');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="ME"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><div>Mediation</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Mediation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="NE"><div class="icon"><mat-icon svgIcon="negotiation"></mat-icon></div><div>Negotiation</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Negotiation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="LG"><div class="icon"><mat-icon svgIcon="waives"></mat-icon></div><div>Let go</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Let go');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="PC"><div class="icon"><mat-icon svgIcon="publiccomplaint"></mat-icon></div><div>Public Complaint</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Public Complaint');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
@@ -1650,12 +1650,12 @@
                 <h2 style="margin-bottom: 0px;">Taking into account your specified priorities, if you were the person in the story above, with which option would you be most satisfied with?</h2>
                 <p style="margin-bottom: 60px;"></p>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST2Selection" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="AD"><div class="icon"><mat-icon svgIcon="adjudication"></mat-icon></div><div>Adjudication</div><i (mouseover)="OpenDialog('Adjudication');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="AR"><div class="icon"><mat-icon svgIcon="arbitration"></mat-icon></div><div>Arbitration</div><i (mouseover)="OpenDialog('Arbitration');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="ME"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><div>Mediation</div><i (mouseover)="OpenDialog('Mediation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="NE"><div class="icon"><mat-icon svgIcon="negotiation"></mat-icon></div><div>Negotiation</div><i (mouseover)="OpenDialog('Negotiation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="LG"><div class="icon"><mat-icon svgIcon="waives"></mat-icon></div><div>Let go</div><i (mouseover)="OpenDialog('Let go');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="PC"><div class="icon"><mat-icon svgIcon="publiccomplaint"></mat-icon></div><div>Public Complaint</div><i (mouseover)="OpenDialog('Public Complaint');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="AD"><div class="icon"><mat-icon svgIcon="adjudication"></mat-icon></div><div>Adjudication</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Adjudication');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="AR"><div class="icon"><mat-icon svgIcon="arbitration"></mat-icon></div><div>Arbitration</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Arbitration');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="ME"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><div>Mediation</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Mediation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="NE"><div class="icon"><mat-icon svgIcon="negotiation"></mat-icon></div><div>Negotiation</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Negotiation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="LG"><div class="icon"><mat-icon svgIcon="waives"></mat-icon></div><div>Let go</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Let go');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="PC"><div class="icon"><mat-icon svgIcon="publiccomplaint"></mat-icon></div><div>Public Complaint</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Public Complaint');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
@@ -2017,12 +2017,12 @@
                 <h2 style="margin-bottom: 0px;">Taking into account your specified priorities, if you were the person in the story above, with which option would you be most satisfied with?</h2>
                 <p style="margin-bottom: 60px;"></p>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST3Selection" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="AD"><div class="icon"><mat-icon svgIcon="adjudication"></mat-icon></div><div>Adjudication</div><i (mouseover)="OpenDialog('Adjudication');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="AR"><div class="icon"><mat-icon svgIcon="arbitration"></mat-icon></div><div>Arbitration</div><i (mouseover)="OpenDialog('Arbitration');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="ME"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><div>Mediation</div><i (mouseover)="OpenDialog('Mediation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="NE"><div class="icon"><mat-icon svgIcon="negotiation"></mat-icon></div><div>Negotiation</div><i (mouseover)="OpenDialog('Negotiation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="LG"><div class="icon"><mat-icon svgIcon="waives"></mat-icon></div><div>Let go</div><i (mouseover)="OpenDialog('Let go');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
-                    <mat-button-toggle value="PC"><div class="icon"><mat-icon svgIcon="publiccomplaint"></mat-icon></div><div>Public Complaint</div><i (mouseover)="OpenDialog('Public Complaint');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="AD"><div class="icon"><mat-icon svgIcon="adjudication"></mat-icon></div><div>Adjudication</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Adjudication');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="AR"><div class="icon"><mat-icon svgIcon="arbitration"></mat-icon></div><div>Arbitration</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Arbitration');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="ME"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><div>Mediation</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Mediation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="NE"><div class="icon"><mat-icon svgIcon="negotiation"></mat-icon></div><div>Negotiation</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Negotiation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="LG"><div class="icon"><mat-icon svgIcon="waives"></mat-icon></div><div>Let go</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Let go');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="PC"><div class="icon"><mat-icon svgIcon="publiccomplaint"></mat-icon></div><div>Public Complaint</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Public Complaint');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
@@ -2054,47 +2054,47 @@
                     <div style="grid-area: big_five;" class="styles">
                         <h4>Your personality characteristic:</h4>
                         <div class="style_item">
-                            <div class="style_header"><span>25%</span><span class="style">Openness</span></div>
-                            <mat-progress-bar color="primary" [value]="25"></mat-progress-bar>
+                            <div class="style_header"><span>{{feedback.getPercent("Openness")}}%</span><span class="style">Openness</span></div>
+                            <mat-progress-bar color="primary" [value]='feedback.getPercent("Openness")'></mat-progress-bar>
                         </div>
                         <div class="style_item">
-                            <div class="style_header"><span>25%</span><span class="style">Agreeableness</span></div>
-                            <mat-progress-bar color="primary" [value]="25"></mat-progress-bar>
+                            <div class="style_header"><span>{{feedback.getPercent("Agreeableness")}}%</span><span class="style">Agreeableness</span></div>
+                            <mat-progress-bar color="primary" [value]='feedback.getPercent("Agreeableness")'></mat-progress-bar>
                         </div>
                         <div class="style_item">
-                            <div class="style_header"><span>25%</span><span class="style">Extraversion</span></div>
-                            <mat-progress-bar color="primary" [value]="25"></mat-progress-bar>
+                            <div class="style_header"><span>{{feedback.getPercent("Extraversion")}}%</span><span class="style">Extraversion</span></div>
+                            <mat-progress-bar color="primary" [value]='feedback.getPercent("Extraversion")'></mat-progress-bar>
                         </div>
                         <div class="style_item">
-                            <div class="style_header"><span>25%</span><span class="style">Conscientiousness</span></div>
-                            <mat-progress-bar color="primary" [value]="25"></mat-progress-bar>
+                            <div class="style_header"><span>{{feedback.getPercent("Conscientiousness")}}%</span><span class="style">Conscientiousness</span></div>
+                            <mat-progress-bar color="primary" [value]='feedback.getPercent("Conscientiousness")'></mat-progress-bar>
                         </div>
                         <div class="style_item">
-                            <div class="style_header"><span>25%</span><span class="style">Neuroticism</span></div>
-                            <mat-progress-bar color="primary" [value]="25"></mat-progress-bar>
+                            <div class="style_header"><span>{{feedback.getPercent("Neuroticism")}}%</span><span class="style">Neuroticism</span></div>
+                            <mat-progress-bar color="primary" [value]='feedback.getPercent("Neuroticism")'></mat-progress-bar>
                         </div>
                     </div>
                     <div style="grid-area: tk;" class="styles">
                         <h4>Your negotiation style:</h4>
                         <div class="style_item">
-                            <div class="style_header"><span>25%</span><span class="style">Accommodating</span></div>
-                            <mat-progress-bar color="primary" [value]="25"></mat-progress-bar>
+                            <div class="style_header"><span>{{feedback.getPercent("Accommodating")}}%</span><span class="style">Accommodating</span></div>
+                            <mat-progress-bar color="primary" [value]='feedback.getPercent("Accommodating")'></mat-progress-bar>
                         </div>
                         <div class="style_item">
-                            <div class="style_header"><span>25%</span><span class="style">Competing</span></div>
-                            <mat-progress-bar color="primary" [value]="25"></mat-progress-bar>
+                            <div class="style_header"><span>{{feedback.getPercent("Competing")}}%</span><span class="style">Competing</span></div>
+                            <mat-progress-bar color="primary" [value]='feedback.getPercent("Competing")'></mat-progress-bar>
                         </div>
                         <div class="style_item">
-                            <div class="style_header"><span>25%</span><span class="style">Avoiding</span></div>
-                            <mat-progress-bar color="primary" [value]="25"></mat-progress-bar>
+                            <div class="style_header"><span>{{feedback.getPercent("Avoiding")}}%</span><span class="style">Avoiding</span></div>
+                            <mat-progress-bar color="primary" [value]='feedback.getPercent("Avoiding")'></mat-progress-bar>
                         </div>
                         <div class="style_item">
-                            <div class="style_header"><span>25%</span><span class="style">Compromising</span></div>
-                            <mat-progress-bar color="primary" [value]="25"></mat-progress-bar>
+                            <div class="style_header"><span>{{feedback.getPercent("Compromising")}}%</span><span class="style">Compromising</span></div>
+                            <mat-progress-bar color="primary" [value]='feedback.getPercent("Compromising")'></mat-progress-bar>
                         </div>
                         <div class="style_item">
-                            <div class="style_header"><span>25%</span><span class="style">Collaborating</span></div>
-                            <mat-progress-bar color="primary" [value]="25"></mat-progress-bar>
+                            <div class="style_header"><span>{{feedback.getPercent("Collaborating")}}%</span><span class="style">Collaborating</span></div>
+                            <mat-progress-bar color="primary" [value]='feedback.getPercent("Collaborating")'></mat-progress-bar>
                         </div>
                     </div>  
                 </div>

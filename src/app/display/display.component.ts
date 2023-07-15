@@ -14,7 +14,7 @@ export class DisplayComponent implements OnInit {
   step = 0;
   isPaid = false;
   isComplete = false;
-  termsAgreed = this.svc.getItem('termsAgreed', 'session');
+  termsAgreed = this.svc.getItem('termsAgreed', this.svc.PROGRESS_LOCATION);
   steps: Item[] = [];
   stepDict: {[name: string]: number} = {};
 
@@ -27,11 +27,13 @@ export class DisplayComponent implements OnInit {
   }
   
   ngOnInit() {
+    //this.svc.loadMockData();
+    
     if (!this.termsAgreed.state) {
-      this.router.navigate(['', {'back' : true}]);
+      this.router.navigateByUrl('');
     }
 
-    if (this.svc.getItem('participant', 'session').value == 'unpaid') { 
+    if (this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).value == 'unpaid') { 
       this.isPaid = false;
     } else { this.isPaid = true; this.step = 2; };
     

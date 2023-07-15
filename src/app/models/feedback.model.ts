@@ -41,4 +41,19 @@ export class Feedback {
         if (plist.length == 2) return `${plist[0]} and ${plist[1]}`
         return `${plist.slice(0, -1).join(', ')} and ${plist.pop()}`
     }
+
+    getPercent(item: string) {
+        let TK_QUESTIONS = 30;
+        if (item == 'Agreeableness') return Math.floor(this.BFAgreeablenessScore * 20);
+        if (item == 'Openness') return Math.floor(this.BFOpennessScore * 20);
+        if (item == 'Extraversion') return Math.floor(this.BFExtraversionScore * 20);
+        if (item == 'Conscientiousness') return Math.floor(this.BFConscientiousnessScore * 20);
+        if (item == 'Neuroticism') return Math.floor(this.BFNeuroticismScore * 20);
+        if (item == 'Accommodating') return Math.floor(this.TKAccommodatingScore / TK_QUESTIONS * 100);
+        if (item == 'Competing') return Math.floor(this.TKCompetingScore / TK_QUESTIONS * 100);
+        if (item == 'Avoiding') return Math.floor(this.TKAvoidingScore / TK_QUESTIONS * 100);
+        if (item == 'Compromising') return Math.floor(this.TKCompromisingScore / TK_QUESTIONS * 100);
+        if (item == 'Collaborating') return Math.floor(this.TKCollaboratingScore / TK_QUESTIONS * 100);
+        return 0;
+    }
 }

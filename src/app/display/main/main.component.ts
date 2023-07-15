@@ -1,16 +1,24 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Inject, AfterViewInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { Participant } from 'src/app/models/participant.model';
 import { Router } from '@angular/router';
 import { Item } from 'src/app/models/item.model';
 import { Feedback } from 'src/app/models/feedback.model';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from './dialog/dialog.component';
+import { NgIf } from '@angular/common';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import EasySpeech from 'easy-speech';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 interface MaritalStatuses {
   value: string;
   viewValue: string;
+}
+
+export interface DialogData {
+  dialog: string;
 }
 
 @Component({
@@ -21,7 +29,6 @@ interface MaritalStatuses {
 })
 
 export class MainComponent implements OnInit{
-  PROGRESS_LOCATION = 'session';
   p: Participant = new Participant();
   feedback: Feedback = new Feedback();
   story? = 0; // Story number for child comp.
@@ -58,7 +65,7 @@ export class MainComponent implements OnInit{
   constructor(
     private svc: SharedService,
     private router: Router,
-    private dialog: MatDialog
+    public dialog: MatDialog
   ) {}
 
   delay(ms: number) {
@@ -66,7 +73,7 @@ export class MainComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    let prog_dict = this.svc.getProgress(this.PROGRESS_LOCATION);
+    let prog_dict = this.svc.getProgress();
     
     if (prog_dict.step.state) this.step = JSON.parse(prog_dict.step.value);
     if (prog_dict.steps.state) this.steps = JSON.parse(prog_dict.steps.value);
@@ -76,8 +83,8 @@ export class MainComponent implements OnInit{
       this.p = Object.assign(new Participant, JSON.parse(prog_dict.p.value));
     } else {
       this.p.ProlificId = 'unpaid';
-      if(this.svc.getItem('participant', this.PROGRESS_LOCATION).state) this.p.ProlificId = this.svc.getItem('participant', this.PROGRESS_LOCATION).value;
-      if(this.p.ProlificId != 'unpaid') {this.p.Age = "unpaid"; this.p.Gender = "unpaid"}
+      if(this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).state) this.p.ProlificId = this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).value;
+      if(this.p.ProlificId == 'unpaid') {this.p.Age = "unpaid"; this.p.Gender = "unpaid"}
       this.p.SurveyStartTs = new Date();
       [ this.p.ST1Number, this.p.ST2Number, this.p.ST3Number ] = this.svc.getCases();
     }
@@ -103,7 +110,7 @@ export class MainComponent implements OnInit{
     this.step += 1;
     while (!this.steps[this.step]['isVisible']) this.step += 1;
     this.stepUpdateEvent.emit(this.step);
-    this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read, this.PROGRESS_LOCATION);
+    this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read);
   }
 
   checkB12() {
@@ -187,11 +194,15 @@ export class MainComponent implements OnInit{
       if (this.step == this.stepDict['STORIES1_23'] || this.step == this.stepDict['STORIES2_23'] || this.step == this.stepDict['STORIES3_23']) this.read = false;
       this.stepUpdateEvent.emit(this.step);
     }
-    this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read, this.PROGRESS_LOCATION);
+    this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read);
   }
 
-  OpenDialog(val: string) {
-    this.dialog.open(DialogComponent, { data : { dialog : val }, 	maxHeight: '350px', maxWidth: '650px', position: { left:'50%', top: '30%'}  });
+  OpenDialog(val: string): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      data: { dialog : val },
+    });
+
+    //this.dialog.open(DialogComponent, { data : { dialog : val }, 	maxHeight: '350px', maxWidth: '650px', position: { left:'50%', top: '30%'}  });
   }
 
   async submit() {
@@ -214,9 +225,30 @@ export class MainComponent implements OnInit{
     this.feedback.Valid = data['Valid'];
     this.feedback.Token = data['Token'];
     this.isComplete = true;
-    this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read, this.PROGRESS_LOCATION);
+    this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read);
     this.isCompleteUpdateEvent.emit(this.isComplete);
     this.nextClick();
   }
 
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: './dialog.html',
+  styleUrls: ['./dialog.css'],
+  standalone: true,
+  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, NgIf],
+})
+export class DialogOverviewExampleDialog implements OnInit, AfterViewInit{
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+  ) {}
+
+  ngOnInit(): void {}
+  ngAfterViewInit() {}
+  
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

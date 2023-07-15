@@ -110,3 +110,20 @@ hr {
 .stories4 {
     transform: translateY(var(--storiesProgress4));
 }
+
+.circle {
+    background-color: var(--md-foreground);
+    color: var(--primary-purple);
+    border-radius: 100px;
+    font-size: 28px;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

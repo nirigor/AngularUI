@@ -21,6 +21,8 @@ export class SharedService {
   readonly STORIES3 = 23;
   readonly COMPLETE = 2;
 
+  readonly PROGRESS_LOCATION = 'session';
+
   steps: Item[] = [];
   stepDict: {[name: string]: number} = {}
   feedback: any;
@@ -126,23 +128,45 @@ export class SharedService {
     return feedback;
   }
 
-  saveProgress(p: Participant, steps: Item[], step: number, isComplete: boolean, feedback: Feedback, read: boolean, location: string) {
-    this.setItem('p', JSON.stringify(p), location);
-    this.setItem('steps', JSON.stringify(steps), location);
-    this.setItem('step', JSON.stringify(step), location);
-    this.setItem('isComplete', JSON.stringify(isComplete), location);
-    this.setItem('feedback', JSON.stringify(feedback), location);
-    this.setItem('read', JSON.stringify(read), location);
+  async loadMockData() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let response = await fetch(this.APIUrl, {
+      "headers" : headers,
+      "method" : "GET"
+    });
+    let jsonObjs = await response.json();
+    console.log(jsonObjs[0]);
+    let p = Object.assign(new Participant, jsonObjs[0]);
+    p.pop('BFAgreeablenessScore');
+    p.pop('BFConscientiousnessScore');
+    p.pop('BFExtraversionScore');
+    p.pop('BFNeuroticismScore');
+    p.pop('BFOpennessScore');
+    p.pop('BFConscientiousnessScore');
+    p.pop('BFAgreeablenessScore');
+    p.pop('BFConscientiousnessScore');
+    
+    return p;
   }
 
-  getProgress(location: string){
+  saveProgress(p: Participant, steps: Item[], step: number, isComplete: boolean, feedback: Feedback, read: boolean) {
+    this.setItem('p', JSON.stringify(p), this.PROGRESS_LOCATION);
+    this.setItem('steps', JSON.stringify(steps), this.PROGRESS_LOCATION);
+    this.setItem('step', JSON.stringify(step), this.PROGRESS_LOCATION);
+    this.setItem('isComplete', JSON.stringify(isComplete), this.PROGRESS_LOCATION);
+    this.setItem('feedback', JSON.stringify(feedback), this.PROGRESS_LOCATION);
+    this.setItem('read', JSON.stringify(read), this.PROGRESS_LOCATION);
+  }
+
+  getProgress(){
     return {
-      p: this.getItem('p', location),
-      step: this.getItem('step', location),
-      steps: this.getItem('steps', location),
-      isComplete: this.getItem('isComplete', location),
-      feedback: this.getItem('feedback', location),
-      read: this.getItem('read', location)
+      p: this.getItem('p', this.PROGRESS_LOCATION),
+      step: this.getItem('step', this.PROGRESS_LOCATION),
+      steps: this.getItem('steps', this.PROGRESS_LOCATION),
+      isComplete: this.getItem('isComplete', this.PROGRESS_LOCATION),
+      feedback: this.getItem('feedback', this.PROGRESS_LOCATION),
+      read: this.getItem('read', this.PROGRESS_LOCATION)
     }
   }
 
@@ -188,4 +212,5 @@ export class SharedService {
     }
     return [n1, n2, n3];
   }
+
 }

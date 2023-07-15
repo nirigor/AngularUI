@@ -13,16 +13,12 @@ export class IntroComponent implements OnInit {
   step = 1;
   termsAgreed:any = false;
   ngOnInit(): void {
-    this.termsAgreed = this.svc.getItem('termsAgreed', 'session').value;
-    if (this.termsAgreed.state) { this.termsAgreed = this.svc.getItem('termsAgreed', 'session').value; this.step = 2; }
-    
+    if (this.svc.getItem('termsAgreed', this.svc.PROGRESS_LOCATION).state) { this.termsAgreed = this.svc.getItem('termsAgreed', this.svc.PROGRESS_LOCATION).value; this.step = 2; }
+    this.svc.setItem('participant', 'unpaid', this.svc.PROGRESS_LOCATION);
+
     this.route.queryParams
-      .subscribe(params => {
-        if ('participant' in params) {
-          this.svc.setItem('participant', params['participant'], 'session');
-        } else {
-          this.svc.setItem('participant', 'unpaid', 'session');
-        }
+      .subscribe((params) => {
+        if ('participant' in params) this.svc.setItem('participant', params['participant'], this.svc.PROGRESS_LOCATION);
       });
   }
   
@@ -35,7 +31,7 @@ export class IntroComponent implements OnInit {
   }
 
   startSurvey(): void {
-    this.svc.setItem('termsAgreed', 'true', 'session');
+    this.svc.setItem('termsAgreed', 'true', this.svc.PROGRESS_LOCATION);
     this.router.navigateByUrl('survey');
   }
 }

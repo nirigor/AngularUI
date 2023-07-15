@@ -41,8 +41,14 @@ html, body {
   font-family: "Poppins", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji" !important;
 }
 
-mat-dialog-container {
-  position: fixed !important;
+.mat-mdc-dialog-container {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  height: unset !important;
+  width: unset !important;
 }
 
 /* width */
