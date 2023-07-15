@@ -14,7 +14,7 @@ export class SharedService {
   readonly BASIC = 12;
   readonly STYLES1 = 15;
   readonly STYLES2 = 30;
-  readonly INTRO = 6;
+  readonly INTRO = 7;
   readonly STORIES1 = 23;
   readonly STORIES2 = 23;
   readonly STORIES3 = 23;
@@ -156,9 +156,9 @@ export class SharedService {
   getCases() {
     let n1, n2, n3 = 0;
     while ((n1 == n2) || (n1 == n3) || (n2 == n3)) {
-      n1 = this.getRandomNumber(1, 50);
-      n2 = this.getRandomNumber(1, 50);
-      n3 = this.getRandomNumber(1, 50);
+      n1 = this.getRandomNumber(1, 10);
+      n2 = this.getRandomNumber(1, 10);
+      n3 = this.getRandomNumber(1, 10);
     }
     return [n1, n2, n3];
   }

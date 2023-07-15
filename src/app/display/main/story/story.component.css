@@ -1,0 +1,14 @@
+.story-h {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.story {
+    margin-bottom: 40px;
+}
+
+.mat-mdc-outlined-button {
+    border-radius: 100px;
+    height: 40px;
+}

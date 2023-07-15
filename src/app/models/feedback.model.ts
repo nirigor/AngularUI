@@ -39,6 +39,6 @@ export class Feedback {
         if (this.TKCollaboratingScore = max) plist.push('Collaborating');
         if (plist.length == 1) return `Your predominant negotiation style is ${plist[0]}`
         if (plist.length == 2) return `Your predominant negotiation styles is ${plist[0]} and ${plist[1]}`
-        return `Your predominant pnegotiation styles is ${plist.slice(0, -1).join(', ')} and ${plist.pop()}`
+        return `Your predominant negotiation styles is ${plist.slice(0, -1).join(', ')} and ${plist.pop()}`
     }
 }

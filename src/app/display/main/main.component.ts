@@ -6,6 +6,7 @@ import { Item } from 'src/app/models/item.model';
 import { Feedback } from 'src/app/models/feedback.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
+import EasySpeech from 'easy-speech';
 
 interface MaritalStatuses {
   value: string;
@@ -22,11 +23,7 @@ interface MaritalStatuses {
 export class MainComponent implements OnInit{
   p: Participant = new Participant();
   feedback: Feedback = new Feedback();
-
-  S1: string = "";
-  S2: string = "";
-  S3: string = "";
-
+  story? = 0;
   @Input() step = 0;
   @Input() steps: Item[] = [];
   @Input() isComplete: boolean = false;
@@ -77,17 +74,11 @@ export class MainComponent implements OnInit{
     if (tmpS) { this.steps = JSON.parse(tmpS); }
     if (tmpP) { 
       this.p = JSON.parse(tmpP); 
-      this.S1 = `[S${this.p.ST1Number}]`;
-      this.S2 = `[S${this.p.ST2Number}]`;
-      this.S3 = `[S${this.p.ST3Number}]`;
     } else {
       const pId = this.svc.getItem('participant', 'session');
       pId? this.p.ProlificId = pId : 'unpaid';
       this.p.SurveyStartTs = new Date();
       [ this.p.ST1Number, this.p.ST2Number, this.p.ST3Number ] = this.svc.getCases();
-      this.S1 = `[S${this.p.ST1Number}]`;
-      this.S2 = `[S${this.p.ST2Number}]`;
-      this.S3 = `[S${this.p.ST3Number}]`;
     }
     while(!this.steps[this.step]['isVisible']) this.step++;   
     //this.step = this.stepDict['BASIC_21'];
@@ -103,7 +94,10 @@ export class MainComponent implements OnInit{
     if (this.step == this.stepDict['BASIC_13']) this.checkB13();
     if (this.step == this.stepDict['BASIC_16']) this.checkB16();
     if (this.step == this.stepDict['BASIC_19']) this.checkB19();
-    if (this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) this.read = false;
+    if (this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) {
+      this.read = false;
+      if (EasySpeech.status()['initialized']) EasySpeech.cancel();
+    }
     this.steps[this.step]['showNext'] = true;
     this.step += 1;
     while (!this.steps[this.step]['isVisible']) this.step += 1;
@@ -186,26 +180,12 @@ export class MainComponent implements OnInit{
     if ((this.p.ProlificId == 'unpaid' && this.step == 0) || (this.p.ProlificId != 'unpaid' && this.step == 2)) {
       this.router.navigateByUrl('');
     } else {
-      if (this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) this.read = true;
       this.step -= 1;
       while (!this.steps[this.step]['isVisible']) this.step -= 1;
+      if (this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) this.read = true;
       this.stepUpdateEvent.emit(this.step);
     }
     this.svc.saveProgress(this.p, this.steps, this.step);
-  }
-
-  readText() {
-    var synth = window.speechSynthesis;
-    var voices = synth.getVoices();
-    if(synth.speaking) { synth.pause } else { synth.resume }
-    const paragraphs = Array.from(document.querySelectorAll('#str1 p, #str1 h2'));
-    paragraphs.forEach((p) => {
-      let uts = new SpeechSynthesisUtterance(p.innerHTML);
-      uts.volume = 1;
-      uts.rate = 1;
-      uts.pitch = 2;
-      synth.speak(uts);
-    });
   }
 
   OpenDialog(val: string) {
