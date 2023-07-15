@@ -24,9 +24,9 @@ export class Feedback {
         if (this.BFExtraversionScore = max) plist.push('Extraversion');
         if (this.BFConscientiousnessScore = max) plist.push('Conscientiousness');
         if (this.BFNeuroticismScore = max) plist.push('Neuroticism');
-        if (plist.length == 1) return `Your predominant personality charachteristic is ${plist[0]}`
-        if (plist.length == 2) return `Your predominant personality charachteristics are ${plist[0]} and ${plist[1]}`
-        return `Your predominant personality charachteristics are ${plist.slice(0, -1).join(', ')} and ${plist.pop()}`
+        if (plist.length == 1) return `${plist[0]}`
+        if (plist.length == 2) return `${plist[0]} and ${plist[1]}`
+        return `${plist.slice(0, -1).join(', ')} and ${plist.pop()}`
     }
 
     getNegotiationStyle() {
@@ -37,8 +37,8 @@ export class Feedback {
         if (this.TKAvoidingScore = max) plist.push('Avoiding');
         if (this.TKCompromisingScore = max) plist.push('Compromising');
         if (this.TKCollaboratingScore = max) plist.push('Collaborating');
-        if (plist.length == 1) return `Your predominant negotiation style is ${plist[0]}`
-        if (plist.length == 2) return `Your predominant negotiation styles is ${plist[0]} and ${plist[1]}`
-        return `Your predominant negotiation styles is ${plist.slice(0, -1).join(', ')} and ${plist.pop()}`
+        if (plist.length == 1) return `${plist[0]}`
+        if (plist.length == 2) return `${plist[0]} and ${plist[1]}`
+        return `${plist.slice(0, -1).join(', ')} and ${plist.pop()}`
     }
 }

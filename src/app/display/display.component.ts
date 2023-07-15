@@ -27,12 +27,11 @@ export class DisplayComponent implements OnInit {
   }
   
   ngOnInit() {
-    if (this.termsAgreed != "true") {
+    if (!this.termsAgreed.state) {
       this.router.navigate(['', {'back' : true}]);
     }
 
-    const pId = this.svc.getItem('participant', 'session');
-    if (pId == 'unpaid') { 
+    if (this.svc.getItem('participant', 'session').value == 'unpaid') { 
       this.isPaid = false;
     } else { this.isPaid = true; this.step = 2; };
     

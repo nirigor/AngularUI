@@ -21,9 +21,12 @@ interface MaritalStatuses {
 })
 
 export class MainComponent implements OnInit{
+  PROGRESS_LOCATION = 'session';
   p: Participant = new Participant();
   feedback: Feedback = new Feedback();
-  story? = 0;
+  story? = 0; // Story number for child comp.
+  read: boolean = true; // Read/Answer mode switch.
+
   @Input() step = 0;
   @Input() steps: Item[] = [];
   @Input() isComplete: boolean = false;
@@ -33,7 +36,6 @@ export class MainComponent implements OnInit{
   @Output() stepsUpdateEvent = new EventEmitter<Item[]>();
   @Output() isCompleteUpdateEvent = new EventEmitter<boolean>();
 
-  read: boolean = true;
 
   mStatuses: MaritalStatuses[] = [
     {value: 'SI', viewValue: 'Single'},
@@ -64,24 +66,22 @@ export class MainComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    let tmpP = this.svc.getItem('p', 'session');
-    let tmpS = this.svc.getItem('steps', 'session');
-    let tmp = this.svc.getItem('step', 'session');
-  
-    if (tmp) { 
-      this.step = JSON.parse(tmp); 
-    }
-    if (tmpS) { this.steps = JSON.parse(tmpS); }
-    if (tmpP) { 
-      this.p = JSON.parse(tmpP); 
+    let prog_dict = this.svc.getProgress(this.PROGRESS_LOCATION);
+    
+    if (prog_dict.step.state) this.step = JSON.parse(prog_dict.step.value);
+    if (prog_dict.steps.state) this.steps = JSON.parse(prog_dict.steps.value);
+    if (prog_dict.feedback.state) this.feedback = Object.assign(new Feedback, JSON.parse(prog_dict.feedback.value));
+    if (prog_dict.isComplete.state) this.isComplete = JSON.parse(prog_dict.isComplete.value);
+    if (prog_dict.p.state) {
+      this.p = Object.assign(new Participant, JSON.parse(prog_dict.p.value));
     } else {
-      const pId = this.svc.getItem('participant', 'session');
-      pId? this.p.ProlificId = pId : 'unpaid';
+      this.p.ProlificId = 'unpaid';
+      if(this.svc.getItem('participant', this.PROGRESS_LOCATION).state) this.p.ProlificId = this.svc.getItem('participant', this.PROGRESS_LOCATION).value;
+      if(this.p.ProlificId != 'unpaid') {this.p.Age = "unpaid"; this.p.Gender = "unpaid"}
       this.p.SurveyStartTs = new Date();
       [ this.p.ST1Number, this.p.ST2Number, this.p.ST3Number ] = this.svc.getCases();
     }
-    while(!this.steps[this.step]['isVisible']) this.step++;   
-    //this.step = this.stepDict['BASIC_21'];
+    while(!this.steps[this.step]['isVisible']) this.step++;
   }
 
   stringToBool(str: any): boolean {
@@ -94,6 +94,7 @@ export class MainComponent implements OnInit{
     if (this.step == this.stepDict['BASIC_13']) this.checkB13();
     if (this.step == this.stepDict['BASIC_16']) this.checkB16();
     if (this.step == this.stepDict['BASIC_19']) this.checkB19();
+    if (this.step == this.stepDict['STORIES1_23'] || this.step == this.stepDict['STORIES2_23'] || this.step == this.stepDict['STORIES3_23']) this.read = true;
     if (this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) {
       this.read = false;
       if (EasySpeech.status()['initialized']) EasySpeech.cancel();
@@ -102,7 +103,7 @@ export class MainComponent implements OnInit{
     this.step += 1;
     while (!this.steps[this.step]['isVisible']) this.step += 1;
     this.stepUpdateEvent.emit(this.step);
-    this.svc.saveProgress(this.p, this.steps, this.step);
+    this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read, this.PROGRESS_LOCATION);
   }
 
   checkB12() {
@@ -183,9 +184,10 @@ export class MainComponent implements OnInit{
       this.step -= 1;
       while (!this.steps[this.step]['isVisible']) this.step -= 1;
       if (this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) this.read = true;
+      if (this.step == this.stepDict['STORIES1_23'] || this.step == this.stepDict['STORIES2_23'] || this.step == this.stepDict['STORIES3_23']) this.read = false;
       this.stepUpdateEvent.emit(this.step);
     }
-    this.svc.saveProgress(this.p, this.steps, this.step);
+    this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read, this.PROGRESS_LOCATION);
   }
 
   OpenDialog(val: string) {
@@ -212,7 +214,9 @@ export class MainComponent implements OnInit{
     this.feedback.Valid = data['Valid'];
     this.feedback.Token = data['Token'];
     this.isComplete = true;
+    this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read, this.PROGRESS_LOCATION);
     this.isCompleteUpdateEvent.emit(this.isComplete);
+    this.nextClick();
   }
 
 }

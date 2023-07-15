@@ -248,45 +248,6 @@ mat-form-field {
     text-align: center;
 }
 
-.style_results {
-    display: grid;
-    grid-template-columns: 400px 400px;
-    grid-template-areas:
-        "big_five tk";
-    height: 100%;
-    grid-gap: 50px;
-}
-
-.styles h4 {
-    font-size: 16px;
-    font-weight: 400;
-    margin: 0px 0px 50px 0px;
-    padding: 0px;
-}
-
-.style_item {
-    margin: 0px 0px 50px 0px;
-    padding: 0px;
-} 
-
-.mat-mdc-progress-bar {
-    --mdc-linear-progress-active-indicator-height: 7px;
-    --mdc-linear-progress-track-height: 7px;
-    border-radius: 10px;
-}
-
-.style_header {
-    margin: 0px 0px 10px 0px;
-    padding: 0px;
-    font-size: 16px;
-    font-weight: 700;
-}
-
-.style {
-    color: var(--primary-purple);
-    margin-left: 20px;
-}
-
 @media screen and (max-width: 1300px) {
     .item {
         padding: 5px;

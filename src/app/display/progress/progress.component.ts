@@ -159,8 +159,7 @@ export class ProgressComponent implements OnInit{
   constructor( private svc: SharedService ) {}
 
   ngOnInit(): void {
-    let tmp = this.svc.getItem('step', 'session');
-    if (tmp) this.step = JSON.parse(tmp);
+    if (this.svc.getItem('step', 'session').state) this.step = JSON.parse(this.svc.getItem('step', 'session').value);
     this.dict = this.getStepInfo(this.step);
   }
 

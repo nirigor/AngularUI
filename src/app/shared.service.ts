@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Item } from './models/item.model';
 import { Participant } from './models/participant.model';
+import { Feedback } from './models/feedback.model';
 
 
 @Injectable({
@@ -18,6 +19,7 @@ export class SharedService {
   readonly STORIES1 = 23;
   readonly STORIES2 = 23;
   readonly STORIES3 = 23;
+  readonly COMPLETE = 2;
 
   steps: Item[] = [];
   stepDict: {[name: string]: number} = {}
@@ -85,6 +87,11 @@ export class SharedService {
     tmp = this.steps.push(new Item(this.STORIES3, this.STORIES3, 'STORIES3', false, true));
     this.stepDict['CONGRATS_3'] = tmp - 1;
 
+    // Complete
+    for (let i = 1;  i <= this.COMPLETE; i++) {
+      tmp = this.steps.push(new Item(i, this.COMPLETE, 'COMPLETE', false, true));
+      this.stepDict[`COMPLETE_${i}`] = tmp - 1;
+    }
 
     if (isPaid) {
       this.steps[this.stepDict['BASIC_1']]['isVisible'] = false;
@@ -119,10 +126,24 @@ export class SharedService {
     return feedback;
   }
 
-  saveProgress(p: Participant, steps: Item[], step: number) {
-    this.setItem('p', JSON.stringify(p), 'session');
-    this.setItem('steps', JSON.stringify(steps), 'session');
-    this.setItem('step', JSON.stringify(step), 'session');
+  saveProgress(p: Participant, steps: Item[], step: number, isComplete: boolean, feedback: Feedback, read: boolean, location: string) {
+    this.setItem('p', JSON.stringify(p), location);
+    this.setItem('steps', JSON.stringify(steps), location);
+    this.setItem('step', JSON.stringify(step), location);
+    this.setItem('isComplete', JSON.stringify(isComplete), location);
+    this.setItem('feedback', JSON.stringify(feedback), location);
+    this.setItem('read', JSON.stringify(read), location);
+  }
+
+  getProgress(location: string){
+    return {
+      p: this.getItem('p', location),
+      step: this.getItem('step', location),
+      steps: this.getItem('steps', location),
+      isComplete: this.getItem('isComplete', location),
+      feedback: this.getItem('feedback', location),
+      read: this.getItem('read', location)
+    }
   }
 
   setItem(key: string, value: string, type: string){
@@ -139,14 +160,19 @@ export class SharedService {
   }
 
   getItem(key: string, type: string){
+    let value: string|null;
     switch(type) {
       case 'session':
-        return sessionStorage.getItem(key);
+        value = sessionStorage.getItem(key);
+        break;
       case 'local':
-        return localStorage.getItem(key);
+        value = localStorage.getItem(key);
+        break;
       default:
-        return localStorage.getItem(key);
+        value = localStorage.getItem(key);
     }
+    if (value == null) return { state: false, value: "" };
+    return { state: true, value: value };
   }
   
   getRandomNumber(min: number, max: number){

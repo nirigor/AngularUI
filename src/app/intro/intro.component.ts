@@ -13,8 +13,8 @@ export class IntroComponent implements OnInit {
   step = 1;
   termsAgreed:any = false;
   ngOnInit(): void {
-    this.termsAgreed = this.svc.getItem('termsAgreed', 'session');
-    if (this.termsAgreed) this.step = 2;
+    this.termsAgreed = this.svc.getItem('termsAgreed', 'session').value;
+    if (this.termsAgreed.state) { this.termsAgreed = this.svc.getItem('termsAgreed', 'session').value; this.step = 2; }
     
     this.route.queryParams
       .subscribe(params => {

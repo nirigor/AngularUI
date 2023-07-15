@@ -3,7 +3,7 @@
     <div class="main-container">
         <div *ngIf="!isComplete" class="container">
             <div class="info">
-                <span><button color="primary" class="bold" mat-button (click)="backClick();">< Back</button></span>
+                <span *ngIf="step != stepDict['COMPLETE_1']"><button color="primary" class="bold" mat-button (click)="backClick();">< Back</button></span>
                 <span *ngIf="step < stepDict['STORIES1_1']"><div class="circle bold">{{steps[step]['stepNumber']}}</div> / <b>{{steps[step]['phaseSteps']}}</b></span>
                 <span *ngIf="step >= stepDict['STORIES1_1'] && read"><span class="stories-header-pr">Read Story</span> > <span class="stories-header-sec">Answer Questions</span></span>
                 <span *ngIf="step >= stepDict['STORIES1_1'] && !read"><span class="stories-header-sec">Read Story</span> > <span class="stories-header-pr">Answer Questions</span></span>
@@ -2043,13 +2043,16 @@
             </div>
         </div>
         <div *ngIf="isComplete" class="container">
-            <div class="item">
+            <div *ngIf="step != stepDict['COMPLETE_1']" class="info">
+                <button color="primary" class="bold" mat-button (click)="backClick();">< Back</button>
+            </div>
+            <div *ngIf="step == stepDict['COMPLETE_1'] && steps[step]['isVisible']" class="item">
                 <h2>Your personality and negotiation style results:</h2>
-                <p>{{feedback.getPersonality()}}</p>
-                <p>{{feedback.getNegotiationStyle()}}</p>
+                <p>Your predominant personality characteristic is <b>{{feedback.getPersonality()}}</b>.</p>
+                <p>Your predominant negotiation style is <b>{{feedback.getNegotiationStyle()}}</b>.</p>
                 <div class="style_results">
                     <div style="grid-area: big_five;" class="styles">
-                        <h4>Your personality results:</h4>
+                        <h4>Your personality characteristic:</h4>
                         <div class="style_item">
                             <div class="style_header"><span>25%</span><span class="style">Openness</span></div>
                             <mat-progress-bar color="primary" [value]="25"></mat-progress-bar>
@@ -2072,7 +2075,7 @@
                         </div>
                     </div>
                     <div style="grid-area: tk;" class="styles">
-                        <h4>Your personality results:</h4>
+                        <h4>Your negotiation style:</h4>
                         <div class="style_item">
                             <div class="style_header"><span>25%</span><span class="style">Accommodating</span></div>
                             <mat-progress-bar color="primary" [value]="25"></mat-progress-bar>
@@ -2095,9 +2098,15 @@
                         </div>
                     </div>  
                 </div>
-                
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> Get Prolific Token</button>
+            </div>
+            <div *ngIf="step == stepDict['COMPLETE_2'] && steps[step]['isVisible']" class="item center">
+                <div class="icon-lg"><img src="assets/confetti.gif"></div>
+                <h3 style="font-size: 32px; font-weight: 400;">Your prolific token:</h3>
+                <h3 style="font-size: 24px; font-weight: 500; margin-bottom: 40px;">{{feedback.Token}}</h3>
+                <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> Take me back to prolific</button>
             </div>
         </div>
     </div>
-    {{this.p | json}}
+    <!-- {{this.p | json}} -->
 </div>
