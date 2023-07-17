@@ -13,6 +13,8 @@ export class StoryComponent implements OnInit {
   }
 
   readText = async () => {
+    let enVoices: any[] = [];
+    let prefVoice;
     await EasySpeech.init();
     const elements = Array.from(document.querySelectorAll('.story p, .story h2'));
     let paragraphs: string[] = [];
@@ -22,11 +24,23 @@ export class StoryComponent implements OnInit {
     });
     
     const voices = EasySpeech.voices();
+    
+    voices.forEach((voice) => {
+      if (voice.voiceURI == 'Google UK English Female') {
+        prefVoice = voice;
+        return;
+      }
+      if (voice.lang.startsWith('en')) {
+        enVoices.push(voice);
+      }
+    });
+
+    if (!prefVoice && enVoices.length > 0) prefVoice = enVoices[0];
 
     let options = {
       text: paragraphs.join('. '),
       rate: 0.9,
-      voice: voices[5],
+      voice: prefVoice,
       volume: 1,
       pitch: 1
     }
