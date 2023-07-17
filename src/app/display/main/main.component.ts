@@ -188,6 +188,7 @@ export class MainComponent implements OnInit{
     if ((this.p.ProlificId == 'unpaid' && this.step == 0) || (this.p.ProlificId != 'unpaid' && this.step == 2)) {
       this.router.navigateByUrl('');
     } else {
+      if ((this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) && EasySpeech.status()['initialized']) EasySpeech.cancel();
       this.step -= 1;
       while (!this.steps[this.step]['isVisible']) this.step -= 1;
       if (this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) this.read = true;

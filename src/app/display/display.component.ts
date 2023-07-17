@@ -25,6 +25,10 @@ export class DisplayComponent implements OnInit {
   updateSteps (steps: Item[]) {
     this.steps = steps;
   }
+
+  updateIsComplete( isComplete: boolean ) {
+    this.isComplete = isComplete;
+  }
   
   ngOnInit() {
     //this.svc.loadMockData();
