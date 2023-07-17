@@ -1,6 +1,6 @@
 <div *ngIf="story==1" class="story">
     <div class="story-h">
-        <h2>A case for rooftop usage</h2>
+        <h2>Neighbors</h2>
         <button *ngIf="readingState == 'notStarted'" mat-stroked-button color="primary" class="next-button" (click)="readText();"><i class="bi bi-mic-fill"></i> read text</button>
         <button *ngIf="readingState == 'Reading'" mat-stroked-button color="primary" class="next-button" (click)="pauseReadText();"><i class="bi bi-mic-fill"></i> pause</button>
         <button *ngIf="readingState == 'Paused'" mat-stroked-button color="primary" class="next-button" (click)="resumeReadText();"><i class="bi bi-mic-fill"></i> resume</button>

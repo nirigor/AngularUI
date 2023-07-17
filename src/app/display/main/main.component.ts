@@ -97,10 +97,10 @@ export class MainComponent implements OnInit{
   }
 
   nextClick() {
+    if (this.step == this.stepDict['BASIC_11']) this.checkB11();
     if (this.step == this.stepDict['BASIC_12']) this.checkB12();
-    if (this.step == this.stepDict['BASIC_13']) this.checkB13();
-    if (this.step == this.stepDict['BASIC_16']) this.checkB16();
-    if (this.step == this.stepDict['BASIC_19']) this.checkB19();
+    if (this.step == this.stepDict['BASIC_15']) this.checkB15();
+    if (this.step == this.stepDict['BASIC_18']) this.checkB18();
     if (this.step == this.stepDict['STORIES1_23'] || this.step == this.stepDict['STORIES2_23'] || this.step == this.stepDict['STORIES3_23']) this.read = true;
     if (this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) {
       this.read = false;
@@ -113,29 +113,30 @@ export class MainComponent implements OnInit{
     this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read);
   }
 
-  checkB12() {
+  checkB11() {
     if (!this.stringToBool(this.p.InvolvedInLegalDispute)) {
       this.p.ExperienceWithCourtProceedings = false;
       this.p.CourtProceedingsSatisfaction = 0;
       this.p.ExperienceWithCourtProceedingsText = '';
+      this.steps[this.stepDict['BASIC_12']]['isVisible'] = false;
       this.steps[this.stepDict['BASIC_13']]['isVisible'] = false;
-      this.steps[this.stepDict['BASIC_14']]['isVisible'] = false;
-      this.steps[this.stepDict['BASIC_15']]['isVisible'] = false;   
+      this.steps[this.stepDict['BASIC_14']]['isVisible'] = false;   
           
       this.p.ExperienceWithMediation = false;
       this.p.MediationSatisfaction = 0;
       this.p.ExperienceWithMediationText = '';
+      this.steps[this.stepDict['BASIC_15']]['isVisible'] = false;
       this.steps[this.stepDict['BASIC_16']]['isVisible'] = false;
-      this.steps[this.stepDict['BASIC_17']]['isVisible'] = false;
-      this.steps[this.stepDict['BASIC_18']]['isVisible'] = false;   
+      this.steps[this.stepDict['BASIC_17']]['isVisible'] = false;   
 
       this.p.ExperienceWithArbitration = false;
       this.p.ArbitrationSatisfaction = 0;
       this.p.ExperienceWithArbitrationText = '';
+      this.steps[this.stepDict['BASIC_18']]['isVisible'] = false;
       this.steps[this.stepDict['BASIC_19']]['isVisible'] = false;
-      this.steps[this.stepDict['BASIC_20']]['isVisible'] = false;
-      this.steps[this.stepDict['BASIC_21']]['isVisible'] = false;   
+      this.steps[this.stepDict['BASIC_20']]['isVisible'] = false;   
     } else {
+      this.steps[this.stepDict['BASIC_12']]['isVisible'] = true;
       this.steps[this.stepDict['BASIC_13']]['isVisible'] = true;
       this.steps[this.stepDict['BASIC_14']]['isVisible'] = true;
       this.steps[this.stepDict['BASIC_15']]['isVisible'] = true;
@@ -143,44 +144,43 @@ export class MainComponent implements OnInit{
       this.steps[this.stepDict['BASIC_17']]['isVisible'] = true;
       this.steps[this.stepDict['BASIC_18']]['isVisible'] = true;
       this.steps[this.stepDict['BASIC_19']]['isVisible'] = true;
-      this.steps[this.stepDict['BASIC_20']]['isVisible'] = true;
-      this.steps[this.stepDict['BASIC_21']]['isVisible'] = true; 
+      this.steps[this.stepDict['BASIC_20']]['isVisible'] = true; 
     }
   }
 
-  checkB13() {
+  checkB12() {
     if (!this.stringToBool(this.p.ExperienceWithCourtProceedings)) {
       this.p.CourtProceedingsSatisfaction = 0;
       this.p.ExperienceWithCourtProceedingsText = '';
+      this.steps[this.stepDict['BASIC_13']]['isVisible'] = false;
       this.steps[this.stepDict['BASIC_14']]['isVisible'] = false;
-      this.steps[this.stepDict['BASIC_15']]['isVisible'] = false;
     } else {
+      this.steps[this.stepDict['BASIC_13']]['isVisible'] = true;
       this.steps[this.stepDict['BASIC_14']]['isVisible'] = true;
-      this.steps[this.stepDict['BASIC_15']]['isVisible'] = true;
     }
   }
   
-  checkB16() {
+  checkB15() {
     if (!this.stringToBool(this.p.ExperienceWithMediation)) {
       this.p.MediationSatisfaction = 0;
       this.p.ExperienceWithMediationText = '';
+      this.steps[this.stepDict['BASIC_16']]['isVisible'] = false;
       this.steps[this.stepDict['BASIC_17']]['isVisible'] = false;
-      this.steps[this.stepDict['BASIC_18']]['isVisible'] = false;
     } else {
+      this.steps[this.stepDict['BASIC_16']]['isVisible'] = true;
       this.steps[this.stepDict['BASIC_17']]['isVisible'] = true;
-      this.steps[this.stepDict['BASIC_18']]['isVisible'] = true;
     }
   }
 
-  checkB19() {
+  checkB18() {
     if (!this.stringToBool(this.p.ExperienceWithArbitration)) {
       this.p.ArbitrationSatisfaction = 0;
       this.p.ExperienceWithArbitrationText = '';
+      this.steps[this.stepDict['BASIC_19']]['isVisible'] = false;
       this.steps[this.stepDict['BASIC_20']]['isVisible'] = false;
-      this.steps[this.stepDict['BASIC_21']]['isVisible'] = false;
     } else {
+      this.steps[this.stepDict['BASIC_19']]['isVisible'] = true;
       this.steps[this.stepDict['BASIC_20']]['isVisible'] = true;
-      this.steps[this.stepDict['BASIC_21']]['isVisible'] = true;
     }
   }
 
@@ -201,8 +201,6 @@ export class MainComponent implements OnInit{
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       data: { dialog : val },
     });
-
-    //this.dialog.open(DialogComponent, { data : { dialog : val }, 	maxHeight: '350px', maxWidth: '650px', position: { left:'50%', top: '30%'}  });
   }
 
   async submit() {

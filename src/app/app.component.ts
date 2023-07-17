@@ -77,5 +77,6 @@ export class AppComponent {
     this.matIconRegistry.addSvgIcon('negotiation', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/negotiation.svg'))
     this.matIconRegistry.addSvgIcon('waives', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/waives.svg'))
     this.matIconRegistry.addSvgIcon('publiccomplaint', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/publiccomplaint.svg'))
+    this.matIconRegistry.addSvgIcon('judge', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/judge.svg'))
   }
 }

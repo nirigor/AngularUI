@@ -9,12 +9,12 @@ import { Feedback } from './models/feedback.model';
 })
 
 export class SharedService {
-  //readonly APIUrl = 'http://127.0.0.1:8000';
-  readonly APIUrl = 'http://16.171.144.39/api';
+  readonly APIUrl = 'http://127.0.0.1:8000';
+  //readonly APIUrl = 'http://16.171.144.39/api';
 
-  readonly BASIC = 12;
+  readonly BASIC = 11;
   readonly STYLES1 = 15;
-  readonly STYLES2 = 30;
+  readonly STYLES2 = 10;
   readonly INTRO = 7;
   readonly STORIES1 = 23;
   readonly STORIES2 = 23;

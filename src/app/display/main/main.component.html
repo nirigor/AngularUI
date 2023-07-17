@@ -63,19 +63,8 @@
                     <mat-radio-button value=4>7+</mat-radio-button>
                 </mat-radio-group>
             </div>
-    
-            <div *ngIf="step == stepDict['BASIC_6'] && steps[step]['isVisible']" class="item">
-                <h2>Number of <b>Grand Children</b></h2>
-                <mat-radio-group class="radio-group-normal" [(ngModel)]="this.p.NumberOfGrandChildren" (ngModelChange)="nextClick();">
-                    <mat-radio-button value=0>0</mat-radio-button>
-                    <mat-radio-button value=1>1-2</mat-radio-button>
-                    <mat-radio-button value=2>3-4</mat-radio-button>
-                    <mat-radio-button value=3>5-6</mat-radio-button>
-                    <mat-radio-button value=4>7+</mat-radio-button>
-                </mat-radio-group>
-            </div>
             
-            <div *ngIf="step == stepDict['BASIC_7'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_6'] && steps[step]['isVisible']" class="item">
                 <h2>Are you part of a <b>minority</b> within your country?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Minority" (ngModelChange)="nextClick();">
                     <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
@@ -83,7 +72,7 @@
                 </mat-button-toggle-group>
             </div>
     
-            <div *ngIf="step == stepDict['BASIC_8'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_7'] && steps[step]['isVisible']" class="item">
                 <h2>Do you have <b>financial debts</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Debts" (ngModelChange)="nextClick();">
                     <mat-button-toggle value="0"><div class="icon"><mat-icon svgIcon="money-bag"></mat-icon></div>No Debts</mat-button-toggle>
@@ -92,7 +81,7 @@
                 </mat-button-toggle-group>
             </div>
     
-            <div *ngIf="step == stepDict['BASIC_9'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_8'] && steps[step]['isVisible']" class="item">
                 <h2>How would you classify your <b>income level</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Income" (ngModelChange)="nextClick();">
                     <mat-button-toggle value="0"><div class="icon"><mat-icon svgIcon="below"></mat-icon></div>Below Average</mat-button-toggle>
@@ -101,7 +90,7 @@
                 </mat-button-toggle-group>
             </div>
     
-            <div *ngIf="step == stepDict['BASIC_10'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_9'] && steps[step]['isVisible']" class="item">
                 <h2>Your level of <b>education</b></h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.Education" (ngModelChange)="nextClick();">
                     <mat-button-toggle value="ES">
@@ -145,7 +134,7 @@
                 </mat-button-toggle-group>
             </div>
     
-            <div *ngIf="step == stepDict['BASIC_11'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_10'] && steps[step]['isVisible']" class="item">
                 <h2>Your level of <b>Legal Knowledge</b></h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.LegalKnowledge" (ngModelChange)="nextClick();">
                     <mat-button-toggle value="0"><div class="icon"><mat-icon svgIcon="no-knowledge"></mat-icon></div>No Knowledge</mat-button-toggle>
@@ -154,7 +143,7 @@
                 </mat-button-toggle-group>
             </div>
 
-            <div *ngIf="step == stepDict['BASIC_12'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_11'] && steps[step]['isVisible']" class="item">
                 <h2>Were you previously <b>involved in a legal dispute</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.InvolvedInLegalDispute" (ngModelChange)="nextClick();">
                     <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
@@ -162,7 +151,7 @@
                 </mat-button-toggle-group>
             </div>
 
-            <div *ngIf="step == stepDict['BASIC_13'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_12'] && steps[step]['isVisible']" class="item">
                 <h2>Do you have experience with <b>Court Proceedings</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithCourtProceedings" (ngModelChange)="nextClick();">
                     <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
@@ -170,7 +159,7 @@
                 </mat-button-toggle-group>
             </div>
 
-            <div *ngIf="step == stepDict['BASIC_14'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_13'] && steps[step]['isVisible']" class="item">
                 <h2>How was your experience with <b>court proceedings</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large scale" [(ngModel)]="this.p.CourtProceedingsSatisfaction" (ngModelChange)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
@@ -185,7 +174,7 @@
                 </div>
             </div>
 
-            <div *ngIf="step == stepDict['BASIC_15'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_14'] && steps[step]['isVisible']" class="item">
                 <h2>Please tell us about your experience with <b>court proceedings</b></h2>
                 <mat-form-field floatLabel="always" appearance="outline">
                     <mat-label>your experience</mat-label>
@@ -194,7 +183,7 @@
                 <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> Next</button>
             </div>
     
-            <div *ngIf="step == stepDict['BASIC_16'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_15'] && steps[step]['isVisible']" class="item">
                 <h2>Do you have experience with <b>Mediation</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithMediation" (ngModelChange)="nextClick();">
                     <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
@@ -202,7 +191,7 @@
                 </mat-button-toggle-group>
             </div>
             
-            <div *ngIf="step == stepDict['BASIC_17'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_16'] && steps[step]['isVisible']" class="item">
                 <h2>How was your experience with <b>mediation</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.MediationSatisfaction" (ngModelChange)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
@@ -217,7 +206,7 @@
                 </div>
             </div>
             
-            <div *ngIf="step == stepDict['BASIC_18'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_17'] && steps[step]['isVisible']" class="item">
                 <h2>Please tell us about your experience with <b>mediation</b></h2>
                 <mat-form-field floatLabel="always" appearance="outline">
                     <mat-label>your experience</mat-label>
@@ -226,7 +215,7 @@
                 <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> Next</button>
             </div>
             
-            <div *ngIf="step == stepDict['BASIC_19'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_18'] && steps[step]['isVisible']" class="item">
                 <h2>Do you have experience with <b>Arbitration</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ExperienceWithArbitration" (ngModelChange)="nextClick();">
                     <mat-button-toggle value=false><div class="icon"><mat-icon svgIcon="no"></mat-icon></div>No</mat-button-toggle>
@@ -234,7 +223,7 @@
                 </mat-button-toggle-group>
             </div>
             
-            <div *ngIf="step == stepDict['BASIC_20'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_19'] && steps[step]['isVisible']" class="item">
                 <h2>How was your experience with <b>arbitration</b>?</h2>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ArbitrationSatisfaction" (ngModelChange)="nextClick();">
                     <mat-button-toggle class="scale1" value=1><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
@@ -249,7 +238,7 @@
                 </div>
             </div>
 
-            <div *ngIf="step == stepDict['BASIC_21'] && steps[step]['isVisible']" class="item">
+            <div *ngIf="step == stepDict['BASIC_20'] && steps[step]['isVisible']" class="item">
                 <h2>Please tell us about your experience with <b>arbitration</b></h2>
                 <mat-form-field floatLabel="always" appearance="outline">
                     <mat-label>your experience</mat-label>
@@ -521,8 +510,8 @@
                         but please select the response which you would be more likely to use.</p>
                 </div>
                 <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK1" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>There are times when I let others take responsibility for solving the problem.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>Rather than negotiate the things on which we disagree, I try to stress those things upon which we both agree.</p></mat-button-toggle>
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to find a compromise solution.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I attempt to deal with all of his/her and my concerns.</p></mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
@@ -531,8 +520,8 @@
                     <p><b>Your negotiation style</b></p>
                 </div>
                 <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK2" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to find a compromise solution.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I attempt to deal with all of his/her and my concerns.</p></mat-button-toggle>
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to convince the other person of the merits of my position.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>In approaching negotiations, I try to be considerate of the other person's wishes.</p></mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
@@ -541,8 +530,8 @@
                     <p><b>Your negotiation style</b></p>
                 </div>
                 <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK3" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I am usually firm in pursuing my goals.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I might try to soothe the other's feelings and preserve our relationship.</p></mat-button-toggle>
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to find a compromise solution.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I sometimes sacrifice my own wishes for the wishes of the other person.</p></mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
@@ -551,8 +540,8 @@
                     <p><b>Your negotiation style</b></p>
                 </div>
                 <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK4" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to find a compromise solution.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I Sometimes sacrifice my own wishes for the wishes of the other person.</p></mat-button-toggle>
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I am very often concerned with satisfying all our wishes.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to do what is necessary to avoid useless tensions.</p></mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
@@ -561,8 +550,8 @@
                     <p><b>Your negotiation style</b></p>
                 </div>
                 <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK5" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I consistently seek the other's help in working out a solution.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to do what is necessary to avoid useless tensions.</p></mat-button-toggle>
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to avoid creating unpleasantness for myself.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to win my position.</p></mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
@@ -571,8 +560,8 @@
                     <p><b>Your negotiation style</b></p>
                 </div>
                 <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK6" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to avoid creating unpleasantness for myself.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to win my position.</p></mat-button-toggle>
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I am usually firm in pursuing my goals.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I tell the other person my ideas and ask for his/hers.</p></mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
@@ -581,8 +570,8 @@
                     <p><b>Your negotiation style</b></p>
                 </div>
                 <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK7" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to postpone the issue until I have had some time to think it over.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I give up some points in exchange for others.</p></mat-button-toggle>
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I always share the problem with the other person so that we can work it out.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I might try to soothe the other's feelings and preserve our relationship.</p></mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
@@ -591,8 +580,8 @@
                     <p><b>Your negotiation style</b></p>
                 </div>
                 <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK8" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I am usually firm in pursuing my goals.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I attempt to get all concerns and issues immediately out in the open.</p></mat-button-toggle>
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I sometimes avoid taking positions, which would create controversy.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I propose a middle ground.</p></mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
@@ -601,8 +590,8 @@
                     <p><b>Your negotiation style</b></p>
                 </div>
                 <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK9" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I feel that differences are not always worth worrying about.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I make some effort to get my way.</p></mat-button-toggle>
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to find a position that is intermediate between his/hers and mine.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I press to get my points made.</p></mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
@@ -611,208 +600,8 @@
                     <p><b>Your negotiation style</b></p>
                 </div>
                 <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK10" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I am firm in pursuing my goals.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to find a compromise solution.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_11'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK11" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I attempt to get all concerns and issues immediately out in the open.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I might try to soothe the other's feelings and preserve our relationship.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_12'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK12" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I sometimes avoid taking positions, which would create controversy.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I will let the other person have some of his/her positions if s/he lets me have some of mine.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_13'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK13" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I propose a middle ground.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I press to get my points made.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_14'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK14" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I tell the other person my ideas and ask for his/hers.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to show the other person the logic and benefits of my position.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_15'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK15" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I might try to soothe the other's feelings and preserve our relationship.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to do what is necessary to avoid tensions.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_16'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK16" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try not to hurt the other's feelings.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to convince the other person of the merits of my position.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_17'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK17" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I am usually firm in pursuing my goals.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to do what is necessary to avoid useless tensions.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_18'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK18" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>If it makes other people happy, I might let them maintain their views.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I will let other people have some of their positions if they let me have some of mine.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_19'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK19" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I attempt to get all concerns and issues immediately out in the open.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to postpone the issue until I have had some time to think it over.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_20'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK20" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I attempt to immediately work through our differences.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to find a fair combination of gains and losses for both of us.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_21'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK21" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>In approaching negotiations, I try to be considerate of the other person's wishes.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I always lean toward a direct discussion of the problem.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_22'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK22" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to find a position that is intermediate between his/hers and mine.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I assert my wishes.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_23'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK23" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I am very often concerned with satisfying all our wishes.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>There are times when I let others take responsibility for solving the problem.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_24'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK24" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>If the other's position seems very important to him/her, I would try to meet his/her wishes.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I try to get the other person to settle for a compromise.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_25'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK25" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to show the other person the logic and benefits of my position.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>In approaching negotiations, I try to be considerate of the other person's wishes.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_26'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK26" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I propose a middle ground.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I am nearly always concerned with satisfying all our wishes.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_27'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK27" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I sometimes avoid taking positions that would create controversy.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>If it makes other people happy, I might let them maintain their views.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_28'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK28" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I am usually firm in pursuing my goals.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I usually seek the other's help in working out a solution.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_29'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK29" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I propose a middle ground.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I feel that differences are not always worth worrying about.</p></mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-
-            <div *ngIf="step == stepDict['TK_30'] && steps[step]['isVisible']" class="item">
-                <div class="instructions">
-                    <p><b>Your negotiation style</b></p>
-                </div>
-                <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.TK30" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try not to hurt the other's feelings.</p></mat-button-toggle>
-                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I always share the problem with the other person so that we can work it out.</p></mat-button-toggle>
+                    <mat-button-toggle value="A"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><p>I try to soothe the other's feelings and preserve our relationship.</p></mat-button-toggle>
+                    <mat-button-toggle value="B"><div class="icon"><mat-icon svgIcon="twins"></mat-icon></div><p>I usually try not to engage in conflicts.</p></mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
@@ -1283,7 +1072,7 @@
                 <h2 style="margin-bottom: 0px;">Taking into account your specified priorities, if you were the person in the story above, with which option would you be most satisfied with?</h2>
                 <p style="margin-bottom: 60px;"></p>
                 <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1Selection" (ngModelChange)="nextClick();">
-                    <mat-button-toggle value="AD"><div class="icon"><mat-icon svgIcon="adjudication"></mat-icon></div><div>Adjudication</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Adjudication');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+                    <mat-button-toggle value="AD"><div class="icon"><mat-icon svgIcon="judge"></mat-icon></div><div>Adjudication</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Adjudication');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
                     <mat-button-toggle value="AR"><div class="icon"><mat-icon svgIcon="arbitration"></mat-icon></div><div>Arbitration</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Arbitration');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
                     <mat-button-toggle value="ME"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><div>Mediation</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Mediation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
                     <mat-button-toggle value="NE"><div class="icon"><mat-icon svgIcon="negotiation"></mat-icon></div><div>Negotiation</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Negotiation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
