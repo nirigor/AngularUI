@@ -1,16 +1,22 @@
 <div class="container">
-    <app-progress
-        [isComplete]="isComplete" 
-        [step]="step" 
-        [steps]="steps">
-    </app-progress>
-    <app-main 
-        [isComplete]="isComplete"
-        [step]="step" 
-        [steps]="steps" 
-        [stepDict]="stepDict" 
-        (stepUpdateEvent)="updateStep($event)"
-        (stepsUpdateEvent)="updateSteps($event)"
-        (isCompleteUpdateEvent)="updateIsComplete($event)">
-    </app-main>    
+    <div class="progress">
+        <app-progress
+            [isComplete]="isComplete" 
+            [step]="step" 
+            [steps]="steps">
+        </app-progress>
+    </div>
+    <div class="main">
+        <div class="main-inner">
+            <app-main 
+                [isComplete]="isComplete"
+                [step]="step" 
+                [steps]="steps" 
+                [stepDict]="stepDict" 
+                (stepUpdateEvent)="updateStep($event)"
+                (stepsUpdateEvent)="updateSteps($event)"
+                (isCompleteUpdateEvent)="updateIsComplete($event)">
+            </app-main>  
+        </div>
+    </div>
 </div>

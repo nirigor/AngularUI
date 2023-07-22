@@ -66,3 +66,40 @@
     </div>
 </div>
 
+<div class="container-mobile">
+    <div class="logo-mobile">
+        <img src="assets/logo.png"> 
+    </div>
+    <div *ngIf="!isComplete" class="prog-mobile">
+        <div class="progress-bar-mobile">
+            <mat-progress-bar color="primary" [value]="this.dict['basicProgress']"></mat-progress-bar>
+        </div>
+        <div class="progress-bar-mobile">
+            <mat-progress-bar color="primary" [value]="this.dict['stylesProgress1']"></mat-progress-bar>
+        </div>
+        <div class="progress-bar-mobile">
+            <mat-progress-bar color="primary" [value]="this.dict['stylesProgress2']"></mat-progress-bar>
+        </div>
+        <div class="progress-bar-mobile">
+            <mat-progress-bar color="primary" [value]="this.dict['storiesProgress1']"></mat-progress-bar>
+        </div>
+        <div class="progress-bar-mobile">
+            <mat-progress-bar color="primary" [value]="this.dict['storiesProgress2']"></mat-progress-bar>
+        </div>
+        <div class="progress-bar-mobile">
+            <mat-progress-bar color="primary" [value]="this.dict['storiesProgress3']"></mat-progress-bar>
+        </div>
+        <div class="progress-bar-mobile">
+            <mat-progress-bar color="primary" [value]="this.dict['storiesProgress4']"></mat-progress-bar>
+        </div>
+    </div>
+    <div class="prog-title-mobile">
+        <span *ngIf="this.dict['basicVisible']">Basic Information</span>
+        <span *ngIf="this.dict['stylesVisible1']">Personality test</span>
+        <span *ngIf="this.dict['stylesVisible2']">Negotiation style</span>
+        <span *ngIf="this.dict['storiesVisible1']">Intro</span>
+        <span *ngIf="this.dict['storiesVisible2']">Story 1</span>
+        <span *ngIf="this.dict['storiesVisible3']">Story 2</span>
+        <span *ngIf="this.dict['storiesVisible4']">Story 3</span>
+    </div>
+</div>

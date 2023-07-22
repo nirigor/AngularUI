@@ -25,9 +25,22 @@ import { MatIconModule } from '@angular/material/icon';
 import { IntroComponent } from './intro/intro.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
-import { StoryComponent } from './display/main/story/story.component';
+import { StoryComponent } from './display/main/stories/story/story.component';
+import { StylesComponent } from './display/main/styles/styles.component';
+import { StoriesIntroComponent } from './display/main/storiesintro/storiesintro.component';
+import { BasicComponent } from './display/main/basic/basic.component';
+import { StoriesComponent } from './display/main/stories/stories.component';
+import { RtestComponent } from './rtest/rtest.component';
+import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
 
 
+const globalRippleConfig: RippleGlobalOptions = {
+  disabled: true,
+  animation: {
+    enterDuration: 0,
+    exitDuration: 0
+  }
+};
 
 @NgModule({
   declarations: [
@@ -38,6 +51,11 @@ import { StoryComponent } from './display/main/story/story.component';
     PageNotFoundComponent,
     IntroComponent,
     StoryComponent,
+    StylesComponent,
+    StoriesIntroComponent,
+    BasicComponent,
+    StoriesComponent,
+    RtestComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +76,8 @@ import { StoryComponent } from './display/main/story/story.component';
     MatDialogModule,
   ],
   providers: [
-    SharedService
+    SharedService,
+    {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig}
   ],
   bootstrap: [AppComponent]
 })

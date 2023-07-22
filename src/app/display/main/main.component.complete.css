@@ -7,11 +7,17 @@
     margin-top: 50px;
 }
 
-.styles h4 {
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0px 0px 50px 0px;
-    padding: 0px;
+.styles {
+    & h2 {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin: 0px;
+        padding: 0px;
+    }
+    & p {
+        margin-bottom: 50px;
+        font-weight: 500;
+    }
 }
 
 .style_item {
@@ -35,4 +41,38 @@
 .style {
     color: var(--primary-purple);
     margin-left: 20px;
+}
+
+.token {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+    & h2 {
+        margin-bottom: 40px;
+    }
+    & h3 {
+        font-weight: 500;
+        margin-bottom: 70px;
+    }
+}
+
+@media screen and (max-width: 700px) { 
+    .item {
+        & h2 {
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+    }
+
+    .style_results {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .styles {
+        margin-bottom: 20px;
+    }
+
 }

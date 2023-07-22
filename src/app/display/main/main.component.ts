@@ -1,16 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter, Inject, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { Participant } from 'src/app/models/participant.model';
 import { Router } from '@angular/router';
 import { Item } from 'src/app/models/item.model';
 import { Feedback } from 'src/app/models/feedback.model';
-import { NgIf } from '@angular/common';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import EasySpeech from 'easy-speech';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
+
 
 interface MaritalStatuses {
   value: string;
@@ -25,6 +20,7 @@ export interface DialogData {
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css',
+              '../display.component.css',
               './main.component.complete.css']
 })
 
@@ -52,20 +48,9 @@ export class MainComponent implements OnInit{
     {value: 'WI', viewValue: 'Widowed'},
   ];
 
-  Opts: {[key: string]: string|null} = {
-    "AD" : "Adjudication",
-    "AR" : "Arbitration",
-    "ME" : "Mediation",
-    "NE" : "Negotiation",
-    "LG" : "Let go",
-    "PC" : "Public Complaint",
-    "" : ""
-  }
-
   constructor(
     private svc: SharedService,
     private router: Router,
-    public dialog: MatDialog
   ) {}
 
   delay(ms: number) {
@@ -198,11 +183,7 @@ export class MainComponent implements OnInit{
     this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read);
   }
 
-  OpenDialog(val: string): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      data: { dialog : val },
-    });
-  }
+
 
   async submit() {
     this.p.SurveyEndTs = new Date();
@@ -231,23 +212,3 @@ export class MainComponent implements OnInit{
 
 }
 
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: './dialog.html',
-  styleUrls: ['./dialog.css'],
-  standalone: true,
-  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, NgIf],
-})
-export class DialogOverviewExampleDialog implements OnInit, AfterViewInit{
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
-  ) {}
-
-  ngOnInit(): void {}
-  ngAfterViewInit() {}
-  
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}

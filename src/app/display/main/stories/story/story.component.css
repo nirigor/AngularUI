@@ -2,6 +2,10 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    & h2 {
+        font-weight: bold;
+        margin: 0px;
+    }
 }
 
 .story {
@@ -12,3 +16,11 @@
     border-radius: 100px;
     height: 40px;
 }
+
+@media screen and (max-width: 700px) { 
+    .story-h {
+        & h2 {
+            max-width: 240px;
+        }
+    }
+  }

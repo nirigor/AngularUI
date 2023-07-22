@@ -1,0 +1,108 @@
+<div *ngIf="step == stepDict['INTRO_1'] && steps[step]['isVisible']" class="item center">
+    <div class="icon-lg"><img src="assets/question-mark.gif"></div>
+    <h1>What are the ways to deal with conflicts?</h1>
+    <h3>hint: there are <b>6 ways</b></h3>
+    <button mat-raised-button color="primary" class="next-button" (click)="this.nextClick.emit();"><i class="bi bi-arrow-right"></i> Learn more</button>
+</div>
+
+<div *ngIf="step == stepDict['INTRO_2'] && steps[step]['isVisible']" class="item">
+    <div class="split">
+        <div class="video">
+            <h2>Ways for Solving a conflict: <b>Litigation (Adjudication)</b></h2>
+            <iframe src="https://www.youtube.com/embed/mvDTwoMnqsc?modestbranding=1" frameborder="0"></iframe>
+        </div>
+        <div class="videotext">
+            <p class="mtop0"><b>Video's text</b></p>
+            <p>
+                In this proceeding, both the plaintiff and defendant are legally represented. A claim must be filed to the court to start the proceedings against the other party. The procedure is lengthy, and there is no way to estimate its duration. 
+                Therefore, additional costs include paying the lawyer for the whole trial length. The result of the trial is unpredictable, and following the judge's decision, the ruling can be in favor of one party and against the other. 
+                It is important to note that the procedure is public, and anyone can review it (except in cases of a suppression order). Despite this, in the legal process, the result will undoubtedly end the dispute (of course, after the possibility of filing an appeal has been used).
+            </p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="step == stepDict['INTRO_3'] && steps[step]['isVisible']" class="item">
+    <div class="split">
+        <div class="video">
+            <h2>Ways for Solving a conflict: <b>Mediation</b></h2>
+            <iframe src="https://www.youtube.com/embed/mvDTwoMnqsc?modestbranding=1" frameborder="0"></iframe>
+        </div>
+        <div class="videotext">
+            <p class="mtop0"><b>Video's text</b></p>
+            <p>
+                One of the ways to resolve a conflict is through mediation. In mediation the parties in the conflict turn to a third party, a neutral mediator, who will help and direct them toward an agreement without the authority to give a final decision. 
+                A mediation process includes the parties of the dispute, the mediator, and sometimes the parties' attorneys. The procedure is usually short and cost effective. During mediation, the parties can talk and express their feelings and needs. 
+                Participation in the mediation procedure depends on the consent of the parties. Either party can terminate the mediation and must agree to conclude the process with an agreement. An agreement can include creative solutions that will allow both parties to benefit from the solution. 
+                The procedure is confidential and not public. The parties cannot use anything that is said or done in mediation if they take the case to court.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="step == stepDict['INTRO_4'] && steps[step]['isVisible']" class="item">
+    <div class="split">
+        <div class="video">
+            <h2>Ways for Solving a conflict: <b>Negotiation</b></h2>
+            <iframe src="https://www.youtube.com/embed/mvDTwoMnqsc?modestbranding=1" frameborder="0"></iframe>
+        </div>    
+        <div class="videotext">
+            <p class="mtop0"><b>Video's text</b></p>
+            <p>
+                One of the ways to resolve a conflict is through negotiation. In negotiation the parties focus on exchanging of proposals to the point of convergence to a compromise point. Negotiation is conducted without the involvement of a neutral third party. 
+                The outcome, and the certainty at the end depend solely on the parties and whether they have reached an agreement acceptable to both. The procedure is usually short and cost effective. This process requires cooperation between the parties. 
+                Either party can terminate the negotiation and must agree to conclude the process with an agreement. The procedure is confidential and not public. 
+            </p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="step == stepDict['INTRO_5'] && steps[step]['isVisible']" class="item">
+    <div class="split">
+        <div class="video">
+            <h2>Ways for Solving a conflict: <b>Arbitration</b></h2>
+            <iframe src="https://www.youtube.com/embed/mvDTwoMnqsc?modestbranding=1" frameborder="0"></iframe>
+        </div>                    
+        <div class="videotext">
+            <p class="mtop0"><b>Video's text</b></p>
+            <p>
+                One of the ways to resolve a conflict is through arbitration. In arbitration the parties in the conflict turn to a third party, a neutral arbitrator Who eventually gives a final and binding decision. 
+                There are restrictions on the possibility of appealing or overturning the arbitrator's decision. The procedure is usually short but it costly. Participation in the arbitration procedure depends on the consent of the parties.  
+                The procedure is confidential and not public.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="step == stepDict['INTRO_6'] && steps[step]['isVisible']" class="item">
+    <div class="split">
+        <div class="video">
+            <h2>Ways for Solving a conflict: <b>Public complaint</b></h2>
+            <iframe src="https://www.youtube.com/embed/mvDTwoMnqsc?modestbranding=1" frameborder="0"></iframe>
+        </div>
+        <div class="videotext">
+            <p class="mtop0"><b>Video's text</b></p>
+            <p>
+                One of the ways to resolve a conflict is through submitting a complaint to an auditing body. In this procedure, a party affected by wrongdoing applies to a neutral body that is responsible for investigating complaints against certain entities (usually companies or public bodies). 
+                Applying to an auditing body can lead to a correction or change in the conduct that caused the injustice or a broad change in conduct in the future, but usually cannot end in compensation. 
+                The complaining party has no control over the process or the outcome, and his involvement is usually limited. The time and cost invested in this procedure are low, but the duration of investigating the complaint can be long. 
+                The procedure is confidential and not public. The outcome of the procedure depends on the auditing body and not on the parties.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="step == stepDict['INTRO_7'] && steps[step]['isVisible']" class="item">
+    <div class="split">
+        <div class="video">
+            <h2>Ways for Solving a conflict: <b>Avoidance (Letting go)</b></h2>
+            <iframe src="https://www.youtube.com/embed/mvDTwoMnqsc?modestbranding=1" frameborder="0"></iframe>
+        </div>
+        <div class="videotext">
+            <p class="mtop0"><b>Video's text</b></p>
+            <p>
+                One of the ways to resolve a conflict is by avoidance (letting go). Choosing to avoiding conflict, sometimes means a waiver of rights. Avoiding conflict depends on the party itself and will allow a reduction of stress. Also, the costs involved are minimal. 
+            </p>
+        </div>
+    </div>
+</div>

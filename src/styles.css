@@ -20,6 +20,7 @@
   --large-toggle-selected: #EADDFF;
 
   --mdc-typography-body2-font-size : 18px;
+  --mdc-protected-button-container-color: var(--primary-purple);
 
   --basicProgress: 0%;
   --stylesProgress1: 0%;
@@ -38,8 +39,16 @@ html, body {
   margin: 0;
   background-color: var(--md-background);
   height: 100%;
-  font-family: "Poppins", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji" !important;
+  font-family: "Poppins", "Roboto", "Helvetica Neue", sans-serif !important;
 }
+
+
+.general-button {
+  --mdc-protected-button-container-color: var(--primary-purple) !important;
+  border-radius: 100px !important;
+  height: 40px !important;
+}
+
 
 .mat-mdc-dialog-container {
   position: absolute !important;
