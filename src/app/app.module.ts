@@ -30,7 +30,6 @@ import { StylesComponent } from './display/main/styles/styles.component';
 import { StoriesIntroComponent } from './display/main/storiesintro/storiesintro.component';
 import { BasicComponent } from './display/main/basic/basic.component';
 import { StoriesComponent } from './display/main/stories/stories.component';
-import { RtestComponent } from './rtest/rtest.component';
 import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
 
 
@@ -55,7 +54,6 @@ const globalRippleConfig: RippleGlobalOptions = {
     StoriesIntroComponent,
     BasicComponent,
     StoriesComponent,
-    RtestComponent,
   ],
   imports: [
     BrowserModule,
