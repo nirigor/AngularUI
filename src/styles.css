@@ -38,8 +38,8 @@ html, body {
   padding: 0;
   margin: 0;
   background-color: var(--md-background);
-  height: 100%;
   font-family: "Poppins", "Roboto", "Helvetica Neue", sans-serif !important;
+  height: 100%;
 }
 
 
@@ -49,6 +49,9 @@ html, body {
   height: 40px !important;
 }
 
+.mat-button-toggle-label-content{
+  padding: 0px !important
+}
 
 .mat-mdc-dialog-container {
   position: absolute !important;

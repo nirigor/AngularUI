@@ -17,17 +17,17 @@
     <h2>As a party in this conflict, Which of the following feelings arose in you while reading about the conflict above?</h2>
     <h2><b>You can choose more than one:</b></h2>
     <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1Feelings" multiple>
-        <mat-button-toggle value="anger"><div class="icon"><mat-icon svgIcon="anger"></mat-icon></div>anger</mat-button-toggle>
-        <mat-button-toggle value="sadness"><div class="icon"><mat-icon svgIcon="sadness"></mat-icon></div>sadness</mat-button-toggle>
-        <mat-button-toggle value="frustration"><div class="icon"><mat-icon svgIcon="frustration"></mat-icon></div>frustration</mat-button-toggle>
-        <mat-button-toggle value="fear"><div class="icon"><mat-icon svgIcon="fear"></mat-icon></div>fear</mat-button-toggle>
-        <mat-button-toggle value="happiness"><div class="icon"><mat-icon svgIcon="happiness"></mat-icon></div>happiness</mat-button-toggle>
-        <mat-button-toggle value="confusion"><div class="icon"><mat-icon svgIcon="confusion"></mat-icon></div>confusion</mat-button-toggle>
-        <mat-button-toggle value="hate"><div class="icon"><mat-icon svgIcon="hate"></mat-icon></div>hate</mat-button-toggle>
-        <mat-button-toggle value="indifference"><div class="icon"><mat-icon svgIcon="indifference"></mat-icon></div>indifference</mat-button-toggle>
-        <mat-button-toggle value="curiosity"><div class="icon"><mat-icon svgIcon="curiosity"></mat-icon></div>curiosity</mat-button-toggle>
-        <mat-button-toggle value="stress"><div class="icon"><mat-icon svgIcon="stress"></mat-icon></div>stress</mat-button-toggle>
-        </mat-button-toggle-group>
+        <mat-button-toggle value='anger'><div class="icon"><mat-icon svgIcon="anger"></mat-icon></div>anger</mat-button-toggle>
+        <mat-button-toggle value='sadness'><div class="icon"><mat-icon svgIcon="sadness"></mat-icon></div>sadness</mat-button-toggle>
+        <mat-button-toggle value='frustration'><div class="icon"><mat-icon svgIcon="frustration"></mat-icon></div>frustration</mat-button-toggle>
+        <mat-button-toggle value='fear'><div class="icon"><mat-icon svgIcon="fear"></mat-icon></div>fear</mat-button-toggle>
+        <mat-button-toggle value='happiness'><div class="icon"><mat-icon svgIcon="happiness"></mat-icon></div>happiness</mat-button-toggle>
+        <mat-button-toggle value='confusion'><div class="icon"><mat-icon svgIcon="confusion"></mat-icon></div>confusion</mat-button-toggle>
+        <mat-button-toggle value='hate'><div class="icon"><mat-icon svgIcon="hate"></mat-icon></div>hate</mat-button-toggle>
+        <mat-button-toggle value='indifference'><div class="icon"><mat-icon svgIcon="indifference"></mat-icon></div>indifference</mat-button-toggle>
+        <mat-button-toggle value='curiosity'><div class="icon"><mat-icon svgIcon="curiosity"></mat-icon></div>curiosity</mat-button-toggle>
+        <mat-button-toggle value='stress'><div class="icon"><mat-icon svgIcon="stress"></mat-icon></div>stress</mat-button-toggle>
+    </mat-button-toggle-group>
     <h3 style="font-weight: normal;">* You have selected {{this.p.ST1Feelings.length}}</h3>
     <button mat-raised-button color="primary" class="next-button" [disabled]="this.p.ST1Feelings.length < 1" (click)="this.nextClick.emit();"><i class="bi bi-arrow-right"></i> continue</button>
 </div>
@@ -291,6 +291,23 @@
 </div>
 
 <div *ngIf="step == stepDict['STORIES1_19'] && steps[step]['isVisible']" class="item">
+    <div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div>
+    <h2 style="margin-bottom: 0px;">This is a trick question</h2>
+    <p style="margin-bottom: 60px;">Select middle icon</p>
+    <mat-button-toggle-group class="toggle-group-large no-text" [(ngModel)]="this.p.TQ2" (ngModelChange)="this.nextClick.emit();">
+        <mat-button-toggle class="scale1" value=true><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+        <mat-button-toggle class="scale2" value=true><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+        <mat-button-toggle class="scale3" value=false><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+        <mat-button-toggle class="scale4" value=true><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+        <mat-button-toggle class="scale5" value=true><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+    </mat-button-toggle-group>
+    <div class="sub">
+        <div class="red bold s-left">Not important</div>
+        <div class="green bold s-right">Very important</div>    
+    </div>
+</div>
+
+<div *ngIf="step == stepDict['STORIES1_20'] && steps[step]['isVisible']" class="item">
     <div class="icon"><mat-icon svgIcon="pray"></mat-icon></div>
     <h2 style="margin-bottom: 0px;">Recognition/Apology</h2>
     <p style="margin-bottom: 60px;"></p>
@@ -307,7 +324,7 @@
     </div>
 </div>
 
-<div *ngIf="step == stepDict['STORIES1_20'] && steps[step]['isVisible']" class="item">
+<div *ngIf="step == stepDict['STORIES1_21'] && steps[step]['isVisible']" class="item">
     <h2 style="margin-bottom: 0px;">How would you classify the incident describdescribed in the story above?</h2>
     <p style="margin-bottom: 60px;"></p>
     <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1Classification" (ngModelChange)="this.nextClick.emit();">
@@ -334,7 +351,7 @@
     </mat-button-toggle-group>
 </div>
 
-<div *ngIf="step == stepDict['STORIES1_21'] && steps[step]['isVisible']" class="item">
+<div *ngIf="step == stepDict['STORIES1_22'] && steps[step]['isVisible']" class="item">
     <h2 style="margin-bottom: 0px;">How would you rate the strength of your position compared to the other party in the story?</h2>
     <p style="margin-bottom: 60px;"></p>
     <mat-button-toggle-group class="toggle-group-xlarge" [(ngModel)]="this.p.ST1StrengthPosition" (ngModelChange)="this.nextClick.emit();">
@@ -343,11 +360,11 @@
     </mat-button-toggle-group>
 </div>
 
-<div *ngIf="step == stepDict['STORIES1_22'] && steps[step]['isVisible']" class="item">
+<div *ngIf="step == stepDict['STORIES1_23'] && steps[step]['isVisible']" class="item">
     <h2 style="margin-bottom: 0px;">Taking into account your specified priorities, if you were the person in the story above, with which option would you be most satisfied with?</h2>
     <p style="margin-bottom: 60px;"></p>
     <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST1Selection" (ngModelChange)="this.nextClick.emit();">
-        <mat-button-toggle value="AD"><div class="icon"><mat-icon svgIcon="judge"></mat-icon></div><div>Adjudication</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Adjudication');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
+        <mat-button-toggle value="AD"><div class="icon"><mat-icon svgIcon="adjudication"></mat-icon></div><div>Adjudication</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Adjudication');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
         <mat-button-toggle value="AR"><div class="icon"><mat-icon svgIcon="arbitration"></mat-icon></div><div>Arbitration</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Arbitration');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
         <mat-button-toggle value="ME"><div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div><div>Mediation</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Mediation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
         <mat-button-toggle value="NE"><div class="icon"><mat-icon svgIcon="negotiation"></mat-icon></div><div>Negotiation</div><i (click)="$event.preventDefault(); $event.stopPropagation(); OpenDialog('Negotiation');" class="bi bi-info-square-fill lightblue"></i></mat-button-toggle>
@@ -356,7 +373,7 @@
     </mat-button-toggle-group>
 </div>
 
-<div *ngIf="step == stepDict['STORIES1_23'] && steps[step]['isVisible']" class="item">
+<div *ngIf="step == stepDict['STORIES1_24'] && steps[step]['isVisible']" class="item">
     <h2>Why did you choose <b>{{Opts[this.p.ST1Selection]}}</b> as your preferred option for managing the conflict you read about?</h2>
     <mat-form-field floatLabel="always" appearance="outline" style="width: 100%; min-height: 200px;">
         <mat-label>your experience</mat-label>
@@ -384,17 +401,17 @@
     <h2>As a party in this conflict, Which of the following feelings arose in you while reading about the conflict above?</h2>
     <h2><b>You can choose more than one:</b></h2>
     <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST2Feelings" multiple>
-        <mat-button-toggle value="anger"><div class="icon"><mat-icon svgIcon="anger"></mat-icon></div>anger</mat-button-toggle>
-        <mat-button-toggle value="sadness"><div class="icon"><mat-icon svgIcon="sadness"></mat-icon></div>sadness</mat-button-toggle>
-        <mat-button-toggle value="frustration"><div class="icon"><mat-icon svgIcon="frustration"></mat-icon></div>frustration</mat-button-toggle>
-        <mat-button-toggle value="fear"><div class="icon"><mat-icon svgIcon="fear"></mat-icon></div>fear</mat-button-toggle>
-        <mat-button-toggle value="happiness"><div class="icon"><mat-icon svgIcon="happiness"></mat-icon></div>happiness</mat-button-toggle>
-        <mat-button-toggle value="confusion"><div class="icon"><mat-icon svgIcon="confusion"></mat-icon></div>confusion</mat-button-toggle>
-        <mat-button-toggle value="hate"><div class="icon"><mat-icon svgIcon="hate"></mat-icon></div>hate</mat-button-toggle>
-        <mat-button-toggle value="indifference"><div class="icon"><mat-icon svgIcon="indifference"></mat-icon></div>indifference</mat-button-toggle>
-        <mat-button-toggle value="curiosity"><div class="icon"><mat-icon svgIcon="curiosity"></mat-icon></div>curiosity</mat-button-toggle>
-        <mat-button-toggle value="stress"><div class="icon"><mat-icon svgIcon="stress"></mat-icon></div>stress</mat-button-toggle>
-        </mat-button-toggle-group>
+        <mat-button-toggle value='anger'><div class="icon"><mat-icon svgIcon="anger"></mat-icon></div>anger</mat-button-toggle>
+        <mat-button-toggle value='sadness'><div class="icon"><mat-icon svgIcon="sadness"></mat-icon></div>sadness</mat-button-toggle>
+        <mat-button-toggle value='frustration'><div class="icon"><mat-icon svgIcon="frustration"></mat-icon></div>frustration</mat-button-toggle>
+        <mat-button-toggle value='fear'><div class="icon"><mat-icon svgIcon="fear"></mat-icon></div>fear</mat-button-toggle>
+        <mat-button-toggle value='happiness'><div class="icon"><mat-icon svgIcon="happiness"></mat-icon></div>happiness</mat-button-toggle>
+        <mat-button-toggle value='confusion'><div class="icon"><mat-icon svgIcon="confusion"></mat-icon></div>confusion</mat-button-toggle>
+        <mat-button-toggle value='hate'><div class="icon"><mat-icon svgIcon="hate"></mat-icon></div>hate</mat-button-toggle>
+        <mat-button-toggle value='indifference'><div class="icon"><mat-icon svgIcon="indifference"></mat-icon></div>indifference</mat-button-toggle>
+        <mat-button-toggle value='curiosity'><div class="icon"><mat-icon svgIcon="curiosity"></mat-icon></div>curiosity</mat-button-toggle>
+        <mat-button-toggle value='stress'><div class="icon"><mat-icon svgIcon="stress"></mat-icon></div>stress</mat-button-toggle>
+    </mat-button-toggle-group>
     <h3 style="font-weight: normal;">* You have selected {{this.p.ST2Feelings.length}}</h3>
     <button mat-raised-button color="primary" class="next-button" [disabled]="this.p.ST2Feelings.length < 1" (click)="this.nextClick.emit();"><i class="bi bi-arrow-right"></i> continue</button>
 </div>
@@ -751,17 +768,17 @@
     <h2>As a party in this conflict, Which of the following feelings arose in you while reading about the conflict above?</h2>
     <h2><b>You can choose more than one:</b></h2>
     <mat-button-toggle-group class="toggle-group-large" [(ngModel)]="this.p.ST3Feelings" multiple>
-        <mat-button-toggle value="anger"><div class="icon"><mat-icon svgIcon="anger"></mat-icon></div>anger</mat-button-toggle>
-        <mat-button-toggle value="sadness"><div class="icon"><mat-icon svgIcon="sadness"></mat-icon></div>sadness</mat-button-toggle>
-        <mat-button-toggle value="frustration"><div class="icon"><mat-icon svgIcon="frustration"></mat-icon></div>frustration</mat-button-toggle>
-        <mat-button-toggle value="fear"><div class="icon"><mat-icon svgIcon="fear"></mat-icon></div>fear</mat-button-toggle>
-        <mat-button-toggle value="happiness"><div class="icon"><mat-icon svgIcon="happiness"></mat-icon></div>happiness</mat-button-toggle>
-        <mat-button-toggle value="confusion"><div class="icon"><mat-icon svgIcon="confusion"></mat-icon></div>confusion</mat-button-toggle>
-        <mat-button-toggle value="hate"><div class="icon"><mat-icon svgIcon="hate"></mat-icon></div>hate</mat-button-toggle>
-        <mat-button-toggle value="indifference"><div class="icon"><mat-icon svgIcon="indifference"></mat-icon></div>indifference</mat-button-toggle>
-        <mat-button-toggle value="curiosity"><div class="icon"><mat-icon svgIcon="curiosity"></mat-icon></div>curiosity</mat-button-toggle>
-        <mat-button-toggle value="stress"><div class="icon"><mat-icon svgIcon="stress"></mat-icon></div>stress</mat-button-toggle>
-        </mat-button-toggle-group>
+        <mat-button-toggle value='anger'><div class="icon"><mat-icon svgIcon="anger"></mat-icon></div>anger</mat-button-toggle>
+        <mat-button-toggle value='sadness'><div class="icon"><mat-icon svgIcon="sadness"></mat-icon></div>sadness</mat-button-toggle>
+        <mat-button-toggle value='frustration'><div class="icon"><mat-icon svgIcon="frustration"></mat-icon></div>frustration</mat-button-toggle>
+        <mat-button-toggle value='fear'><div class="icon"><mat-icon svgIcon="fear"></mat-icon></div>fear</mat-button-toggle>
+        <mat-button-toggle value='happiness'><div class="icon"><mat-icon svgIcon="happiness"></mat-icon></div>happiness</mat-button-toggle>
+        <mat-button-toggle value='confusion'><div class="icon"><mat-icon svgIcon="confusion"></mat-icon></div>confusion</mat-button-toggle>
+        <mat-button-toggle value='hate'><div class="icon"><mat-icon svgIcon="hate"></mat-icon></div>hate</mat-button-toggle>
+        <mat-button-toggle value='indifference'><div class="icon"><mat-icon svgIcon="indifference"></mat-icon></div>indifference</mat-button-toggle>
+        <mat-button-toggle value='curiosity'><div class="icon"><mat-icon svgIcon="curiosity"></mat-icon></div>curiosity</mat-button-toggle>
+        <mat-button-toggle value='stress'><div class="icon"><mat-icon svgIcon="stress"></mat-icon></div>stress</mat-button-toggle>
+    </mat-button-toggle-group>
     <h3 style="font-weight: normal;">* You have selected {{this.p.ST3Feelings.length}}</h3>
     <button mat-raised-button color="primary" class="next-button" [disabled]="this.p.ST3Feelings.length < 1" (click)="this.nextClick.emit();"><i class="bi bi-arrow-right"></i> continue</button>
 </div>

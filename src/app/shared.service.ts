@@ -14,10 +14,10 @@ export class SharedService {
   readonly APIUrl = 'http://16.171.144.39/api';
 
   readonly BASIC = 11;
-  readonly STYLES1 = 15;
+  readonly STYLES1 = 16;
   readonly STYLES2 = 10;
   readonly INTRO = 7;
-  readonly STORIES1 = 23;
+  readonly STORIES1 = 24;
   readonly STORIES2 = 23;
   readonly STORIES3 = 23;
   readonly COMPLETE = 2;

@@ -69,7 +69,7 @@ export class MainComponent implements OnInit{
     } else {
       this.p.ProlificId = 'unpaid';
       if(this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).state) this.p.ProlificId = this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).value;
-      if(this.p.ProlificId == 'unpaid') {this.p.Age = "unpaid"; this.p.Gender = "unpaid"}
+      if(this.p.ProlificId != 'unpaid') {this.p.Age = "0"; this.p.Gender = "E"}
       this.p.SurveyStartTs = new Date();
       [ this.p.ST1Number, this.p.ST2Number, this.p.ST3Number ] = this.svc.getCases();
     }
@@ -96,6 +96,7 @@ export class MainComponent implements OnInit{
     while (!this.steps[this.step]['isVisible']) this.step += 1;
     this.stepUpdateEvent.emit(this.step);
     this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read);
+    navigator.vibrate(50);
   }
 
   checkB11() {
@@ -181,6 +182,7 @@ export class MainComponent implements OnInit{
       this.stepUpdateEvent.emit(this.step);
     }
     this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read);
+    navigator.vibrate(50);
   }
 
 
@@ -206,7 +208,7 @@ export class MainComponent implements OnInit{
       this.feedback.TKCompromisingScore = data['TKCompromisingScore'];
     } else {
       context['status_code'] = response['status'];
-      if (response['status'] === 400 || response['status'] === 500 ) { context['message'] = response['data'].message;} else {context['message'] = this.feedback.Message;}
+      if (response['status'] === 451) { context['message'] = this.feedback.Message; } else { context['message'] = JSON.stringify(response['data'].message); }
       this.router.navigateByUrl('fault', { state: context });
     }
     this.feedback.Token = data['Token'];

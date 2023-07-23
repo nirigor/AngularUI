@@ -229,6 +229,22 @@
 </div>
 
 <div *ngIf="step == stepDict['BF_15'] && steps[step]['isVisible']" class="item">
+    This is a trick question...
+    <h2><b>Select middle icon</b></h2>
+    <mat-button-toggle-group class="toggle-group-large no-text" [(ngModel)]="this.p.TQ1" (ngModelChange)="this.nextClick.emit();">
+        <mat-button-toggle class="scale1" value=true><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
+        <mat-button-toggle class="scale2" value=true><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
+        <mat-button-toggle class="scale3" value=false><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+        <mat-button-toggle class="scale4" value=true><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
+        <mat-button-toggle class="scale5" value=true><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+    </mat-button-toggle-group>
+    <div class="sub">
+        <div class="red bold s-left">Not me at all</div>
+        <div class="green bold s-right">This is exactly me</div>    
+    </div>
+</div>
+
+<div *ngIf="step == stepDict['BF_16'] && steps[step]['isVisible']" class="item">
     I see myself as someone who...
     <h2><b>Does things efficiently</b></h2>
     <mat-button-toggle-group class="toggle-group-large no-text" [(ngModel)]="this.p.BF15" (ngModelChange)="this.nextClick.emit();">

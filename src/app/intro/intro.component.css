@@ -1,12 +1,12 @@
 .container {
     padding: 50px;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     background-color: var(--md-background-intro);
     row-gap: 50px;
+    min-height: 100%;
 }
 
 /* Intro Screen */
