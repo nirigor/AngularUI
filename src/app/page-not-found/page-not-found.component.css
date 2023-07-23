@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 100%;
+    padding: 3.5rem;
+    background-color: var(--md-background);
+}
+
+.content {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & h1 {
+        color: var(--dark-red);
+        font-size: 7rem;
+    }
+
+    & h2 {
+        margin-top: 2rem;
+        color: var(--dark-green);
+        font-size: 5rem;
+    }
+}

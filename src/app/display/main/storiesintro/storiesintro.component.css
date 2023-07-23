@@ -37,4 +37,8 @@ iframe {
     .video, .videotext {
         width: 100%;
     }
+
+    .videotext {
+        margin-top: 2rem;
+    }
 }

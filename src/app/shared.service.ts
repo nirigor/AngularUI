@@ -9,8 +9,9 @@ import { Feedback } from './models/feedback.model';
 })
 
 export class SharedService {
-  readonly APIUrl = 'http://127.0.0.1:8000';
-  //readonly APIUrl = 'http://16.171.144.39/api';
+  //readonly APIUrl = 'http://127.0.0.1:8000';
+  //readonly APIUrl = 'http://192.168.1.128:8000';
+  readonly APIUrl = 'http://16.171.144.39/api';
 
   readonly BASIC = 11;
   readonly STYLES1 = 15;
@@ -126,28 +127,6 @@ export class SharedService {
     feedback['status'] = response.status;
 
     return feedback;
-  }
-
-  async loadMockData() {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    let response = await fetch(this.APIUrl, {
-      "headers" : headers,
-      "method" : "GET"
-    });
-    let jsonObjs = await response.json();
-    console.log(jsonObjs[0]);
-    let p = Object.assign(new Participant, jsonObjs[0]);
-    p.pop('BFAgreeablenessScore');
-    p.pop('BFConscientiousnessScore');
-    p.pop('BFExtraversionScore');
-    p.pop('BFNeuroticismScore');
-    p.pop('BFOpennessScore');
-    p.pop('BFConscientiousnessScore');
-    p.pop('BFAgreeablenessScore');
-    p.pop('BFConscientiousnessScore');
-    
-    return p;
   }
 
   saveProgress(p: Participant, steps: Item[], step: number, isComplete: boolean, feedback: Feedback, read: boolean) {

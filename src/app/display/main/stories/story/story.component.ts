@@ -8,9 +8,8 @@ import EasySpeech from 'easy-speech';
 export class StoryComponent implements OnInit {
   @Input() story: number|undefined = 0;
   readingState = "notStarted";
-  ngOnInit() {  
-    
-  }
+
+  ngOnInit() { }
 
   readText = async () => {
     let enVoices: any[] = [];
@@ -45,16 +44,20 @@ export class StoryComponent implements OnInit {
       pitch: 1
     }
     this.readingState = "Reading";
-    await EasySpeech.speak(options);
-    this.readingState = "notStarted";
+    EasySpeech.speak(options);
   }
 
   pauseReadText() {
+    console.log(EasySpeech.detect());
+    console.log(EasySpeech.status());
+    console.log(EasySpeech.debug);
     EasySpeech.pause();
     this.readingState = "Paused";
   }
 
   resumeReadText() {
+    console.log(EasySpeech.detect());
+    console.log(EasySpeech.status());
     EasySpeech.resume();
     this.readingState = "Reading"
   }

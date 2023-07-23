@@ -31,7 +31,8 @@ import { StoriesIntroComponent } from './display/main/storiesintro/storiesintro.
 import { BasicComponent } from './display/main/basic/basic.component';
 import { StoriesComponent } from './display/main/stories/stories.component';
 import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { SrvfaultComponent } from './srvfault/srvfault.component';
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true,
@@ -54,6 +55,7 @@ const globalRippleConfig: RippleGlobalOptions = {
     StoriesIntroComponent,
     BasicComponent,
     StoriesComponent,
+    SrvfaultComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,8 @@ const globalRippleConfig: RippleGlobalOptions = {
   ],
   providers: [
     SharedService,
-    {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig}
+    {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig},
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

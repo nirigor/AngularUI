@@ -171,7 +171,7 @@ export class MainComponent implements OnInit{
 
   backClick() {
     if ((this.p.ProlificId == 'unpaid' && this.step == 0) || (this.p.ProlificId != 'unpaid' && this.step == 2)) {
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('intro');
     } else {
       if ((this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) && EasySpeech.status()['initialized']) EasySpeech.cancel();
       this.step -= 1;
@@ -189,6 +189,10 @@ export class MainComponent implements OnInit{
     this.p.SurveyEndTs = new Date();
     let response = await this.svc.submitSurvey(this.p);
     let data = response['data'];
+    let context:{[key: string]: any} = {};
+    this.feedback.Message = data['Message'];
+    this.feedback.Valid = data['Valid'];
+
     if (response['status'] === 200) {
       this.feedback.BFAgreeablenessScore = data['BFAgreeablenessScore'];
       this.feedback.BFConscientiousnessScore = data['BFConscientiousnessScore'];
@@ -200,9 +204,11 @@ export class MainComponent implements OnInit{
       this.feedback.TKCollaboratingScore = data['TKCollaboratingScore'];
       this.feedback.TKCompetingScore = data['TKCompetingScore'];
       this.feedback.TKCompromisingScore = data['TKCompromisingScore'];
-    } 
-    this.feedback.Message = data['Message'];
-    this.feedback.Valid = data['Valid'];
+    } else {
+      context['status_code'] = response['status'];
+      if (response['status'] === 400 || response['status'] === 500 ) { context['message'] = response['data'].message;} else {context['message'] = this.feedback.Message;}
+      this.router.navigateByUrl('fault', { state: context });
+    }
     this.feedback.Token = data['Token'];
     this.isComplete = true;
     this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read);

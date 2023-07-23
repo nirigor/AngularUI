@@ -34,7 +34,7 @@ export class DisplayComponent implements OnInit {
     //this.svc.loadMockData();
     
     if (!this.termsAgreed.state) {
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('intro');
     }
 
     if (this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).value == 'unpaid') { 

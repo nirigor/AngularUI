@@ -132,7 +132,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-    column-gap: 20px;
+    column-gap: 10px;
     & p {
         white-space: normal;
         line-height: normal;
@@ -246,7 +246,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 10px;
+            padding: 0.5rem;
             & .mat-button-toggle-label-content {
                 padding: 0px;
             }
@@ -259,32 +259,49 @@
         width: 100%;
         justify-content: space-between;
         flex-wrap: nowrap;
-        & mat-button-toggle {
+        gap: 0.5rem;
+        & .mat-button-toggle {
             max-width: 190px;
-            width: 20%;
-            min-width: 50px;
+            width: calc(20% - 1.5rem);
+            min-width: 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 5px;
+            padding: 0.5rem; 
             & .mat-button-toggle-label-content {
-                padding: 0px;
+                padding: 0px !important;
             }
+        }    
+    }
+
+    span.mat-button-toggle-label-content {
+        padding: 0px !important;
+    }
+
+    .icon mat-icon {
+            height: 2.5rem !important;
+            width: 2.5rem !important;
+    }
+
+    .item {
+        & h2 {
+            margin-bottom: 20px;
         }
     }
 
     .toggle-group-large {
         width: 100%;
+        font-size: 0.7rem;
         justify-content: space-evenly;
         justify-content: start;
         flex-wrap: wrap;
         & mat-button-toggle {
-            width: 50%;
-            max-width: 170px;
+            width: 45%;
+            max-width: 190px;
             padding: 5px;
             & .mat-button-toggle-label-content {
-                padding: 0px;
+                padding: 0px !important;
             }
         }
     }
