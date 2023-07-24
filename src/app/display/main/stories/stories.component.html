@@ -293,13 +293,13 @@
 <div *ngIf="step == stepDict['STORIES1_19'] && steps[step]['isVisible']" class="item">
     <div class="icon"><mat-icon svgIcon="handshake"></mat-icon></div>
     <h2 style="margin-bottom: 0px;">This is a trick question</h2>
-    <p style="margin-bottom: 60px;">Select middle icon</p>
+    <p style="margin-bottom: 60px;">Select the rightmost icon</p>
     <mat-button-toggle-group class="toggle-group-large no-text" [(ngModel)]="this.p.TQ2" (ngModelChange)="this.nextClick.emit();">
         <mat-button-toggle class="scale1" value=true><div class="icon"><mat-icon svgIcon="smiley1"></mat-icon></div></mat-button-toggle>
         <mat-button-toggle class="scale2" value=true><div class="icon"><mat-icon svgIcon="smiley2"></mat-icon></div></mat-button-toggle>
-        <mat-button-toggle class="scale3" value=false><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
+        <mat-button-toggle class="scale3" value=true><div class="icon"><mat-icon svgIcon="smiley3"></mat-icon></div></mat-button-toggle>
         <mat-button-toggle class="scale4" value=true><div class="icon"><mat-icon svgIcon="smiley4"></mat-icon></div></mat-button-toggle>
-        <mat-button-toggle class="scale5" value=true><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
+        <mat-button-toggle class="scale5" value=false><div class="icon"><mat-icon svgIcon="smiley5"></mat-icon></div></mat-button-toggle>
     </mat-button-toggle-group>
     <div class="sub">
         <div class="red bold s-left">Not important</div>
