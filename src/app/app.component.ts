@@ -77,6 +77,10 @@ export class AppComponent {
     this.matIconRegistry.addSvgIcon('negotiation', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/negotiation.svg'))
     this.matIconRegistry.addSvgIcon('waives', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/waives.svg'))
     this.matIconRegistry.addSvgIcon('publiccomplaint', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/publiccomplaint.svg'))
-    this.matIconRegistry.addSvgIcon('judge', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/judge.svg'))
+    this.matIconRegistry.addSvgIcon('adjudication-1', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/adjudication-1.svg'))
+    this.matIconRegistry.addSvgIcon('arbitration-1', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/arbitration-1.svg'))
+    this.matIconRegistry.addSvgIcon('negotiation-1', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/negotiation-1.svg'))
+    this.matIconRegistry.addSvgIcon('mediation-1', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/mediation-1.svg'))
+    this.matIconRegistry.addSvgIcon('letgo-1', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svg/letgo-1.svg'))
   }
 }

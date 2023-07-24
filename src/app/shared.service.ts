@@ -9,10 +9,8 @@ import { Feedback } from './models/feedback.model';
 })
 
 export class SharedService {
-  //readonly APIUrl = 'http://127.0.0.1:8000';
-  //readonly APIUrl = 'http://192.168.1.128:8000';
-  readonly APIUrl = 'http://16.171.144.39/api';
-
+  readonly APIUrlDev = `${window.location.protocol}//${window.location.hostname}:8000/api`;
+  readonly APIUrlProd = window.location.origin + '/api';
   readonly BASIC = 11;
   readonly STYLES1 = 16;
   readonly STYLES2 = 10;
@@ -27,6 +25,7 @@ export class SharedService {
   steps: Item[] = [];
   stepDict: {[name: string]: number} = {}
   feedback: any;
+  APIUrl: string = "";
 
   constructor() { }
 
@@ -109,6 +108,12 @@ export class SharedService {
   }
 
   async submitSurvey(p: Participant) {
+    if (['127.0.0.1', '192.168.1.128', 'localhost'].includes(window.location.hostname)) {
+      this.APIUrl = this.APIUrlDev;
+    } else {
+      this.APIUrl = this.APIUrlProd;
+    }
+
     let feedback:{[key: string]: any} = {};
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
