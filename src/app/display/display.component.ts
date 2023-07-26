@@ -31,16 +31,17 @@ export class DisplayComponent implements OnInit {
   }
   
   ngOnInit() {
-    //this.svc.loadMockData();
-    
     if (!this.termsAgreed.state) {
       this.router.navigateByUrl('intro');
     }
 
-    if (this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).value == 'unpaid') { 
-      this.isPaid = false;
-    } else { this.isPaid = true; this.step = 2; };
+    // if (this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).value == 'unpaid') { 
+    //   this.isPaid = false;
+    // } else { 
+    //   this.isPaid = true; 
+    // };
     
-    [this.steps, this.stepDict] = this.svc.initSteps(this.isPaid);
+    [this.steps, this.stepDict] = this.svc.initSteps(false);
+    this.steps[this.step].startTime = new Date();
   }
 }

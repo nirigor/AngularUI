@@ -2,8 +2,8 @@ export class Participant {
     constructor(
         public SurveyStartTs: Date = new Date(),
         public SurveyEndTs: Date = new Date(),
-        public TQ1: boolean = false,
-        public TQ2: boolean = false,
+        public TQ1: boolean|string = "",
+        public TQ2: boolean|string = "",
         public ProlificId?: string,
         public Token?: string,
         public Gender?: string,

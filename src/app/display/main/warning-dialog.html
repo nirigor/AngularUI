@@ -1,0 +1,36 @@
+<div class="container">
+    <h1 class="title" mat-dialog-title>Warning</h1>
+    <mat-dialog-content>
+    <div *ngIf="data.isPaid">
+        <p>
+            Dear participant, it seems your attention is currently not with this survey.
+            It is important to us to get thoughtful insights from our participant, therefore, if you're currently unable to take the time to fill out this survey please stop and return to it later.
+            Otherwise, we would have to discontinue your participation.
+
+            <!-- Dear participant, our server has detected that you are not taking this survey seriously. <br>
+            As mentioned in the agreed upon terms of use, we have placed means to ensure truthful answers, one of these means was just breached! <br>
+            We have placed a lot of effort in building this survey and our research heavily relys on the quality of the ingested data. <br>
+            If you can't take the time to answer the questions thoughtfully, please don't continue your participation as the provided 
+            information will be discurded and not used for our research. <br>
+            This will the only and final warning, another breech would result in blacklisting your parcipant id in our servers and a token will <b>NOT</b> be granted at the end. <br>
+            If you intend to answer truthfuly from now on, please accept this warning message and continue! -->
+        </p>
+    </div>
+    <div *ngIf="!data.isPaid">
+        <p>
+            Dear participant, it seems your attention is currently not with this survey.
+            It is important to us to get thoughtful insights from our participant, therefore, if you're currently unable to take the time to fill out this survey please stop and return to it later.
+            Otherwise, we would have to discontinue your participation.
+            
+            <!-- Dear participant, our server has detected that you are not taking this survey seriously. <br>
+            We have placed a lot of effort in building this survey and our research heavily relys on the quality of the ingested data. <br>
+            If you can't take the time to answer the questions thoughtfully, please don't continue your participation as the provided 
+            information will be discurded and not used for our research. <br>
+            Otherwise, please accept this warning message and continue. -->
+        </p>
+    </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Accept</button>
+    </mat-dialog-actions>
+</div>

@@ -1,10 +1,16 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit, Inject} from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { Participant } from 'src/app/models/participant.model';
 import { Router } from '@angular/router';
 import { Item } from 'src/app/models/item.model';
 import { Feedback } from 'src/app/models/feedback.model';
 import EasySpeech from 'easy-speech';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
 
 
 interface MaritalStatuses {
@@ -14,6 +20,10 @@ interface MaritalStatuses {
 
 export interface DialogData {
   dialog: string;
+}
+
+export interface WarningDialogData {
+  isPaid: boolean;
 }
 
 @Component({
@@ -29,6 +39,8 @@ export class MainComponent implements OnInit{
   feedback: Feedback = new Feedback();
   story? = 0; // Story number for child comp.
   read: boolean = true; // Read/Answer mode switch.
+  warningCounter: number = 0;
+  warningGiven = false;
 
   @Input() step = 0;
   @Input() steps: Item[] = [];
@@ -51,6 +63,7 @@ export class MainComponent implements OnInit{
   constructor(
     private svc: SharedService,
     private router: Router,
+    public dialog: MatDialog,
   ) {}
 
   delay(ms: number) {
@@ -59,7 +72,6 @@ export class MainComponent implements OnInit{
 
   ngOnInit(): void {
     let prog_dict = this.svc.getProgress();
-    
     if (prog_dict.step.state) this.step = JSON.parse(prog_dict.step.value);
     if (prog_dict.steps.state) this.steps = JSON.parse(prog_dict.steps.value);
     if (prog_dict.feedback.state) this.feedback = Object.assign(new Feedback, JSON.parse(prog_dict.feedback.value));
@@ -69,7 +81,7 @@ export class MainComponent implements OnInit{
     } else {
       this.p.ProlificId = 'unpaid';
       if(this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).state) this.p.ProlificId = this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).value;
-      if(this.p.ProlificId != 'unpaid') {this.p.Age = "0"; this.p.Gender = "E"}
+      // if(this.p.ProlificId != 'unpaid') {this.p.Age = "0"; this.p.Gender = "E"}
       this.p.SurveyStartTs = new Date();
       [ this.p.ST1Number, this.p.ST2Number, this.p.ST3Number ] = this.svc.getCases();
     }
@@ -81,7 +93,15 @@ export class MainComponent implements OnInit{
     return false;
   }
 
+  checkAttentionPass(step: number): boolean {
+    if ((this.steps[step].endTime.getTime() - this.steps[step].startTime.getTime()) >= this.steps[step].minTime) { return true }
+    return false
+  }
+
   nextClick() {
+    this.steps[this.step].endTime = new Date();
+    if (!this.checkAttentionPass(this.step)) this.warningCounter += 1;
+    this.steps[this.step].minTime = 0;
     if (this.step == this.stepDict['BASIC_11']) this.checkB11();
     if (this.step == this.stepDict['BASIC_12']) this.checkB12();
     if (this.step == this.stepDict['BASIC_15']) this.checkB15();
@@ -93,10 +113,37 @@ export class MainComponent implements OnInit{
     }
     this.steps[this.step]['showNext'] = true;
     this.step += 1;
+    this.steps[this.step].startTime = new Date();
     while (!this.steps[this.step]['isVisible']) this.step += 1;
     this.stepUpdateEvent.emit(this.step);
     this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read);
-    navigator.vibrate(50);
+    window.scrollTo(0,0);
+    this.svc.vibrate();
+
+    if (this.step == this.stepDict['BF_16'] && !(this.p.TQ1 == "false")) {
+      this.GiveWarning();
+      this.warningGiven = true;
+      this.warningCounter = 0;
+      this.p.TQ1 = "false";
+    }
+    if (this.step == this.stepDict['STORIES1_20'] && !(this.p.TQ2 == "false")) {
+      this.GiveWarning();
+      this.warningGiven = true;
+      this.warningCounter = 0;
+      this.p.TQ2 = "false";
+    }
+
+    if (this.warningCounter === 4) {
+      if (this.warningGiven) {
+        this.discontinue();
+        return;
+      } else {
+        this.GiveWarning();
+        this.warningGiven = true;
+        this.warningCounter = 0;
+      }
+    }
+    this.delay(200);
   }
 
   checkB11() {
@@ -171,7 +218,8 @@ export class MainComponent implements OnInit{
   }
 
   backClick() {
-    if ((this.p.ProlificId == 'unpaid' && this.step == 0) || (this.p.ProlificId != 'unpaid' && this.step == 2)) {
+    this.delay(200);
+    if (this.step == 0) {
       this.router.navigateByUrl('intro');
     } else {
       if ((this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) && EasySpeech.status()['initialized']) EasySpeech.cancel();
@@ -182,10 +230,9 @@ export class MainComponent implements OnInit{
       this.stepUpdateEvent.emit(this.step);
     }
     this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read);
-    navigator.vibrate(50);
+    window.scrollTo(0,0);
+    this.svc.vibrate();
   }
-
-
 
   async submit() {
     this.p.SurveyEndTs = new Date();
@@ -217,6 +264,43 @@ export class MainComponent implements OnInit{
     this.isCompleteUpdateEvent.emit(this.isComplete);
     this.nextClick();
   }
+  
+  GiveWarning(): void {
+    this.steps[this.step].isVisible = false;
+    const dialogRef = this.dialog.open(WarningDialog, {
+      disableClose: true,
+      data: { isPaid : this.svc.isPaid },
+    }).afterClosed().subscribe(() => {
+      this.steps[this.step].isVisible = true;
+    });
+  }  
 
+  discontinue(): void {
+    let context = {
+      'status_code' : 451,
+      'message' : 'Attention verification failed.'
+    }
+    this.p = new Participant();
+    this.svc.clearItems();
+    this.router.navigateByUrl('fault', { state: context });
+  }
 }
 
+@Component({
+  selector: 'warning-dialog',
+  templateUrl: './warning-dialog.html',
+  styleUrls: ['./warning-dialog.css'],
+  standalone: true,
+  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, NgIf],
+})
+
+export class WarningDialog implements OnInit, AfterViewInit{
+  constructor(
+    public dialogRef: MatDialogRef<WarningDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: WarningDialogData,
+  ) {}
+
+  ngOnInit(): void {}
+  ngAfterViewInit() {}
+
+}

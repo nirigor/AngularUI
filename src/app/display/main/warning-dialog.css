@@ -1,0 +1,14 @@
+.container {
+    background-color: var(--color-1);
+    padding: 1rem;
+}
+
+.title {
+    color: var(--dark-red);
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+.cdk-overlay-container {
+    pointer-events: none;
+}

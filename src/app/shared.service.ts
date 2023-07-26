@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Item } from './models/item.model';
 import { Participant } from './models/participant.model';
 import { Feedback } from './models/feedback.model';
-
+import { Haptics } from '@capacitor/haptics';
 
 @Injectable({
   providedIn: 'root'
@@ -26,83 +26,91 @@ export class SharedService {
   stepDict: {[name: string]: number} = {}
   feedback: any;
   APIUrl: string = "";
-
+  isPaid: boolean = false;
   constructor() { }
+
+  vibrate() {
+    if (navigator.platform === "iPhone" || navigator.platform === "Mac" || navigator.platform === "MacIntel") {
+      Haptics.vibrate({duration: 50});      
+    } else {
+      Haptics.vibrate({duration: 50});
+    }
+  }
 
   initSteps(isPaid: boolean): [Item[], {[name: string]: number}] {
     if (this.steps.length != 0 && Object.keys(this.stepDict).length != 0) return [this.steps, this.stepDict]
-    
+    let ts = new Date();
     let tmp = 0;
     
     // BASIC
     for (let i = 1;  i < this.BASIC; i++) {
-      tmp = this.steps.push(new Item(i, this.BASIC, 'BASIC', false, true));
+      tmp = this.steps.push(new Item(i, this.BASIC, 'BASIC', false, true, ts, ts, 0));
       this.stepDict[`BASIC_${i}`] = tmp - 1;
     }
 
     for (let i = this.BASIC;  i <= this.BASIC + 9; i++) {
-      tmp = this.steps.push(new Item(this.BASIC, this.BASIC, 'BASIC', false, true));
+      tmp = this.steps.push(new Item(this.BASIC, this.BASIC, 'BASIC', false, true, ts, ts, 0));
       this.stepDict[`BASIC_${i}`] = tmp - 1;
     }
 
     // Congrats 1
-    tmp = this.steps.push(new Item(this.BASIC, this.BASIC, 'BASIC', false, true));
+    tmp = this.steps.push(new Item(this.BASIC, this.BASIC, 'BASIC', false, true, ts, ts, 0));
     this.stepDict['CONGRATS_1'] = tmp - 1;
 
     // STYLES
     for (let i = 1;  i <= this.STYLES1; i++) {
-      tmp = this.steps.push(new Item(i, this.STYLES1, 'STYLES1', false, true));
+      tmp = this.steps.push(new Item(i, this.STYLES1, 'STYLES1', false, true, ts, ts, 500));
       this.stepDict[`BF_${i}`] = tmp - 1;
     }
 
     for (let i = 1;  i <= this.STYLES2; i++) {
-      tmp = this.steps.push(new Item(i, this.STYLES2, 'STYLES2', false, true));
+      tmp = this.steps.push(new Item(i, this.STYLES2, 'STYLES2', false, true, ts, ts, 1500));
       this.stepDict[`TK_${i}`] = tmp - 1;
     }
 
     // Congrats 2
-    tmp = this.steps.push(new Item(this.STYLES2, this.STYLES2, 'STYLES2', false, true));
+    tmp = this.steps.push(new Item(this.STYLES2, this.STYLES2, 'STYLES2', false, true, ts, ts, 0));
     this.stepDict['CONGRATS_2'] = tmp - 1;
 
     // STORIES
     for (let i = 1;  i <= this.INTRO; i++) {
-      tmp = this.steps.push(new Item(i, this.INTRO, 'INTRO', true, true));
+      tmp = this.steps.push(new Item(i, this.INTRO, 'INTRO', true, true, ts, ts, 0));
       this.stepDict[`INTRO_${i}`] = tmp - 1;
     }
 
     for (let i = 1;  i <= this.STORIES1; i++) {
-      tmp = this.steps.push(new Item(i, this.STORIES1, 'STORIES1', false, true));
+      tmp = this.steps.push(new Item(i, this.STORIES1, 'STORIES1', false, true, ts, ts, 1000));
       this.stepDict[`STORIES1_${i}`] = tmp - 1;
     }
 
     for (let i = 1;  i <= this.STORIES2; i++) {
-      tmp = this.steps.push(new Item(i, this.STORIES2, 'STORIES2', false, true));
+      tmp = this.steps.push(new Item(i, this.STORIES2, 'STORIES2', false, true, ts, ts, 1000));
       this.stepDict[`STORIES2_${i}`] = tmp - 1;
     }
 
     for (let i = 1;  i <= this.STORIES3; i++) {
-      tmp = this.steps.push(new Item(i, this.STORIES3, 'STORIES3', false, true));
+      tmp = this.steps.push(new Item(i, this.STORIES3, 'STORIES3', false, true, ts, ts, 1000));
       this.stepDict[`STORIES3_${i}`] = tmp - 1;
     }
 
     // Congrats 3
-    tmp = this.steps.push(new Item(this.STORIES3, this.STORIES3, 'STORIES3', false, true));
+    tmp = this.steps.push(new Item(this.STORIES3, this.STORIES3, 'STORIES3', false, true, ts, ts, 0));
     this.stepDict['CONGRATS_3'] = tmp - 1;
 
     // Complete
     for (let i = 1;  i <= this.COMPLETE; i++) {
-      tmp = this.steps.push(new Item(i, this.COMPLETE, 'COMPLETE', false, true));
+      tmp = this.steps.push(new Item(i, this.COMPLETE, 'COMPLETE', false, true, ts, ts, 0));
       this.stepDict[`COMPLETE_${i}`] = tmp - 1;
     }
 
-    if (isPaid) {
-      this.steps[this.stepDict['BASIC_1']]['isVisible'] = false;
-      this.steps[this.stepDict['BASIC_2']]['isVisible'] = false;
-      for (let step = 2; step < this.stepDict['BF_1']; step++) {
-        this.steps[step]['phaseSteps'] = this.BASIC - 2;
-        this.steps[step]['stepNumber'] -= 2;
-      }
-    }
+    // if (isPaid) {
+    //   this.steps[this.stepDict['BASIC_1']]['isVisible'] = false;
+    //   this.steps[this.stepDict['BASIC_2']]['isVisible'] = false;
+    //   for (let step = 2; step < this.stepDict['BF_1']; step++) {
+    //     this.steps[step]['phaseSteps'] = this.BASIC - 2;
+    //     this.steps[step]['stepNumber'] -= 2;
+    //   }
+    // }
 
     return [this.steps, this.stepDict];
   }
@@ -143,7 +151,7 @@ export class SharedService {
     this.setItem('read', JSON.stringify(read), this.PROGRESS_LOCATION);
   }
 
-  getProgress(){
+  getProgress() {
     return {
       p: this.getItem('p', this.PROGRESS_LOCATION),
       step: this.getItem('step', this.PROGRESS_LOCATION),
@@ -154,7 +162,7 @@ export class SharedService {
     }
   }
 
-  setItem(key: string, value: string, type: string){
+  setItem(key: string, value: string, type: string) {
     switch(type) {
       case 'session':
         sessionStorage.setItem(key, value);
@@ -195,6 +203,14 @@ export class SharedService {
       n3 = this.getRandomNumber(1, 10);
     }
     return [n1, n2, n3];
+  }
+
+  clearItems(){
+    if (this.PROGRESS_LOCATION == 'session') { 
+      sessionStorage.clear(); 
+    } else {
+      localStorage.clear();
+    }
   }
 
 }

@@ -32,6 +32,10 @@
     color: var(--dark-green);
 }
 
+.red {
+    color: var(--dark-red);
+}
+
 .description {
     width: 100%;
     max-width: 665px;
