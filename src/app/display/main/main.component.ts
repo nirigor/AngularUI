@@ -41,7 +41,8 @@ export class MainComponent implements OnInit{
   read: boolean = true; // Read/Answer mode switch.
   warningCounter: number = 0;
   warningGiven = false;
-
+  isPaid = this.svc.isPaid;
+  
   @Input() step = 0;
   @Input() steps: Item[] = [];
   @Input() isComplete: boolean = false;

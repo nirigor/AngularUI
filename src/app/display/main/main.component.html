@@ -130,7 +130,7 @@
                 </div>
             </div>  
         </div>
-        <button mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> Get Prolific Token</button>
+        <button *ngIf="isPaid" mat-raised-button color="primary" class="next-button" (click)="nextClick();"><i class="bi bi-arrow-right"></i> Get Prolific Token</button>
     </div>
     <div *ngIf="step == stepDict['COMPLETE_2'] && steps[step]['isVisible']" class="item center">
         <div class="icon-lg"><img src="assets/confetti.gif"></div>
