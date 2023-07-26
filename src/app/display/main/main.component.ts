@@ -121,16 +121,26 @@ export class MainComponent implements OnInit{
     this.svc.vibrate();
 
     if (this.step == this.stepDict['BF_16'] && !(this.p.TQ1 == "false")) {
+      if (this.warningGiven) {
+        this.discontinue();
+        return;
+      } else {
       this.GiveWarning();
-      this.warningGiven = true;
-      this.warningCounter = 0;
-      this.p.TQ1 = "false";
+        this.warningGiven = true;
+        this.warningCounter = 0;
+        this.p.TQ1 = "false";
+      }
     }
     if (this.step == this.stepDict['STORIES1_20'] && !(this.p.TQ2 == "false")) {
-      this.GiveWarning();
-      this.warningGiven = true;
-      this.warningCounter = 0;
-      this.p.TQ2 = "false";
+      if (this.warningGiven) {
+        this.discontinue();
+        return;
+      } else {
+        this.GiveWarning();
+        this.warningGiven = true;
+        this.warningCounter = 0;
+        this.p.TQ2 = "false";
+      }
     }
 
     if (this.warningCounter === 4) {
