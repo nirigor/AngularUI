@@ -72,9 +72,16 @@ export class MainComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.step = this.stepDict['STORIES1_2'];
     let prog_dict = this.svc.getProgress();
     if (prog_dict.step.state) this.step = JSON.parse(prog_dict.step.value);
-    if (prog_dict.steps.state) this.steps = JSON.parse(prog_dict.steps.value);
+    if (prog_dict.steps.state) {
+      this.steps = JSON.parse(prog_dict.steps.value);
+      for (let i=0; i < this.steps.length; i++) {
+        this.steps[i].endTime = new Date(this.steps[i].endTime);
+        this.steps[i].startTime = new Date(this.steps[i].startTime);
+      }
+    }
     if (prog_dict.feedback.state) this.feedback = Object.assign(new Feedback, JSON.parse(prog_dict.feedback.value));
     if (prog_dict.isComplete.state) this.isComplete = JSON.parse(prog_dict.isComplete.value);
     if (prog_dict.p.state) {

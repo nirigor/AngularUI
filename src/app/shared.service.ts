@@ -30,11 +30,7 @@ export class SharedService {
   constructor() { }
 
   vibrate() {
-    if (navigator.platform === "iPhone" || navigator.platform === "Mac" || navigator.platform === "MacIntel") {
-      Haptics.vibrate({duration: 50});      
-    } else {
       Haptics.vibrate({duration: 50});
-    }
   }
 
   initSteps(isPaid: boolean): [Item[], {[name: string]: number}] {

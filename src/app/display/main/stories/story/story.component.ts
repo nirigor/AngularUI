@@ -44,7 +44,8 @@ export class StoryComponent implements OnInit {
       pitch: 1
     }
     this.readingState = "Reading";
-    EasySpeech.speak(options);
+    await EasySpeech.speak(options);
+    this.readingState = "notStarted"
   }
 
   pauseReadText() {
