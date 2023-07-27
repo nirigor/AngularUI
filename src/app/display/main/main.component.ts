@@ -72,7 +72,7 @@ export class MainComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.step = this.stepDict['STORIES1_2'];
+    //this.step = this.stepDict['STORIES1_2'];
     let prog_dict = this.svc.getProgress();
     if (prog_dict.step.state) this.step = JSON.parse(prog_dict.step.value);
     if (prog_dict.steps.state) {
