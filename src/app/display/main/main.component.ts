@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit, Inject} from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { Participant } from 'src/app/models/participant.model';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { Item } from 'src/app/models/item.model';
 import { Feedback } from 'src/app/models/feedback.model';
 import EasySpeech from 'easy-speech';
@@ -72,7 +72,7 @@ export class MainComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    //this.step = this.stepDict['STORIES1_2'];
+//    this.step = this.stepDict['STORIES1_2'];
     let prog_dict = this.svc.getProgress();
     if (prog_dict.step.state) this.step = JSON.parse(prog_dict.step.value);
     if (prog_dict.steps.state) {
@@ -92,6 +92,9 @@ export class MainComponent implements OnInit{
       // if(this.p.ProlificId != 'unpaid') {this.p.Age = "0"; this.p.Gender = "E"}
       this.p.SurveyStartTs = new Date();
       [ this.p.ST1Number, this.p.ST2Number, this.p.ST3Number ] = this.svc.getCases();
+      this.svc.getCoutry().then((country) => {
+        this.p.Country = country;
+      });
     }
     while(!this.steps[this.step]['isVisible']) this.step++;
   }
@@ -238,7 +241,12 @@ export class MainComponent implements OnInit{
   backClick() {
     this.delay(200);
     if (this.step == 0) {
-      this.router.navigateByUrl('intro');
+      let participant = this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).value;
+      if ( participant == 'unpaid') { 
+        this.router.navigateByUrl('intro'); 
+      } else { 
+        this.router.navigateByUrl(`intro?participant=${participant}`);
+      }
     } else {
       if ((this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) && EasySpeech.status()['initialized']) EasySpeech.cancel();
       this.step -= 1;

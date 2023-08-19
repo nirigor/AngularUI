@@ -21,6 +21,7 @@ export class SharedService {
   readonly COMPLETE = 2;
 
   readonly PROGRESS_LOCATION = 'session';
+  readonly DEFAULT_TIMEOUT = 5000;
 
   steps: Item[] = [];
   stepDict: {[name: string]: number} = {}
@@ -209,4 +210,49 @@ export class SharedService {
     }
   }
 
+  
+  async fetchWithTimeout(resource: string, timeout: number) {
+    const options = { timeout : timeout };
+    
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+  
+    const response = await fetch(resource, {
+      ...options,
+      signal: controller.signal  
+    });
+    clearTimeout(id);
+  
+    return response;
+  }
+  
+  async getIp() {
+    try {
+      const response = await this.fetchWithTimeout('http://ipv4.iplocation.net', this.DEFAULT_TIMEOUT);
+      if (response.ok) {
+        const body = await response.json();
+        return body['ip'];
+      }
+    }
+    catch (error) {
+      console.log(error);
+      return "Unknown";
+    }
+  }
+
+  async getCoutry() {
+    const ip = await this.getIp();
+    if (ip == "Unknown") return ip;
+    try {
+      const response = await this.fetchWithTimeout(`https://api.iplocation.net/?ip=${ip}`, this.DEFAULT_TIMEOUT);
+      if (response.ok) {
+        const body = await response.json();
+        return body['country_name'];
+      }
+    }
+    catch (error) {
+      console.log(error);
+      return "Unknown";
+    }
+  }
 }

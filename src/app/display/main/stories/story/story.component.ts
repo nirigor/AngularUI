@@ -49,16 +49,11 @@ export class StoryComponent implements OnInit {
   }
 
   pauseReadText() {
-    console.log(EasySpeech.detect());
-    console.log(EasySpeech.status());
-    console.log(EasySpeech.debug);
     EasySpeech.pause();
     this.readingState = "Paused";
   }
 
   resumeReadText() {
-    console.log(EasySpeech.detect());
-    console.log(EasySpeech.status());
     EasySpeech.resume();
     this.readingState = "Reading"
   }

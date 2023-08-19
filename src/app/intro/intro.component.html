@@ -59,45 +59,58 @@
             <div class="icon" style="grid-area: icon;"><mat-icon svgIcon="aim"></mat-icon></div>
             <div style="grid-area: term;">
                 <h2>What is the purpose of this research?</h2>
-                <p>The purpose of this research is to study litigants' needs, interests and emotions when facing a legal conflict.
+                <p>
+                    The purpose of this research is to study <span style="text-decoration-style: dotted; 
+                                                                          text-decoration-line: underline;" 
+                                                                   title="a person involved in a lawsuit.">litigants'</span> 
+                    needs, interests and emotions when facing a legal conflict. <br>
                     Participation is voluntary. It is your choice whether or not to participate in this research. 
                     If you choose to participate, you may change your mind and leave the study at any time.
-                    Refusal to participate or stopping your participation will involve no penalty or loss of benefits to which you are otherwise entitled. 
-                    Reward will be given only for significant contribution to the experiment.</p>
+                    <span *ngIf="isPaid" style="font-weight: 600;">
+                        <br>
+                        <br>NOTE: We have implemented measures to ensure truthful and thoughtful participation... failing to adhere to these measures would result in immediate disqualification.
+                        <br>A reward token will be granted only upon <span style="text-decoration-line: underline;">succesfull completion</span> of the survey.
+                    </span>
             </div>
         </div>
         <div class="term">
             <div class="icon" style="grid-area: icon;"><mat-icon svgIcon="fire"></mat-icon></div>
             <div style="grid-area: term;">
                 <h2>What are the risks and possible discomforts?</h2>
-                <p>If you choose to participate, there are no known risks associated with your participation in this research beyond those of everyday life.</p>
+                <p>
+                    If you choose to participate, there are no known risks associated with your participation in this research beyond those of everyday life.
+                </p>
             </div>
         </div>
         <div class="term">
             <div class="icon" style="grid-area: icon;"><mat-icon svgIcon="lock"></mat-icon></div>
             <div style="grid-area: term;">
                 <h2>If I take part in this research, how will my privacy be protected?</h2>
-                <p>The data we collect will be saved on a secured server. Diligent care will be taken to protect sensitive information. 
-                    Your identification information (e.g., your worker id) will not be saved.</p>
+                <p>
+                    The data we collect will be saved on a secured server. Diligent care will be taken to protect sensitive information. 
+                    The information will be used solely for the purposes of this research.
+                    No identifiable information will be saved.</p>
             </div>
         </div>
         <div class="term">
             <div class="icon" style="grid-area: icon;"><mat-icon svgIcon="letter"></mat-icon></div>
             <div style="grid-area: term;">
                 <h2>If I have any questions, concerns or complaints about this research study, who can I talk to?</h2>
-                <p>The leading researcher for this study is Dr. Avshalom Elmalech who can be reached at yigal.nirenberg@live.biu.ac.il If you have questions, 
-                    concerns, or complaints, If you would like to talk to the research team, If you think the research has harmed you, 
-                    or If you wish to withdraw from the study.</p>
+                <p>
+                    The leading researcher for this study is <span style="font-weight: 600;">Dr. Avshalom Elmalech</span> who can be reached at <a href="mailto:yigal.nirenberg@live.biu.ac.il">yigal.nirenberg@live.biu.ac.il</a>. <br>
+                    If you have questions, concerns, or complaints, if you would like to talk to the research team, if you think the research has harmed you, or if you wish to withdraw from the study.</p>
             </div>
         </div>
         <div class="term">
             <div class="icon" style="grid-area: icon;"><mat-icon svgIcon="info"></mat-icon></div>
             <div style="grid-area: term;">
                 <h2>Statement</h2>
-                <p>I have read and understood the information in this terms of use. I am at least eighteen (18) years old. 
-                    All my questions about the research have been answered to my satisfaction. 
-                    This research has been reviewed by the Committee on the Use of Human Subjects in Research at Bar-Ilan University, Israel.
-                    You may print this copy of the Consent Document for your records.</p>
+                <p>
+                    This research has been reviewed by the Committee on the Use of Human Subjects in Research at Bar-Ilan University, Israel. You may print this copy of the Consent Document for your records. <br><br>
+                    I have read and understood the information in this terms of use.<br>
+                    All my questions about the research have been answered to my satisfaction. <br>
+                    I am at least eighteen (18) years old. <br>
+                </p>
             </div>
         </div>
         <div class="mtop">

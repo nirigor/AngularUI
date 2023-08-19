@@ -25,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { IntroComponent } from './intro/intro.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { StoryComponent } from './display/main/stories/story/story.component';
 import { StylesComponent } from './display/main/styles/styles.component';
 import { StoriesIntroComponent } from './display/main/storiesintro/storiesintro.component';
@@ -74,6 +75,7 @@ const globalRippleConfig: RippleGlobalOptions = {
     MatIconModule,
     MatCheckboxModule,
     MatDialogModule,
+    MatTooltipModule,
   ],
   providers: [
     SharedService,

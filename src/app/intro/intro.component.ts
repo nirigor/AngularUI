@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { SharedService } from '../shared.service';
 import { Router } from '@angular/router';
+import { TimeoutError, timeout } from 'rxjs';
 
 @Component({
   selector: 'app-intro',
