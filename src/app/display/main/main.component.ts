@@ -72,7 +72,7 @@ export class MainComponent implements OnInit{
   }
 
   ngOnInit(): void {
-//    this.step = this.stepDict['STORIES1_2'];
+    //this.step = this.stepDict['COMPLETE_1'];
     let prog_dict = this.svc.getProgress();
     if (prog_dict.step.state) this.step = JSON.parse(prog_dict.step.value);
     if (prog_dict.steps.state) {
@@ -258,6 +258,10 @@ export class MainComponent implements OnInit{
     this.svc.saveProgress(this.p, this.steps, this.step, this.isComplete, this.feedback, this.read);
     window.scrollTo(0,0);
     this.svc.vibrate();
+  }
+
+  backToProlific() {
+    window.location.href = 'https://app.prolific.co/submissions/complete?cc=C1ID63YK';
   }
 
   async submit() {

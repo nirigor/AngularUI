@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationExtras } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { SharedService } from '../shared.service';
 import { Router } from '@angular/router';
-import { TimeoutError, timeout } from 'rxjs';
 
 @Component({
   selector: 'app-intro',
@@ -27,8 +26,8 @@ export class IntroComponent implements OnInit {
 
     this.route.queryParams
       .subscribe((params) => {
-        if ('participant' in params) {
-          this.svc.setItem('participant', params['participant'], this.svc.PROGRESS_LOCATION);
+        if ('PROLIFIC_PID' in params) {
+          this.svc.setItem('participant', params['PROLIFIC_PID'], this.svc.PROGRESS_LOCATION);
           this.svc.isPaid = true;
           this.isPaid = true;
         } else {

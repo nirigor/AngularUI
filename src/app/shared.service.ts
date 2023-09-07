@@ -210,7 +210,6 @@ export class SharedService {
     }
   }
 
-  
   async fetchWithTimeout(resource: string, timeout: number) {
     const options = { timeout : timeout };
     
