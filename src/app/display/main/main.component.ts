@@ -87,8 +87,13 @@ export class MainComponent implements OnInit{
     if (prog_dict.p.state) {
       this.p = Object.assign(new Participant, JSON.parse(prog_dict.p.value));
     } else {
-      this.p.ProlificId = 'unpaid';
-      if(this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).state) this.p.ProlificId = this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).value;
+      //this.p.ProlificId = 'unpaid';
+      if(this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).state) {
+        this.p.ProlificId = this.svc.getItem('participant', this.svc.PROGRESS_LOCATION).value;
+      } else {
+        let context = { 'message' : 'System could not get your PROLIFIC_ID, please try again later..'}
+        this.router.navigateByUrl('fault', { state: context }); 
+      }
       // if(this.p.ProlificId != 'unpaid') {this.p.Age = "0"; this.p.Gender = "E"}
       this.p.SurveyStartTs = new Date();
       [ this.p.ST1Number, this.p.ST2Number, this.p.ST3Number ] = this.svc.getCases();
