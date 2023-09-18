@@ -159,7 +159,8 @@ export class SharedService {
     }
   }
 
-  setItem(key: string, value: string, type: string) {
+  setItem(key: string, value: string|null, type: string) {
+    if (value == null) value = "";
     switch(type) {
       case 'session':
         sessionStorage.setItem(key, value);

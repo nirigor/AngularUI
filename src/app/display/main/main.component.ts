@@ -245,7 +245,7 @@ export class MainComponent implements OnInit{
       if ( participant == 'unpaid') { 
         this.router.navigateByUrl('intro'); 
       } else { 
-        this.router.navigateByUrl(`intro?participant=${participant}`);
+        this.router.navigateByUrl(`intro?PROLIFIC_PID=${participant}`);
       }
     } else {
       if ((this.step == this.stepDict['STORIES1_2'] || this.step == this.stepDict['STORIES2_2'] || this.step == this.stepDict['STORIES3_2']) && EasySpeech.status()['initialized']) EasySpeech.cancel();
@@ -261,6 +261,7 @@ export class MainComponent implements OnInit{
   }
 
   backToProlific() {
+    // window.location.href = `https://app.prolific.co/submissions/complete?cc=${this.feedback.Token}`;
     window.location.href = 'https://app.prolific.co/submissions/complete?cc=C1ID63YK';
   }
 
