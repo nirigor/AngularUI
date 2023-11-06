@@ -51,11 +51,11 @@
         <button *ngIf="readingState == 'Paused'" mat-stroked-button color="primary" class="next-button" (click)="resumeReadText();"><i class="bi bi-mic-fill"></i> resume</button>
     </div>
     <p>You are engaged in financial activities.</p>
-    <p>Over 10 years ago, you decided to deposit $31,000 in cash into a foreign currency account at the bank, which you opened the same day. 
+    <p>Over 10 years ago, you decided to deposit 31,000 USD in cash into a foreign currency account at the bank, which you opened the same day. 
         In the confirmation of opening the account, it explicitly stated that it is impossible to withdraw the deposit before three months have passed,
          not even to transfer money abroad.</p>
     <p>You recently went to withdraw the funds; you were told there was no deposit in your name because the account was reset and converted. 
-        It turned out that less than two months after the deposit, $30,563 was converted from the account, followed by another $437. 
+        It turned out that less than two months after the deposit, $30,563 was converted from the account, followed by another 437 USD. 
         Although these conversions were carried out before the end of the three months, the bank did not charge any fees or penalties.</p>
     <p>You were shocked and claimed that you were abroad at the time of the transactions made from the account and did not confirm the transactions.</p>
     <p>The bank, on its behalf, 
@@ -194,4 +194,185 @@
      Many weeks later, a reply came from the authorities' attorney general office, claiming they had behaved professionally and respectfully and refused to acknowledge any flaws.</p>
     <p>This added to the feeling of contempt and humiliation you experienced. You were harmed by not being able to attend the conference, 
      but mainly because of the difficult experience you feel was forced upon you solely because you belong to a minority.</p>
+</div>
+
+<div *ngIf="story==11" class="story">
+    <div class="story-h">
+        <h2>Whose check is this?</h2>
+        <button *ngIf="readingState == 'notStarted'" mat-stroked-button color="primary" class="next-button" (click)="readText();"><i class="bi bi-mic-fill"></i> read</button>
+        <button *ngIf="readingState == 'Reading'" mat-stroked-button color="primary" class="next-button" (click)="pauseReadText();"><i class="bi bi-mic-fill"></i> pause</button>
+        <button *ngIf="readingState == 'Paused'" mat-stroked-button color="primary" class="next-button" (click)="resumeReadText();"><i class="bi bi-mic-fill"></i> resume</button>
+    </div>
+    <p>You own a small construction company.</p> 
+    <p>During the company's business, you paid one of your suppliers by check drawn from your bank account. The check was for 4,700 USD and bore your signature, with all the check details filled in. 
+        According to you, the original check was returned to you by the supplier on the 31st of January 2019 and was replaced by two other checks that, when summed, equaled the original amount.</p>
+    <p>Although the original check was returned to you, a check mocking the initial check was physically presented for repayment at the bank on the 4th of March 2019, 
+        with the beneficiary of the check being another person whose account is also managed at the bank. The bank accepted the additional check. 
+        According to the bank, this was done after inspecting the signature and matching it with your signature held by the bank.</p>
+    <p>According to you, since there are multiple transactions in your bank account, you overlooked the payment of the mock check until about three weeks after when you were doing a routine inspection of your expenses and income. 
+        You asked the bank to cancel the additional check. After several inquiries to the bank, it announced that it would not cancel the charge for the additional check.</p>
+    <p>You want your money back, and you feel that it was taken wrongly; moreover, you feel that the bank, who you trust with your money, is turning its back on you. On the other hand, 
+        you have worked with this bank for many years and are satisfied with your overall experience.</p>
+</div>
+
+<div *ngIf="story==12" class="story">
+    <div class="story-h">
+        <h2>Guarantee or Sting</h2>
+        <button *ngIf="readingState == 'notStarted'" mat-stroked-button color="primary" class="next-button" (click)="readText();"><i class="bi bi-mic-fill"></i> read</button>
+        <button *ngIf="readingState == 'Reading'" mat-stroked-button color="primary" class="next-button" (click)="pauseReadText();"><i class="bi bi-mic-fill"></i> pause</button>
+        <button *ngIf="readingState == 'Paused'" mat-stroked-button color="primary" class="next-button" (click)="resumeReadText();"><i class="bi bi-mic-fill"></i> resume</button>
+    </div>
+    <p>Recently, your son got married. Now, your son and his wife are interested in purchasing a residential apartment, so they required a bank loan. 
+        To approve the loan, your son must have a signed letter of guarantee from a guarantor. 
+        You granted his request and signed a two-year bond. After two years, your son was fired, so he and his wife could not repay the loan. 
+        After various bridge loan attempts failed, the bank concentrated their debts into one agreed settlement loan.</p>
+    <p>Your son and his wife did not meet the settlement loan, and after two and a half years, the bank demanded the full payment of the letter of guarantee. 
+        According to you, in addition to the fact that the guarantee expired, the bank did not inform you at all about the late loans.</p>
+    <p>The bank claims that your guarantee was given to secure any credit or obligation of the account owners and that it had no obligation to inform you of additional loans or an increase in a late line of credit to the letter of guarantee.</p>
+    <p>According to you, the bank's substantial increase in the credit limit for your son and the granting of additional large loans without any updates from you as guarantor were done fraudulently. 
+        You feel that the bank is trying to take advantage of you as the parent of the account holder even though your guarantee is invalid. You do not have the necessary amount to pay, and you feel that the bank has cheated you.</p>
+</div>
+
+
+<div *ngIf="story==13" class="story">
+    <div class="story-h">
+        <h2>Premature foreclosure</h2>
+        <button *ngIf="readingState == 'notStarted'" mat-stroked-button color="primary" class="next-button" (click)="readText();"><i class="bi bi-mic-fill"></i> read</button>
+        <button *ngIf="readingState == 'Reading'" mat-stroked-button color="primary" class="next-button" (click)="pauseReadText();"><i class="bi bi-mic-fill"></i> pause</button>
+        <button *ngIf="readingState == 'Paused'" mat-stroked-button color="primary" class="next-button" (click)="resumeReadText();"><i class="bi bi-mic-fill"></i> resume</button>
+    </div>
+    <p>While shopping at the neighborhood grocery store, you encountered a credit refusal. When you called the bank to inquire, 
+        you were surprised to find that your account had been foreclosed and that the bank had placed the entire balance of loans and credit in your account for immediate repayment without any prior notice from the bank. 
+        However, you could not meet the loan repayment deadlines due to your spouse's unexpected firing. 
+        The foreclosure is unexpected because you are in the midst of negotiations to formulate a settlement loan with representatives of the bank and the branch manager. You managed to sign the loan document, 
+        and your spouse was also supposed to sign too. You have also transferred 20,000 USD as required in negotiations with the bank to settle your affairs.</p>
+    <p>According to the bank, your account was declared restricted due to your worsening financial situation and significant deviations in the current account framework. 
+        In addition, the bank claims to have discovered that the assets you presented during negotiations were mortgaged and therefore ordered the immediate foreclosure of the account.</p>
+    <p>You feel that the bank has turned its back on you. You were deeply hurt by the conduct of the bank manager who renounced the promises he made to you during your meeting.</p>
+    <p>You were severely hurt by the bank that acted on its own contrary to the meeting between you, and you feel that you have been misled. Moreover, you fear for your financial security as you have not even been able to purchase groceries in the supermarket.</p>
+</div>
+
+
+<div *ngIf="story==14" class="story">
+    <div class="story-h">
+        <h2>Timing is everything</h2>
+        <button *ngIf="readingState == 'notStarted'" mat-stroked-button color="primary" class="next-button" (click)="readText();"><i class="bi bi-mic-fill"></i> read</button>
+        <button *ngIf="readingState == 'Reading'" mat-stroked-button color="primary" class="next-button" (click)="pauseReadText();"><i class="bi bi-mic-fill"></i> pause</button>
+        <button *ngIf="readingState == 'Paused'" mat-stroked-button color="primary" class="next-button" (click)="resumeReadText();"><i class="bi bi-mic-fill"></i> resume</button>
+    </div>
+    <p>You have been buying and selling shares in the capital market through your bank for years. 
+        Your relationship with the bank representative is excellent, and there has never been a problem regarding your instructions concerning the sale and purchase of shares.</p>
+    <p>You have recently been interested in a particular stock that you own. You have spent many hours analyzing the stock's fluctuations. 
+        After much research and thought, you have concluded that the stock should be sold immediately since the share's value will fall drastically at any moment. 
+        You called the bank representative and explained to him your desire to sell all the shares of this type immediately. 
+        A bank representative replied, "No problem, I'll sell them immediately." In practice, you discovered that the bank representative only sold your shares the next day, causing you to lose a lot of money.</p>
+    <p>You tried to contact the bank to reach some settlement concerning the serious malfunction that you believed occurred. 
+        Still, the bank representative denied the fact that you asked him to sell immediately and did not agree to pay compensation for the significant loss caused. 
+        You have been greatly offended by the action and attitude of the representative, as you have had a great relationship over the years. You are shocked by his denial of your explicit request. 
+        It is also worth mentioning that replacing bank investments involves investing tremendous amounts of time and resources.</p>
+</div>
+
+
+<div *ngIf="story==15" class="story">
+    <div class="story-h">
+        <h2>I didn't close my eyes all night.</h2>
+        <button *ngIf="readingState == 'notStarted'" mat-stroked-button color="primary" class="next-button" (click)="readText();"><i class="bi bi-mic-fill"></i> read</button>
+        <button *ngIf="readingState == 'Reading'" mat-stroked-button color="primary" class="next-button" (click)="pauseReadText();"><i class="bi bi-mic-fill"></i> pause</button>
+        <button *ngIf="readingState == 'Paused'" mat-stroked-button color="primary" class="next-button" (click)="resumeReadText();"><i class="bi bi-mic-fill"></i> resume</button>
+    </div>
+    <p>Throughout your studies, you used your bank to obtain student loans. Over the years, you have received good treatment and professional service from the bank and branch clerks. 
+        You felt that you were managing your money in a responsible and professional place.</p>
+    <p>One night you received a surprising message stating that 8,000 USD had been withdrawn from your account. You did not order the said charge. 
+        You got very nervous and were in a storm of emotions. You tried to contact the bank immediately via phone and app, but to no avail. 
+        You realized there would be no choice but to wait for their service in the morning. You didn't sleep the whole night and waited, worried that more money might be withdrawn from your account.</p>
+    <p>The following morning you managed to speak with the bank's representative, who claimed the transaction was infact an error, the representative didn't offer any apology nor sympathy for your anxiety the night before.</p>
+    <p>You were hurt by the bank's lack of caring and indifferent response to the anxiety and fears that overwhelmed you. 
+        You are very concerned about the bank's conduct in urgent emergencies, as opposed to its good conduct in normal times.</p>
+</div>
+
+
+<div *ngIf="story==16" class="story">
+    <div class="story-h">
+        <h2>Conflict of interest of the bank</h2>
+        <button *ngIf="readingState == 'notStarted'" mat-stroked-button color="primary" class="next-button" (click)="readText();"><i class="bi bi-mic-fill"></i> read</button>
+        <button *ngIf="readingState == 'Reading'" mat-stroked-button color="primary" class="next-button" (click)="pauseReadText();"><i class="bi bi-mic-fill"></i> pause</button>
+        <button *ngIf="readingState == 'Paused'" mat-stroked-button color="primary" class="next-button" (click)="resumeReadText();"><i class="bi bi-mic-fill"></i> resume</button>
+    </div>
+    <p>You are young, and you and your spouse have a full-time job. After a long time in which you and your spouse saved money for a mortgage to purchase an apartment, you turned to the bank and got a loan at a reasonable interest rate. 
+        You were very happy because you waited and put a lot of time into it. Eventually, after much search effort, you found a construction company selling apartments in the city you wanted. 
+        After a while, it turned out that the construction company went bankrupt, and you don't know where you stand and what will happen to its construction obligations to you.</p>
+    <p>The story was exposed to the media, and you have discovered that the construction company is also a customer of the same bank through which you took the mortgage,
+         and that the bank knew that the company was in financial difficulties and did not bother to tell you anything when you consulted with it. 
+         The bank deeply hurt you, as you met with them many times and consulted about the purchase of the apartment and possible construction companies, 
+         and in none of the meetings did the bank bother to mention that the construction company is its customer. The bank didn't even recommend consulting other parties before purchasing the apartment. 
+         You feel that the bank has not treated you fairly. You've worked hard for the savings, and you feel cheated.</p>
+</div>
+
+
+<div *ngIf="story==17" class="story">
+    <div class="story-h">
+        <h2>A Double Charge</h2>
+        <button *ngIf="readingState == 'notStarted'" mat-stroked-button color="primary" class="next-button" (click)="readText();"><i class="bi bi-mic-fill"></i> read</button>
+        <button *ngIf="readingState == 'Reading'" mat-stroked-button color="primary" class="next-button" (click)="pauseReadText();"><i class="bi bi-mic-fill"></i> pause</button>
+        <button *ngIf="readingState == 'Paused'" mat-stroked-button color="primary" class="next-button" (click)="resumeReadText();"><i class="bi bi-mic-fill"></i> resume</button>
+    </div>
+    <p>You are the main source of income for your family. You recently took out a mortgage with your spouse from the bank to buy an apartment. 
+        According to the agreement with the bank and the contractor of the apartment, you must pay the contractor the agreed amount once a month by bank checks. 
+        Every month, you contact the bank, apply for a check, the bank approves and contacts the contractor, and the latter collects the check from the bank and puts it in his account.</p> 
+    <p>In the previous month, your check request was approved and forwarded to the contractor by the bank clerk as usual. After a short time, the clerk who handled this check resigned, and a new clerk took office. 
+        The new clerk saw your request for a check the previous month, thought that the request had not been processed, and approved another check without contacting you or clarifying the request's status.</p>
+    <p>The clerk contacted the contractor, and the latter collected and cashed the additional check. Due to the clerk's mistake at the bank, you were charged twice that month. 
+        You contacted the bank about the double charge that was made in error, and he replied that the matter was under investigation and in the meantime, you should contact the contractor.</p>
+    <p>Several months have passed, and the bank has not yet dealt with the problem and keeps replying that it will investigate the matter. The bank is not taking responsibility.</p>
+</div>
+
+
+<div *ngIf="story==18" class="story">
+    <div class="story-h">
+        <h2>Bad Name from the Bank</h2>
+        <button *ngIf="readingState == 'notStarted'" mat-stroked-button color="primary" class="next-button" (click)="readText();"><i class="bi bi-mic-fill"></i> read</button>
+        <button *ngIf="readingState == 'Reading'" mat-stroked-button color="primary" class="next-button" (click)="pauseReadText();"><i class="bi bi-mic-fill"></i> pause</button>
+        <button *ngIf="readingState == 'Paused'" mat-stroked-button color="primary" class="next-button" (click)="resumeReadText();"><i class="bi bi-mic-fill"></i> resume</button>
+    </div>
+    <p>You are married and are a small business owner. One day you receive a letter from the bank stating that you have a debt in your current account and that if you do not settle the debt within 60 days, 
+        the bank will have to pass your name on to the entities prescribed by law (credit card companies, etc.).</p>
+    <p>Following this letter, you have paid the debt within the 60 days given to you. To your surprise, the bank nevertheless forwarded your name to the authorities written in the law, 
+        claiming that the letter sent to you was a second notice as stated in its title.</p>
+    <p>According to the bank, far more than 60 days have passed since the date of the first notice letter, therefore, in its opinion, thew bank acted lawfully.</p>
+    <p>As a result, you have suffered a lot of damage. e.g., you had to withdraw a letter of intent for the sale of your apartment because your application for a mortgage from the bank was denied due to the publication of your name in their databases. 
+        In addition, your personal business has suffered severe reputation blow, you believe that many transactions have been canceled by your clients as a result.</p>
+    <p>You want to complete the process quickly to get your name out of the database so that you can sell your apartment and make transactions in your existing business.</p>
+</div>
+
+
+<div *ngIf="story==19" class="story">
+    <div class="story-h">
+        <h2>Right to Privacy and Duty of Confidentiality</h2>
+        <button *ngIf="readingState == 'notStarted'" mat-stroked-button color="primary" class="next-button" (click)="readText();"><i class="bi bi-mic-fill"></i> read</button>
+        <button *ngIf="readingState == 'Reading'" mat-stroked-button color="primary" class="next-button" (click)="pauseReadText();"><i class="bi bi-mic-fill"></i> pause</button>
+        <button *ngIf="readingState == 'Paused'" mat-stroked-button color="primary" class="next-button" (click)="resumeReadText();"><i class="bi bi-mic-fill"></i> resume</button>
+    </div>
+    <p>You are in the midst of a divorce dispute, during which your ex-spouse has initiated execution proceedings against you.</p>
+    <p>As part of this proceeding, and upon the court's request, your personal bank account was foreclosed. 
+        Later, you discovered that the execution proceedings also led to a foreclosure of your parents' joint account, in which you are a partner</p>
+    <p>You were taken aback by the unforeseen foreclosure because, aside from your parents and the bank, no one knew you were a partner in that account. Upon investigation, 
+        you found out that the bank had disclosed this information to your ex-spouse without your consent, 
+        which deeply disappointed you, as it eroded your trust in the bank by revealing personal details about the joint account.</p>
+    <p>You believe that the bank has breached your trust and violated your privacy, in contravention of the expected banking confidentiality obligations in this case. 
+        This behavior is particularly perplexing given your long-standing customer relationship with the bank.</p>
+</div>
+
+
+<div *ngIf="story==20" class="story">
+    <div class="story-h">
+        <h2>Checks without coverage</h2>
+        <button *ngIf="readingState == 'notStarted'" mat-stroked-button color="primary" class="next-button" (click)="readText();"><i class="bi bi-mic-fill"></i> read</button>
+        <button *ngIf="readingState == 'Reading'" mat-stroked-button color="primary" class="next-button" (click)="pauseReadText();"><i class="bi bi-mic-fill"></i> pause</button>
+        <button *ngIf="readingState == 'Paused'" mat-stroked-button color="primary" class="next-button" (click)="resumeReadText();"><i class="bi bi-mic-fill"></i> resume</button>
+    </div>
+    <p>You are a shop owner who, a few years ago, received checks as payment from a customer and subsequently used these checks to pay your suppliers for merchandise. 
+        After three years, your suppliers informed you that the checks were invalid, leaving you with a debt of 5,100 USD. 
+        This unfortunate situation has not only caused financial strain but also damaged your reputation and good name. 
+        Your long-standing business relationships with your suppliers have soured, and they are now inclined to work with other store owners. 
+        Initially, you attempted to resolve the issue by asking the customer to replace the old checks with new ones, but the customer has been unwilling to meet with you.</p> 
 </div>

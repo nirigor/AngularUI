@@ -196,9 +196,9 @@ export class SharedService {
   getCases() {
     let n1, n2, n3 = 0;
     while ((n1 == n2) || (n1 == n3) || (n2 == n3)) {
-      n1 = this.getRandomNumber(1, 10);
-      n2 = this.getRandomNumber(1, 10);
-      n3 = this.getRandomNumber(1, 10);
+      n1 = this.getRandomNumber(11, 20);
+      n2 = this.getRandomNumber(11, 20);
+      n3 = this.getRandomNumber(11, 20);
     }
     return [n1, n2, n3];
   }
