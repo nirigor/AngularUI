@@ -189,18 +189,27 @@ export class SharedService {
     return { state: true, value: value };
   }
   
-  getRandomNumber(min: number, max: number){
+  getRandomNumber(min: number, max: number):number{
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
   
+  normalize(n: number):number {
+    // if (n == 9) return 6;
+    // if (n == 8) return 3;
+    // if (n == 7) return 2;
+    return n;
+  }
+
   getCases() {
-    let n1, n2, n3 = 0;
+    let n1 : number = 0;
+    let n2 : number = 0;
+    let n3 : number = 0;
     while ((n1 == n2) || (n1 == n3) || (n2 == n3)) {
-      n1 = this.getRandomNumber(11, 20);
-      n2 = this.getRandomNumber(11, 20);
-      n3 = this.getRandomNumber(11, 20);
+      n1 = this.getRandomNumber(1, 30);
+      n2 = this.getRandomNumber(1, 30);
+      n3 = this.getRandomNumber(1, 30);
     }
-    return [n1, n2, n3];
+    return [this.normalize(n1), this.normalize(n2), this.normalize(n3)];
   }
 
   clearItems(){
