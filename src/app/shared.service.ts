@@ -237,7 +237,7 @@ export class SharedService {
   
   async getIp() {
     try {
-      const response = await this.fetchWithTimeout('http://ipv4.iplocation.net', this.DEFAULT_TIMEOUT);
+      const response = await this.fetchWithTimeout('https://ipinfo.io/json', this.DEFAULT_TIMEOUT);
       if (response.ok) {
         const body = await response.json();
         return body['ip'];

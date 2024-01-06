@@ -35,7 +35,7 @@ export class IntroComponent implements OnInit {
       .subscribe((params) => {
         if (params.has('PROLIFIC_PID')) {
           this.svc.setItem('participant', params.get('PROLIFIC_PID'), this.svc.PROGRESS_LOCATION);
-          if (params.get('PROLIFIC_PID') == 'friend') {
+          if (params.get('PROLIFIC_PID') == 'unpaid') {
             this.svc.isPaid = false;
             this.isPaid = false;
           }
